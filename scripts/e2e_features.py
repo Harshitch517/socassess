@@ -56,7 +56,7 @@ with sync_playwright() as p:
 
     # 3. analyse -> actions + saved
     pg.get_by_role("button", name="Analyse my data →").click()
-    pg.get_by_text("Overall result").wait_for(timeout=120000)
+    pg.get_by_text("Overall result").wait_for(timeout=240000)
     pg.get_by_text("Saved on this computer").first.wait_for(timeout=15000)
     ok(pg.get_by_role("button", name="Save report as PDF").count() == 2, "Save as PDF at top and bottom")
     ok(pg.get_by_role("link", name="Detailed PDF").count() == 2, "Detailed PDF links present")

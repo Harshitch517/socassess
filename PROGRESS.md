@@ -78,3 +78,9 @@
 - Every pie chart has **Explain** (what it shows, how to read it, what your numbers say).
 - Dark theme by default, hover effects, gradient buttons, vector hero illustration; print stylesheet.
 - Verified in Chrome (`scripts/e2e_features.py`, 17 checks incl. a generated PDF): all pass, 0 console errors. Tests: 87 passed.
+
+## Deployed (2026-11-09)
+- Public repo https://github.com/Harshitch517/socassess (secret scan of tree + history: clean).
+- Live: **https://socassess-api.onrender.com** (Render free, Docker). Hardened for 512 MB (measured locally under a 512 MB limit): memory fixes, 5 MB demo upload cap, keep last 5 uploads, privacy notice, non-blocking health check.
+- Verified live: an upload analysed in 87 s with the health check responsive throughout; the full browser e2e (17 checks incl. PDF and saved reports) passed against the live site. Tests: 89 passed.
+- Vercel not used (token is read-only).

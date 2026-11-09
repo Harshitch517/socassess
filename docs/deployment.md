@@ -1,5 +1,26 @@
 # Deployment
 
+## Live public demo
+| | |
+|---|---|
+| App (UI + API, one address) | **https://socassess-api.onrender.com** |
+| API docs | https://socassess-api.onrender.com/docs |
+| Source | https://github.com/Harshitch517/socassess (public) |
+| Host | Render free web service (Docker), region Singapore, settings in `render.yaml` |
+
+Demo limits (measured in a 512 MB container): uploads ≤ 5 MB (~50,000 alerts), only the 5 most recent visitor uploads are
+kept, the data resets whenever the service restarts, and the service sleeps after ~15 min idle (the first visit then takes
+~1 min to wake). Analysis takes ~1–2 min on the free CPU. A notice asks visitors not to upload confidential data.
+
+Redeploy after pushing to `main`: Render builds public repos by URL, so it does not receive GitHub push events.
+Use the dashboard's *Manual Deploy* or the API: `POST https://api.render.com/v1/services/<service-id>/deploys`.
+
+Vercel was not used: the token provided was read-only ("You don't have permission to create the resource"), and the
+Render service already serves the UI. To add a Vercel front end later, create a token with deploy rights and run
+`VITE_API_BASE=https://socassess-api.onrender.com npm run build` in `frontend/`, deploy `dist/`, then set
+`SOCASSESS_CORS_ORIGINS` on Render to the Vercel URL.
+
+
 ## A. Offline (production use)
 ```bash
 docker compose up -d --build        # first time; needs internet for the build only
