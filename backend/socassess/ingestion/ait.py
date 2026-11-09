@@ -17,7 +17,7 @@ import pandas as pd
 CATEGORY_RULES = [  # (substring in rule groups / description, category); first match wins
     ("authentication_failed", "brute_force"), ("invalid_login", "brute_force"),
     ("web_scan", "recon"), ("recon", "recon"), ("attack", "web_attack"),
-    ("virus", "malware"), ("authentication_success", "authentication"),
+    ("freshclam", "av_update"), ("virus", "malware"), ("authentication_success", "authentication"),
     ("dns", "dns_anomaly"), ("audit", "host_anomaly"), ("ids", "network_ids"),
     ("apache", "web_anomaly"), ("monitoring", "resource_anomaly"),
 ]

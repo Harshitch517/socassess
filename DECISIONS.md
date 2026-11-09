@@ -20,3 +20,12 @@
 | 16 | 2026-11-09 | 2 | Upsert by primary key + an `ingest_runs` table holding the input SHA-256. | Idempotent re-uploads, multiple periods per entity, traceable inputs. |
 | 17 | 2026-11-09 | 2 | AIT scenarios are ingested as entities with `source='ait'` (no cases); severity from Wazuh rule level; asset criticality unknown → 'medium'. | Gives real alerts for pattern clustering; case-based detectors skip entities without cases. |
 | 18 | 2026-11-09 | 2 | Added `pytz` (MIT). | DuckDB needs it to return tz-aware timestamps to Python. |
+| 19 | 2026-11-09 | 3 | Rate detectors use "absolute floor AND robust z ≥ 3 vs same-source peers". | Explainable; robust to a few bad peers; avoids alarms on tiny absolute differences. |
+| 20 | 2026-11-09 | 3 | Template notes: normalise + exact-merge, then exact TF-IDF cosine ≥ 0.92 with connected components (no MiniLM). | TF-IDF matched all 2,188 planted template notes with no false groups; the embedding model isn't needed (spec: "TF-IDF first"). |
+| 21 | 2026-11-09 | 3 | "Repeated without root-cause fix" = a stretch of ≥ 12 alerts over ≥ 7 days on one asset+rule with no remediation in between. | "No remediation ever" missed a planted pair that got an unrelated late fix; a long unfixed stretch is the actual execution gap. |
+| 22 | 2026-11-09 | 3 | Alert clustering is pattern-level (entity × rule) with behaviour + text features and sklearn HDBSCAN. | Per-alert clustering of 400k alerts would be slow and unreadable; patterns are what a supervisor reasons about. |
+| 23 | 2026-11-09 | 3 | IsolationForest findings need a readable driver (a metric with |z| ≥ 3.5) and carry a low risk weight. | Keeps the anomaly signal explainable and stops it double-counting the specific detectors. |
+| 24 | 2026-11-09 | 3 | Risk score = capped sum of weight × severity multiplier, with a stored breakdown. | The spec requires a transparent, non-black-box score. |
+| 25 | 2026-11-09 | 3 | The review queue adds a seeded random control sample of high/critical cases per entity. | Lets the supervisor check the tool's blind spots, and is the basis for the Stage 6 manual-sampling baseline. |
+| 26 | 2026-11-09 | 3 | The analysis input hash = ingest input hashes + per-table row count + XOR of row hashes. | A pure file-hash missed a change in ingestion mapping; the content fingerprint catches any changed value. |
+| 27 | 2026-11-09 | 3 | AIT: Wazuh `freshclam` (AV signature update) → `av_update`, not malware. | The `virus` group label on update events was mislabelling routine updates as malware. |

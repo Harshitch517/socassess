@@ -19,3 +19,11 @@
 - Store: `data/processed/socassess.duckdb`, holding 16 entities (12 synthetic + 4 AIT), 398k alerts, 59.7k cases, 2.4k escalations, 230k telemetry rows; full ingest takes about 24 s.
 - Tests: 34 passed (22 new ingestion tests).
 - Run: `python scripts/ingest.py --fresh` (all data) or `python scripts/ingest.py path/to/upload`
+
+## Stage 3 — Analytics engine (2026-11-09) ✅
+- `backend/socassess/analytics/`: `execution.py` (fast_closure, critical_no_escalation, template_notes, repeated_no_remediation, sla_gaming, sla_breach), `negative_space.py` (silent_critical_assets, missing_categories, missing_records, low_activity), `benchmark.py` (16 metrics, peer benchmarks, IsolationForest anomalies, weekly trends), `clustering.py` (pattern-level HDBSCAN), `scoring.py` (transparent risk score + review queue), `engine.py` (run + persist + audit record), `params.py`.
+- Method: `docs/analytics_methodology.md`.
+- On the synthetic data, every planted weakness type is found in the right entity, with no wrong-type findings and no findings on the 4 healthy CSEs or the AIT testbeds. Healthy entities score 0; all weak ones score > 0. 30 pattern clusters. Full run takes 20–50 s (template notes dominates).
+- Results tables (per run_id): analysis_runs, findings, entity_scores, entity_benchmarks, review_queue, pattern_clusters, alert_patterns, weekly_trends.
+- Tests: 59 passed (15 detector tests on a clean world with planted weaknesses + 10 engine/scoring tests).
+- Run: `python scripts/run_analysis.py`
