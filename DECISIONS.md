@@ -9,3 +9,9 @@
 | 5 | 2026-11-09 | 0 | `requirements.txt` holds minimum versions; `requirements.lock.txt` (pip freeze) gives exact reproducible versions. | Flexible for development, reproducible for Docker. |
 | 6 | 2026-11-09 | 0 | Backend package lives in `backend/socassess/`; pytest/ruff configured in `pyproject.toml`. | Matches the spec's `backend/` folder and keeps imports clean. |
 | 7 | 2026-11-09 | 0 | Git default branch `main`. | Matches the remote convention. |
+| 8 | 2026-11-09 | 1 | GUIDE is deferred until the user provides the Kaggle token; Stages 2–3 go ahead on the synthetic and AIT data. | The token comes later; the synthetic data is the primary input for the detectors anyway. |
+| 9 | 2026-11-09 | 1 | AIT working sample = 4 smallest scenarios (russellmitchell, santos, shaw, wardbeck); the full 8-scenario Parquet is also kept (17 MB). | The spec asks for "a few scenarios"; Parquet is small enough to keep everything. |
+| 10 | 2026-11-09 | 1 | AIT `attack_label` comes from time windows only. | `labels.csv` gives scenario + time windows; host-level labelling would need the full AIT label pipeline. Documented as approximate. |
+| 11 | 2026-11-09 | 1 | 12 synthetic CSEs, 4 healthy + 8 with 1–3 planted weaknesses (9 weakness types incl. missing case/escalation records). Mixed export formats (CSV/JSON/SQLite) per entity. | Exercises the Stage 2 loaders and mirrors real multi-organisation submissions. |
+| 12 | 2026-11-09 | 1 | Added a `telemetry` table (daily event count per asset) to the synthetic data. | Needed to detect critical assets with no/low telemetry; alert absence alone can't separate "quiet" from "blind". |
+| 13 | 2026-11-09 | 1 | Ruff rules pinned to E, F, I, B, UP; line length 110. | Newer ruff defaults enabled noisy style rules (C408). |

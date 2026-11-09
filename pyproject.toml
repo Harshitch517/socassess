@@ -12,8 +12,12 @@ testpaths = ["tests"]
 pythonpath = ["backend"]
 
 [tool.ruff]
-line-length = 100
+line-length = 110
 target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+per-file-ignores = { "scripts/convert_ait.py" = ["E501"] }  # embedded SQL
 
 [tool.ruff.lint.isort]
 known-first-party = ["socassess"]
