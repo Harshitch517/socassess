@@ -201,6 +201,12 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                                    "ORDER BY points DESC", [rid, entity_id]),
                 "benchmarks": d.rows("SELECT * EXCLUDE (run_id) FROM entity_benchmarks WHERE run_id = ? AND "
                                      "entity_id = ? ORDER BY metric", [rid, entity_id]),
+                "peer_values": {r["metric"]: r["values"] for r in d.rows(
+                    """SELECT b.metric, list(b.value ORDER BY b.entity_id) AS values
+                       FROM entity_benchmarks b JOIN entities e USING (entity_id)
+                       WHERE b.run_id = ? AND b.entity_id <> ?
+                         AND e.source = (SELECT source FROM entities WHERE entity_id = ?)
+                       GROUP BY 1""", [rid, entity_id, entity_id])},
                 "categories": d.rows("SELECT category, count(*) AS alerts FROM alerts WHERE entity_id = ? "
                                      "GROUP BY 1 ORDER BY 2 DESC", [entity_id])}
 

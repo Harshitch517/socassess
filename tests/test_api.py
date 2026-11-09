@@ -55,6 +55,7 @@ def test_entities_and_detail(api):
     assert d["entity"]["name"] == "Entity 6" and d["counts"]["critical_assets"] == 3
     assert d["findings"][0]["type"] == "silent_critical_assets"
     assert {b["metric"] for b in d["benchmarks"]} >= {"fast_close_share", "escalation_rate_crit_tp"}
+    assert len(d["peer_values"]["fast_close_share"]) == 7
     assert api.get("/api/entities/NOPE").status_code == 404
 
 
@@ -148,3 +149,19 @@ def test_read_only_mode(db_path):
         assert c.post("/api/analysis/run", json={}).status_code == 403
         assert c.post("/api/ingest", files={"files": ("a.zip", b"x", "application/zip")}).status_code == 403
         assert c.get("/api/entities").status_code == 200
+
+
+def test_serves_built_frontend(db_path, tmp_path):
+    dist = tmp_path / "dist"
+    (dist / "assets").mkdir(parents=True)
+    (dist / "index.html").write_text("<html>app</html>")
+    (dist / "assets" / "app.js").write_text("console.log(1)")
+    (tmp_path / "secret.txt").write_text("nope")
+    s = Settings()
+    s.db_path, s.frontend_dir = str(db_path), str(dist)
+    with TestClient(create_app(s)) as c:
+        assert c.get("/").text == "<html>app</html>"
+        assert c.get("/entities/E1").text == "<html>app</html>"  # SPA route falls back to index
+        assert c.get("/assets/app.js").text == "console.log(1)"
+        assert "nope" not in c.get("/../secret.txt").text  # no escape from the dist folder
+        assert c.get("/api/health").json()["status"] == "ok"  # API still wins

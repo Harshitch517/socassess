@@ -33,3 +33,10 @@
 - Reference: `docs/api.md`. Live smoke test on the full store: all endpoints 200, 4–210 ms.
 - Tests: 68 passed (9 API tests incl. zip/multi-file upload, validation errors, read-only mode, PDFs).
 - Run: `.venv/Scripts/python -m uvicorn socassess.api.app:app --app-dir backend --port 8000 --no-access-log`
+
+## Stage 5 — Frontend (2026-11-09) ✅
+- `frontend/` (React + Vite + TS + Tailwind + Recharts). Pages: Overview (stat tiles, risk ranking with breakdown tooltips, entity × finding-type heatmap, findings by type, top findings), Entity detail (score breakdown, findings with rationale, category mix, peer comparison strips), Findings (filters) and Finding detail ("why flagged", measured values, paginated evidence with a record drawer incl. telemetry chart), Alert clusters, Trends (≤4 entities, chart/table), Review queue (with control spot-checks), Data upload (drag & drop, validation errors, history), Reports & audit (PDF/CSV, run log with parameters).
+- Light/dark/system theme; works from laptop widths down to about 600 px (narrower: tables scroll inside cards).
+- Checked visually with headless Chrome screenshots (dark, light, narrow). Typecheck + production build clean (228 kB gzip JS).
+- Dev: `cd frontend && npm install && npm run dev` (proxies /api to :8000). Prod: `npm run build`, then run the API with `SOCASSESS_FRONTEND_DIR=frontend/dist` and open http://localhost:8000.
+- Tests: 70 passed (added a frontend-serving test).

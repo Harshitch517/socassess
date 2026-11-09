@@ -90,16 +90,20 @@ def benchmark(d: Data, metrics: pd.DataFrame) -> pd.DataFrame:
             v = metrics.at[eid, m]
             if pd.isna(v):
                 continue
-            col = metrics.loc[same_src, m].dropna()
+            col = metrics.loc[[e for e in same_src if e != eid], m].dropna()  # peers only, never self
+            if col.empty:
+                continue
             peers = metrics.loc[size_peers, m].dropna() if size_peers else pd.Series(dtype=float)
             med = float(col.median())
             mad = float((col - med).abs().median()) * 1.4826
-            z = (v - med) / max(mad, 1e-9) if mad > 0 else 0.0
+            # floor the scale at 5% of the median so near-identical peers don't turn tiny gaps into huge z
+            scale = max(mad, 0.05 * abs(med), 1e-9)
+            z = (v - med) / scale if (mad > 0 or v != med) else 0.0
             out.append({"entity_id": eid, "metric": m, "description": desc, "direction": direction,
                         "value": r(v), "peer_median_all": r(med),
                         "peer_median_size": r(float(peers.median())) if len(peers) else None,
                         "size_peers": size_peers, "percentile": r(float((col < v).mean() + 0.5 * (col == v).mean())),
-                        "z": r(float(np.clip(z, -50, 50)), 2), "n_peers": len(col) - 1})
+                        "z": r(float(np.clip(z, -50, 50)), 2), "n_peers": len(col)})
     return pd.DataFrame(out)
 
 
