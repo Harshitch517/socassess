@@ -15,3 +15,8 @@
 | 11 | 2026-11-09 | 1 | 12 synthetic CSEs, 4 healthy + 8 with 1–3 planted weaknesses (9 weakness types incl. missing case/escalation records). Mixed export formats (CSV/JSON/SQLite) per entity. | Exercises the Stage 2 loaders and mirrors real multi-organisation submissions. |
 | 12 | 2026-11-09 | 1 | Added a `telemetry` table (daily event count per asset) to the synthetic data. | Needed to detect critical assets with no/low telemetry; alert absence alone can't separate "quiet" from "blind". |
 | 13 | 2026-11-09 | 1 | Ruff rules pinned to E, F, I, B, UP; line length 110. | Newer ruff defaults enabled noisy style rules (C408). |
+| 14 | 2026-11-09 | 2 | Added `telemetry` to the unified schema next to entities/assets/alerts/cases/escalations. | Needed for the "no/low telemetry" check. |
+| 15 | 2026-11-09 | 2 | Gaps (alerts without cases, escalated without a record) pass validation. | They are what the negative-space detectors must find; rejecting them would destroy the evidence. |
+| 16 | 2026-11-09 | 2 | Upsert by primary key + an `ingest_runs` table holding the input SHA-256. | Idempotent re-uploads, multiple periods per entity, traceable inputs. |
+| 17 | 2026-11-09 | 2 | AIT scenarios are ingested as entities with `source='ait'` (no cases); severity from Wazuh rule level; asset criticality unknown → 'medium'. | Gives real alerts for pattern clustering; case-based detectors skip entities without cases. |
+| 18 | 2026-11-09 | 2 | Added `pytz` (MIT). | DuckDB needs it to return tz-aware timestamps to Python. |

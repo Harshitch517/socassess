@@ -12,3 +12,10 @@
 - `scripts/generate_synthetic.py --seed 7`: 12 CSEs (about 60k alerts/cases) in mixed CSV/JSON/SQLite under `data/raw/synthetic/`; planted weaknesses + evidence ids in `data/processed/ground_truth.json` (committed).
 - See `docs/data_sources.md`. Tests: 12 passed. Disk: 3.66 GB total (venv 0.65, AIT raw 2.95), far under the 100 GB budget.
 - Run: `python scripts/download_data.py ait && python scripts/convert_ait.py && python scripts/generate_synthetic.py`
+
+## Stage 2 — Ingestion & unified schema (2026-11-09) ✅
+- `backend/socassess/schema.py`: entities, assets, alerts, cases, escalations, telemetry (+ `ingest_runs`); docs in `docs/data_schema.md`.
+- `ingestion/loaders.py` (CSV/JSON/JSONL/Parquet folders, SQLite/DuckDB exports, .zip with path-traversal check, JSON bundles, table/column aliases), `ingestion/validate.py` (type coercion, enums, keys, references, row-numbered errors), `ingestion/pipeline.py` (transactional upsert + ingest_runs record), `ingestion/ait.py` (AIT adapter), `store.py`.
+- Store: `data/processed/socassess.duckdb`, holding 16 entities (12 synthetic + 4 AIT), 398k alerts, 59.7k cases, 2.4k escalations, 230k telemetry rows; full ingest takes about 24 s.
+- Tests: 34 passed (22 new ingestion tests).
+- Run: `python scripts/ingest.py --fresh` (all data) or `python scripts/ingest.py path/to/upload`
