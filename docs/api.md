@@ -33,7 +33,9 @@ Every read endpoint takes an optional `run_id` and defaults to the latest analys
 |---|---|---|
 | `SOCASSESS_DB` | `data/processed/socassess.duckdb` | Store path |
 | `SOCASSESS_CORS_ORIGINS` | `http://localhost:5173,http://127.0.0.1:5173` | Allowed browser origins |
-| `SOCASSESS_MAX_UPLOAD_MB` | `200` | Upload limit |
+| `SOCASSESS_MAX_UPLOAD_MB` | `200` | Upload limit (all files in one upload) |
+| `SOCASSESS_MAX_UNZIPPED_MB` | `1024` | Maximum unpacked size of a .zip upload |
+| `SOCASSESS_MAX_ZIP_FILES` | `500` | Maximum number of files inside a .zip |
 | `SOCASSESS_READ_ONLY` | `0` | `1` disables upload and analysis (public demo) |
 | `SOCASSESS_FRONTEND_DIR` | – | Serve a built frontend from the same origin |
 

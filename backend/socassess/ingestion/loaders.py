@@ -13,6 +13,7 @@ Table names are mapped through `schema.TABLE_ALIASES`; unknown tables are report
 from __future__ import annotations
 
 import json
+import os
 import sqlite3
 import tempfile
 import zipfile
@@ -25,6 +26,11 @@ from socassess.schema import TABLE_ALIASES
 
 DB_SUFFIXES = {".sqlite", ".sqlite3", ".db", ".duckdb"}
 EXTRA = "__extra__"
+# Zip-bomb protection: a small archive can expand to many GB. Limits apply to the *declared*
+# uncompressed sizes before anything is extracted (overridable via environment variables).
+MAX_UNZIPPED_MB = int(os.environ.get("SOCASSESS_MAX_UNZIPPED_MB", "1024"))
+MAX_ZIP_FILES = int(os.environ.get("SOCASSESS_MAX_ZIP_FILES", "500"))
+MAX_ZIP_RATIO = 200  # an honest CSV compresses ~5-20x; 200x+ is a bomb, not data
 
 
 class LoadError(ValueError):
@@ -123,6 +129,25 @@ def load_export(path: str | Path) -> tuple[dict[str, pd.DataFrame], list[str]]:
     return tables, unknown
 
 
+def check_zip(path: Path, z: zipfile.ZipFile, max_mb: int | None = None, max_files: int | None = None) -> None:
+    """Reject unsafe or oversized archives before extracting anything."""
+    max_mb = MAX_UNZIPPED_MB if max_mb is None else max_mb
+    max_files = MAX_ZIP_FILES if max_files is None else max_files
+    infos = [i for i in z.infolist() if not i.is_dir()]
+    if len(infos) > max_files:
+        raise LoadError(f"{path.name}: archive has {len(infos):,} files; the limit is {max_files:,}")
+    for i in infos:
+        if i.filename.startswith(("/", "\\")) or ".." in Path(i.filename).parts:
+            raise LoadError(f"{path.name}: unsafe path inside archive: {i.filename}")
+        if i.compress_size and i.file_size / i.compress_size > MAX_ZIP_RATIO and i.file_size > 10 * 2**20:
+            raise LoadError(f"{path.name}: '{i.filename}' expands {i.file_size / i.compress_size:,.0f}x "
+                            "when unpacked, which looks like a zip bomb; upload it unzipped instead")
+    total = sum(i.file_size for i in infos)
+    if total > max_mb * 2**20:
+        raise LoadError(f"{path.name}: unpacks to {total / 2**20:,.0f} MB; the limit is {max_mb:,} MB "
+                        "(set SOCASSESS_MAX_UNZIPPED_MB to change it)")
+
+
 def load_any(path: str | Path) -> tuple[dict[str, pd.DataFrame], list[str], dict[str, pd.DataFrame]]:
     """Like load_export, but also returns unrecognised tables ({origin: DataFrame}) instead of failing."""
     path = Path(path)
@@ -131,10 +156,12 @@ def load_any(path: str | Path) -> tuple[dict[str, pd.DataFrame], list[str], dict
     out: dict[str, pd.DataFrame] = {}
     unknown: list[str] = []
     if path.suffix.lower() == ".zip":
-        with tempfile.TemporaryDirectory() as tmp, zipfile.ZipFile(path) as z:
-            for name in z.namelist():
-                if name.startswith(("/", "\\")) or ".." in Path(name).parts:
-                    raise LoadError(f"{path.name}: unsafe path inside archive: {name}")
+        try:
+            zf = zipfile.ZipFile(path)
+        except zipfile.BadZipFile as e:
+            raise LoadError(f"{path.name}: not a valid .zip file ({e})") from e
+        with tempfile.TemporaryDirectory() as tmp, zf as z:
+            check_zip(path, z)
             z.extractall(tmp)
             files = sorted(p for p in Path(tmp).rglob("*") if p.is_file())
             for f in files:

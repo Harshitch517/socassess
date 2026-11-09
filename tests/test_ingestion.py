@@ -191,3 +191,29 @@ def test_ait_adapter(tmp_path):
     assert a.loc["scan", "severity"] == "high" and a.loc["scan", "category"] == "recon"
     assert a.loc["AMiner: New event type.", "severity"] == "medium"
     assert len(tables["entities"]) == 2
+
+
+def test_zip_bomb_and_limits_are_rejected(tmp_path):
+    from socassess.ingestion.loaders import check_zip
+
+    bomb = tmp_path / "bomb.zip"
+    with zipfile.ZipFile(bomb, "w", zipfile.ZIP_DEFLATED) as z:
+        z.writestr("alerts.csv", "0" * (20 * 2**20))  # 20 MB of zeros -> a few KB compressed
+    assert bomb.stat().st_size < 100_000
+    with pytest.raises(LoadError, match="zip bomb"):
+        load_export(bomb)
+
+    many = tmp_path / "many.zip"
+    with zipfile.ZipFile(many, "w") as z:
+        for i in range(3):
+            z.writestr(f"t{i}.csv", "a,b\n1,2\n")
+    with zipfile.ZipFile(many) as z:
+        with pytest.raises(LoadError, match="3 files; the limit is 2"):
+            check_zip(many, z, max_files=2)
+        with pytest.raises(LoadError, match="the limit is 0 MB"):
+            check_zip(many, z, max_mb=0)
+
+    broken = tmp_path / "broken.zip"
+    broken.write_bytes(b"PK\x03\x04 not really a zip")
+    with pytest.raises(LoadError, match="not a valid .zip"):
+        load_export(broken)
