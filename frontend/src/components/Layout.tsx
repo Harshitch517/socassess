@@ -22,12 +22,12 @@ const ADVANCED = [
 type Theme = "light" | "dark";
 
 function useTheme(): [Theme, (t: Theme) => void] {
-  // light by default; the viewer's choice is remembered in this browser only
+  // dark by default; the viewer's choice is remembered in this browser only
   const [theme, setTheme] = useState<Theme>(() => {
     try {
-      return localStorage.getItem("theme") === "dark" ? "dark" : "light";
+      return localStorage.getItem("theme") === "light" ? "light" : "dark";
     } catch {
-      return "light";
+      return "dark";
     }
   });
   useEffect(() => {
@@ -60,7 +60,7 @@ export default function Layout() {
     }`;
   return (
     <div className="min-h-screen lg:flex">
-      <aside className="border-b border-line bg-surface lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-60 lg:shrink-0 lg:flex-col lg:border-r lg:border-b-0">
+      <aside className="border-b border-line bg-surface/80 backdrop-blur lg:sticky lg:top-0 lg:flex lg:h-screen lg:w-60 lg:shrink-0 lg:flex-col lg:border-r lg:border-b-0">
         <div className="flex items-center justify-between px-4 py-3 lg:py-5">
           <div className="flex items-center gap-2.5">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent text-white">

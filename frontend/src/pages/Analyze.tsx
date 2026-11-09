@@ -1,10 +1,13 @@
 import {
   Banknote, Building2, Bus, Check, ClipboardList, Database, FileSpreadsheet, FileUp, FlaskConical, HeartPulse,
-  HelpCircle, Landmark, Loader2, Package, Radio, ServerCog, ShieldCheck, Upload as UploadIcon, Waves, Zap,
+  FileDown, HardDrive, HelpCircle, Landmark, Loader2, Package, Paperclip, Printer, Radio, RotateCcw, ServerCog,
+  ShieldCheck, Upload as UploadIcon, Waves, X, Zap,
 } from "lucide-react";
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { api, ApiError, type Detection, type UploadResult } from "../api";
-import Report, { ClassifyNote } from "../components/Report";
+import HeroArt from "../components/HeroArt";
+import Report, { ClassifyNote, fetchReportData, type ReportData } from "../components/Report";
+import { clearDraft, DRAFT_LIMIT, fmtBytes, loadDraft, saveDraft, saveReport, type SavedReport } from "../lib/localStore";
 import { ErrorBox, useAsync } from "../components/ui";
 import { EXPLAIN } from "../explain";
 
@@ -40,7 +43,7 @@ type Step = 1 | 2 | 3;
 function Stepper({ step }: { step: Step }) {
   const steps = ["Describe your data", "Add your data", "See the report"];
   return (
-    <ol className="mb-6 flex flex-wrap items-center gap-2 text-sm" aria-label="Progress">
+    <ol className="no-print mb-6 flex flex-wrap items-center gap-2 text-sm" aria-label="Progress">
       {steps.map((s, i) => {
         const n = (i + 1) as Step;
         const done = n < step;
@@ -63,7 +66,7 @@ function Stepper({ step }: { step: Step }) {
 function Choice({ selected, onClick, children, className = "" }: { selected: boolean; onClick: () => void; children: ReactNode; className?: string }) {
   return (
     <button type="button" onClick={onClick} aria-pressed={selected}
-      className={`rounded-xl border p-3 text-left transition-colors ${selected
+      className={`card-hover rounded-xl border p-3 text-left ${selected
         ? "border-[var(--accent)] bg-accent-wash ring-1 ring-[var(--accent)]"
         : "border-line bg-surface hover:bg-surface-2"} ${className}`}>
       {children}
@@ -73,11 +76,35 @@ function Choice({ selected, onClick, children, className = "" }: { selected: boo
 
 function Section({ title, help, children }: { title: string; help?: string; children: ReactNode }) {
   return (
-    <section className="rounded-2xl border border-line bg-surface p-5">
+    <section className="rounded-2xl border border-line bg-surface/90 p-5 backdrop-blur">
       <h2 className="text-base font-semibold text-ink">{title}</h2>
       {help && <p className="mt-0.5 text-sm text-ink-2">{help}</p>}
       <div className="mt-4">{children}</div>
     </section>
+  );
+}
+
+export function ReportActions({ ids, onAnother, saved }: { ids: string[]; onAnother?: () => void; saved?: SavedReport | null }) {
+  return (
+    <div className="no-print flex flex-wrap items-center gap-2">
+      {saved && (
+        <span className="inline-flex items-center gap-1 text-xs text-muted" title="Kept in this browser; see My results → Saved on this computer">
+          <HardDrive className="h-3.5 w-3.5" aria-hidden /> Saved on this computer
+        </span>
+      )}
+      <button className="btn-primary inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-sm font-medium" onClick={() => window.print()}>
+        <Printer className="h-4 w-4" aria-hidden /> Save report as PDF
+      </button>
+      <a className="card-hover inline-flex items-center gap-1.5 rounded-xl border border-line bg-surface px-4 py-2 text-sm font-medium text-ink"
+        href={ids.length === 1 ? api.reportUrl(`entity/${ids[0]}.pdf`) : api.reportUrl("summary.pdf")} download>
+        <FileDown className="h-4 w-4" aria-hidden /> Detailed PDF
+      </a>
+      {onAnother && (
+        <button className="card-hover inline-flex items-center gap-1.5 rounded-xl border border-line bg-surface px-4 py-2 text-sm font-medium text-ink" onClick={onAnother}>
+          <RotateCcw className="h-4 w-4" aria-hidden /> Analyse another
+        </button>
+      )}
+    </div>
   );
 }
 
@@ -99,8 +126,44 @@ export default function Analyze() {
   const [error, setError] = useState<Error | null>(null);
   const [result, setResult] = useState<UploadResult | null>(null);
   const [drag, setDrag] = useState(false);
+  const [restored, setRestored] = useState<string | null>(null);
+  const [cacheNote, setCacheNote] = useState<"" | "too-big" | "unavailable">("");
+  const [snapshot, setSnapshot] = useState<ReportData | null>(null);
+  const [saved, setSaved] = useState<SavedReport | null>(null);
+  const [hydrated, setHydrated] = useState(false);
   const input = useRef<HTMLInputElement>(null);
   const health = useAsync(() => api.health(), []);
+
+  // Restore the last unfinished analysis (file + choices) kept in this browser.
+  useEffect(() => {
+    loadDraft().then((d) => {
+      if (d) {
+        setDataType(d.dataType); setSector(d.sector); setSize(d.size); setOrg(d.org ?? "");
+        if (d.checks?.length) setChecks(d.checks);
+        setMode(d.mode ?? "file"); setText(d.text ?? "");
+        const fs = (d.files ?? []).map((f) => new File([f.blob], f.name, { type: f.type }));
+        setFiles(fs);
+        if (d.detection) setDet(d.detection as Detection);
+        if (fs.length || d.text) {
+          setRestored(fs.map((f) => f.name).join(", ") || "your pasted data");
+          setStep(2);
+        }
+      }
+      setHydrated(true);
+    });
+  }, []);
+
+  // Keep the draft up to date (up to 200 MB) while the user moves between steps.
+  useEffect(() => {
+    if (!hydrated || step === 3) return;
+    const t = setTimeout(() => {
+      saveDraft({
+        files: files.map((f) => ({ name: f.name, type: f.type, blob: f })), text, mode,
+        dataType, sector, size, org, checks, detection: det ?? undefined,
+      }).then((r) => setCacheNote(r === "saved" ? "" : r));
+    }, 400);
+    return () => clearTimeout(t);
+  }, [hydrated, step, files, text, mode, dataType, sector, size, org, checks, det]);
   const ro = health.data?.read_only;
 
   const read = async (fs: File[]) => {
@@ -145,8 +208,16 @@ export default function Analyze() {
     try {
       const fs = mode === "paste" && !files.length ? fromPaste() : files;
       const r = await api.upload(fs, true, org.trim() || undefined, { data_type: dataType, sector, size });
+      const data = await fetchReportData(r.entity_ids);
       setResult(r);
+      setSnapshot(data);
       setStep(3);
+      clearDraft(); // the analysed input is done with; the report itself is saved below
+      saveReport({
+        title: org.trim() || r.entity_ids.join(", "), entityIds: r.entity_ids, runId: r.analysis_run_id,
+        classification: r.classification, autoClassified: r.auto_classified,
+        checks: checks.length === ALL_CHECKS.length ? undefined : checks, data,
+      }).then((rec) => setSaved(rec ?? null));
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (e) {
       setError(e as Error);
@@ -156,17 +227,29 @@ export default function Analyze() {
   };
   const reset = () => {
     setStep(1); setFiles([]); setText(""); setDet(null); setResult(null); setError(null);
+    setSnapshot(null); setSaved(null); setRestored(null); setOrg("");
+    setDataType(undefined); setSector(undefined); setSize(undefined); setChecks(ALL_CHECKS);
+    clearDraft();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const forgetFile = () => {
+    setFiles([]); setText(""); setDet(null); setRestored(null);
   };
 
   const unclassified = [!dataType && "type of data", !sector && "sector", !size && "size"].filter(Boolean) as string[];
 
   return (
     <div className="mx-auto max-w-5xl">
-      <header className="mb-5">
-        <h1 className="text-2xl font-semibold tracking-tight text-ink">Check a SOC's security health</h1>
-        <p className="mt-1 text-ink-2">
-          Give SOCAssess your security-operations data and get a plain-language report with charts. Everything stays on this computer.
-        </p>
+      <header className="hero no-print mb-6 flex items-center gap-6 overflow-hidden rounded-3xl border border-line p-6 md:p-8">
+        <div className="min-w-0 flex-1">
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent">SOC security health check</p>
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-ink md:text-4xl">Check a SOC's security health</h1>
+          <p className="mt-3 max-w-xl text-ink-2">
+            Give SOCAssess your security-operations data and get a plain-language report with charts in seconds.
+            Everything stays on this computer.
+          </p>
+        </div>
+        <HeroArt className="hidden h-44 w-56 shrink-0 md:block" />
       </header>
       <Stepper step={step} />
       {ro && (
@@ -241,11 +324,19 @@ export default function Analyze() {
               </div>
             )}
           </Section>
+          {(files.length > 0 || text.trim()) && (
+            <div className="flex flex-wrap items-center gap-2 rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink-2">
+              <Paperclip className="h-4 w-4 text-accent" aria-hidden />
+              Your data is kept: <b className="text-ink">{files.map((f) => f.name).join(", ") || "pasted data"}</b>
+              {files.length > 0 && <span className="text-muted">({fmtBytes(files.reduce((a, f) => a + f.size, 0))})</span>}
+              <span className="text-muted">· change your choices freely, then press Next.</span>
+            </div>
+          )}
           <div className="flex items-center justify-between gap-3">
             <p className="text-sm text-muted">
               {unclassified.length ? `Not chosen: ${unclassified.join(", ")}. We'll guess these from your data.` : "All set."}
             </p>
-            <button className="rounded-xl bg-accent px-5 py-2.5 font-medium text-white hover:opacity-90" onClick={() => setStep(2)}>
+            <button className="btn-primary rounded-xl px-5 py-2.5 font-medium" onClick={() => setStep(2)}>
               Next: add your data →
             </button>
           </div>
@@ -254,6 +345,20 @@ export default function Analyze() {
 
       {step === 2 && (
         <div className="space-y-5">
+          {restored && (
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[var(--accent)] bg-accent-wash px-4 py-3 text-sm">
+              <span className="flex items-center gap-2 text-ink">
+                <HardDrive className="h-4 w-4 text-accent" aria-hidden />
+                We kept <b>{restored}</b> from last time on this computer.
+              </span>
+              <button className="inline-flex items-center gap-1 text-ink-2 hover:text-ink" onClick={forgetFile}>
+                <X className="h-4 w-4" /> Remove
+              </button>
+            </div>
+          )}
+          {cacheNote === "too-big" && (
+            <p className="text-xs text-muted">This file is larger than {fmtBytes(DRAFT_LIMIT)}, so it isn't kept if you leave the page. Going back a step still keeps it.</p>
+          )}
           <Section title="Add your data">
             <div role="tablist" className="mb-4 inline-flex rounded-xl border border-line bg-surface-2 p-1">
               {([["file", "Upload a file", FileUp], ["paste", "Paste data", ClipboardList], ["sample", "Try a sample", FlaskConical]] as const).map(([m, label, Icon]) => (
@@ -389,7 +494,7 @@ export default function Analyze() {
 
           <div className="flex items-center justify-between gap-3">
             <button className="rounded-xl border border-line bg-surface px-4 py-2.5 font-medium text-ink hover:bg-surface-2" onClick={() => setStep(1)}>← Back</button>
-            <button className="inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 font-medium text-white hover:opacity-90 disabled:opacity-50"
+            <button className="btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 font-medium disabled:opacity-50"
               disabled={!!busy || ro || (!det && !(mode === "paste" && text.trim().split("\n").length >= 2))} onClick={analyse}>
               {busy === "analysing" ? <><Loader2 className="h-4 w-4 animate-spin" /> Analysing… (up to a minute)</> : "Analyse my data →"}
             </button>
@@ -405,11 +510,16 @@ export default function Analyze() {
               {(result.row_counts.alerts ?? 0).toLocaleString()} alerts
               {result.row_counts.cases ? `, ${result.row_counts.cases.toLocaleString()} cases` : ""} analysed
             </p>
-            <button className="rounded-xl border border-line bg-surface px-4 py-2 font-medium text-ink hover:bg-surface-2" onClick={reset}>Analyse other data</button>
+            <ReportActions ids={result.entity_ids} onAnother={reset} saved={saved} />
           </div>
-          <Report ids={result.entity_ids} checks={checks.length === ALL_CHECKS.length ? undefined : checks}
+          <p className="print-only text-xs text-muted">SOCAssess report · {new Date().toLocaleString()} · analysis run {result.analysis_run_id}</p>
+          <Report ids={result.entity_ids} snapshot={snapshot ?? undefined} checks={checks.length === ALL_CHECKS.length ? undefined : checks}
             note={<ClassifyNote classification={result.classification} auto={result.auto_classified} />} />
-          <details className="rounded-xl border border-line bg-surface p-4 text-sm">
+          <div className="no-print flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-line bg-surface p-4">
+            <p className="text-sm text-ink-2">Done with this report?</p>
+            <ReportActions ids={result.entity_ids} onAnother={reset} saved={saved} />
+          </div>
+          <details className="no-print rounded-xl border border-line bg-surface p-4 text-sm">
             <summary className="cursor-pointer font-medium text-ink">How your data was read</summary>
             <ul className="mt-2 list-disc space-y-1 pl-5 text-ink-2">
               {result.warnings.map((w) => <li key={w}>{w.replace(/^auto-mapping: /, "")}</li>)}

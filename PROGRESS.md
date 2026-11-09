@@ -70,3 +70,11 @@
 - Expert pages moved under **Advanced (for analysts)**. Light theme by default, larger text, icons.
 - Backend: `POST /api/detect` (offline auto-classification without storing), classification options, `sector`/`size`/`data_type` on `/api/ingest`; the risk band now matches the worst warning; the note-grouping cache makes upload → report about 7 s (was 56 s).
 - Verified in real Chrome with Playwright (`scripts/e2e_wizard.py`): sample without classification (prompt shown), pasted data with classification (no prompt), details toggle, results, advanced navigation; 0 console errors. Tests: 86 passed.
+
+## Cache, saved reports, PDF, explanations, dark look (2026-11-09)
+- Wizard keeps your file and choices (up to 200 MB, in the browser) when going back or reloading; "We kept … from last time" banner with Remove.
+- Report actions at top and bottom: **Save report as PDF** (print layout), **Detailed PDF**, **Analyse another**.
+- **My results → Saved on this computer**: every finished report is stored in the browser (up to 1 GB, storage meter, oldest removed first), reopenable offline, deletable.
+- Every pie chart has **Explain** (what it shows, how to read it, what your numbers say).
+- Dark theme by default, hover effects, gradient buttons, vector hero illustration; print stylesheet.
+- Verified in Chrome (`scripts/e2e_features.py`, 17 checks incl. a generated PDF): all pass, 0 console errors. Tests: 87 passed.

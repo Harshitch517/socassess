@@ -18,7 +18,7 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
-per-file-ignores = { "scripts/convert_ait.py" = ["E501"], "scripts/validate.py" = ["E501"] }  # embedded SQL / report template
+per-file-ignores = { "scripts/convert_ait.py" = ["E501"], "scripts/validate.py" = ["E501"], "scripts/e2e_*.py" = ["E501"] }  # embedded SQL / report template
 
 [tool.ruff.lint.isort]
 known-first-party = ["socassess"]
