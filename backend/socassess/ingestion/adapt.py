@@ -128,7 +128,8 @@ def _slug(name: str) -> str:
 
 
 def adapt(raw: dict[str, pd.DataFrame], extra: dict[str, pd.DataFrame], *, known_entities: set[str],
-          default_entity: str) -> tuple[dict[str, pd.DataFrame], list[str]]:
+          default_entity: str, sector: str | None = None, size: str | None = None
+          ) -> tuple[dict[str, pd.DataFrame], list[str]]:
     """Return (tables ready for validation, notes describing every assumption made)."""
     notes: list[str] = []
     raw = dict(raw)
@@ -188,8 +189,9 @@ def adapt(raw: dict[str, pd.DataFrame], extra: dict[str, pd.DataFrame], *, known
             counts = a.groupby("entity_id").size()
             raw["entities"] = pd.DataFrame({
                 "entity_id": new, "name": [default_entity if e == entity_default else f"Organisation {e}" for e in new],
-                "sector": "unknown", "size": [_size_for(int(counts.get(e, 0))) for e in new],
+                "sector": sector or "unknown",
+                "size": [size or _size_for(int(counts.get(e, 0))) for e in new],
                 "source": None})  # filled by the pipeline's `source` (upload, guide, ...)
-            notes.append(f"created {len(new)} entit{'y' if len(new) == 1 else 'ies'} (sector 'unknown', size from "
-                         "alert volume). Upload an entities table to set real sectors and sizes")
+            notes.append(f"created {len(new)} entit{'y' if len(new) == 1 else 'ies'} (sector '{sector or 'unknown'}', "
+                         f"size {size or 'from alert volume'})")
     return raw, notes

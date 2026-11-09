@@ -74,7 +74,8 @@ cross-entity patterns; noise points are one-off patterns.
 high 0.75 and critical 1.0. Weights reflect supervisory impact: unescalated confirmed critical
 incidents 25, silent critical assets 20, missing records 18, fast closures 15, SLA gaming 14,
 repeated alerts without remediation 12, template notes / missing categories / low activity 10,
-SLA breach 8, operational anomaly 5. Bands: ≥ 50 critical, ≥ 30 high, ≥ 10 medium, else low. The
+SLA breach 8, operational anomaly 5. Bands: ≥ 50 critical, ≥ 30 high, ≥ 10 medium, else low, then raised to the
+entity's worst finding severity, so one serious finding means at least a "high" band. The
 stored `breakdown` lists every contributing finding and its points.
 
 ## Review queue

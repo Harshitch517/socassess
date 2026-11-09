@@ -27,10 +27,12 @@ from pydantic import BaseModel, Field
 
 import socassess
 from socassess.analytics.engine import latest_run_id, persist, run_analysis
+from socassess.analytics.params import DEFAULT_PARAMS
 from socassess.api import reports
 from socassess.api.db import Database
 from socassess.config import DB_PATH
-from socassess.ingestion.loaders import LoadError
+from socassess.ingestion.detect import DATA_TYPES, SECTORS, SIZES, detect
+from socassess.ingestion.loaders import LoadError, load_any
 from socassess.ingestion.pipeline import ingest_path
 from socassess.ingestion.validate import ValidationError
 
@@ -68,6 +70,19 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         app.state.db = Database(settings.db_path)
+        # Warm the copy-paste-note cache in the background so the first upload's analysis is fast.
+        # A separate cursor reads concurrently; it never writes.
+        import threading
+
+        from socassess.analytics.execution import warm_note_cache
+
+        def warm():
+            try:
+                warm_note_cache(app.state.db._con.cursor(), DEFAULT_PARAMS["template_notes"]["similarity"])
+            except Exception:  # warming is an optimisation only
+                pass
+
+        threading.Thread(target=warm, daemon=True, name="note-cache-warmup").start()
         yield
         app.state.db.close()
 
@@ -116,17 +131,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return d.rows("SELECT * FROM ingest_runs ORDER BY started_at DESC LIMIT ?", [limit])
 
     # ------------------------------------------------------------------ write
-    @app.post("/api/ingest", dependencies=[Depends(writable)])
-    def ingest(d: DB, files: Annotated[list[UploadFile], File(description="export files or a .zip")],
-               analyse: bool = True,
-               entity_name: Annotated[str | None, Query(max_length=80, description=(
-                   "organisation name for data without an organisation column"))] = None):
-        """Upload data: a schema export (.zip, database file, table files) or any alert export (CSV/JSON),
-        which is mapped automatically; the assumptions come back in `warnings` ('auto-mapping: ...')."""
+    def save_uploads(files: list[UploadFile]) -> tuple[Path, Path, list[str]]:
+        """Write uploads to a fresh temp folder; return (folder, path to ingest, file names)."""
         limit = settings.max_upload_mb * 1024 * 1024
         tmp = Path(tempfile.mkdtemp(prefix="socassess_upload_"))
+        total = 0
+        names = []
         try:
-            total = 0
             for f in files:
                 name = Path(f.filename or "upload").name
                 if Path(name).suffix.lower() not in UPLOAD_SUFFIXES:
@@ -137,15 +148,69 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                         if total > limit:
                             raise HTTPException(413, f"Upload exceeds {settings.max_upload_mb} MB")
                         out.write(chunk)
-            names = [Path(f.filename or "upload").name for f in files]
-            # loaders read table and database files from a folder; only a lone .zip is passed directly
-            target = tmp / names[0] if len(names) == 1 and names[0].lower().endswith(".zip") else tmp
+                names.append(name)
+        except BaseException:
+            shutil.rmtree(tmp, ignore_errors=True)
+            raise
+        # loaders read table and database files from a folder; only a lone .zip is passed directly
+        target = tmp / names[0] if len(names) == 1 and names[0].lower().endswith(".zip") else tmp
+        return tmp, target, names
+
+    def detect_upload(target: Path, names: list[str]) -> dict:
+        try:
+            raw, _, extra = load_any(target)
+        except LoadError as e:
+            raise HTTPException(422, {"message": str(e), "errors": [str(e)]}) from e
+        return detect(raw, extra, names).to_dict()
+
+    @app.get("/api/classification/options")
+    def classification_options():
+        return {"data_types": DATA_TYPES, "sectors": SECTORS, "sizes": SIZES,
+                "checks": list(DEFAULT_PARAMS["risk_weights"])}
+
+    @app.post("/api/detect")
+    def detect_endpoint(files: Annotated[list[UploadFile], File(description="the files you want to analyse")]):
+        """Read an upload WITHOUT storing it: guess its type, sector and size (offline rules, with reasons)
+        and show how its columns will be read."""
+        tmp, target, names = save_uploads(files)
+        try:
+            return detect_upload(target, names)
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    @app.post("/api/ingest", dependencies=[Depends(writable)])
+    def ingest(d: DB, files: Annotated[list[UploadFile], File(description="export files or a .zip")],
+               analyse: bool = True,
+               entity_name: Annotated[str | None, Query(max_length=80, description=(
+                   "organisation name for data without an organisation column"))] = None,
+               sector: Annotated[str | None, Query(description=f"one of {SECTORS}")] = None,
+               size: Annotated[str | None, Query(description=f"one of {SIZES}")] = None,
+               data_type: Annotated[str | None, Query(description=f"one of {list(DATA_TYPES)}")] = None):
+        """Upload data: a schema export (.zip, database file, table files) or any alert export (CSV/Excel/JSON),
+        mapped automatically. Classification (data_type, sector, size) is optional: anything not given is
+        guessed offline from the data, and the response says which values were guessed and why."""
+        for val, allowed, name in ((sector, SECTORS, "sector"), (size, SIZES, "size"),
+                                   (data_type, list(DATA_TYPES), "data_type")):
+            if val is not None and val not in allowed:
+                raise HTTPException(422, {"message": f"{name} must be one of {allowed}", "errors": [f"bad {name}"]})
+        tmp, target, names = save_uploads(files)
+        try:
+            det = detect_upload(target, names)
+            chosen = {"data_type": data_type, "sector": sector, "size": size}
+            classification = {
+                k: {"value": v or det[k]["value"], "label": DATA_TYPES.get(v, v.title()) if v else det[k]["label"],
+                    "source": "user" if v else "auto", "confidence": "user" if v else det[k]["confidence"],
+                    "reasons": [] if v else det[k]["reasons"]}
+                for k, v in chosen.items()}
             try:
                 with d.connection() as con:
                     res = ingest_path(con, target, source="upload", entity_name=entity_name or Path(names[0]).stem,
-                                      source_name=", ".join(names)[:200])
+                                      source_name=", ".join(names)[:200],
+                                      sector=classification["sector"]["value"], size=classification["size"]["value"])
                     out = {"run_id": res.run_id, "input_sha256": res.input_sha256, "entity_ids": res.entity_ids,
-                           "row_counts": res.row_counts, "warnings": res.warnings}
+                           "row_counts": res.row_counts, "warnings": res.warnings,
+                           "classification": classification,
+                           "auto_classified": [k for k, v in classification.items() if v["source"] == "auto"]}
                     if analyse:
                         ar = run_analysis(con)
                         persist(con, ar, trigger="upload")

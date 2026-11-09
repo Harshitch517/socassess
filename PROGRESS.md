@@ -63,3 +63,10 @@
 - Full analysis is 15 s (was 141 s) with identical results. Synthetic findings are unchanged (19 + 2 real GUIDE findings).
 - Verified end to end on a store copy: a 2,000-row Wazuh-style CSV with no organisation column was uploaded, mapped, analysed and charted in 14.5 s.
 - Tests: 82 passed.
+
+## Beginner-friendly UI (2026-11-09)
+- **New analysis wizard** (home page): 1) describe your data (optional cards for data type, sector, size, organisation name, which checks to show), 2) add data (drag-and-drop upload, paste, or try one of two samples), then a "Here's what we see in your data" panel with offline guesses, reasons and a preview with recognised columns, plus a "Please classify your input for a better result" prompt with *Use these guesses*, 3) the report.
+- **Report** (wizard and *My results*): traffic-light overall result, plain-language warnings (headline, why it matters, what to do, details on demand, evidence link), 5 pie charts, PDF and review-queue links.
+- Expert pages moved under **Advanced (for analysts)**. Light theme by default, larger text, icons.
+- Backend: `POST /api/detect` (offline auto-classification without storing), classification options, `sector`/`size`/`data_type` on `/api/ingest`; the risk band now matches the worst warning; the note-grouping cache makes upload → report about 7 s (was 56 s).
+- Verified in real Chrome with Playwright (`scripts/e2e_wizard.py`): sample without classification (prompt shown), pasted data with classification (no prompt), details toggle, results, advanced navigation; 0 console errors. Tests: 86 passed.

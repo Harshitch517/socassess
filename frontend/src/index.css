@@ -112,6 +112,10 @@
   --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+html {
+  font-size: 16.5px;
+}
+
 html,
 body {
   background: var(--page);

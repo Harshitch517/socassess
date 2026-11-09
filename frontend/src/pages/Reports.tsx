@@ -5,6 +5,7 @@ import { Async, Button, Card, fmtDate, PageHeader, Table, useAsync } from "../co
 export default function Reports() {
   const ents = useAsync(() => api.entities(), []);
   const runs = useAsync(() => api.runs(), []);
+  const uploads = useAsync(() => api.ingestions(), []);
   const [entity, setEntity] = useState("");
   const [runOpen, setRunOpen] = useState<string | null>(null);
   const runDetail = useAsync(() => (runOpen ? api.run(runOpen) : Promise.resolve(null)), [runOpen]);
@@ -62,6 +63,22 @@ export default function Reports() {
             }
           </Async>
         )}
+      </Card>
+      <Card className="mt-5" title="Upload history" subtitle="Every input that was added, with a SHA-256 fingerprint of the file">
+        <Async state={uploads}>
+          {(rows) => (
+            <Table
+              rows={rows}
+              columns={[
+                { key: "started_at", label: "When", render: (r) => fmtDate(r.started_at as string) },
+                { key: "source_name", label: "File" },
+                { key: "entity_ids", label: "Organisations", render: (r) => (r.entity_ids as string[]).join(", ") },
+                { key: "row_counts", label: "Rows", render: (r) => Object.entries(r.row_counts as Record<string, number>).map(([k, v]) => `${k} ${v}`).join(" · ") },
+                { key: "input_sha256", label: "SHA-256", render: (r) => <code className="text-xs">{(r.input_sha256 as string).slice(0, 16)}…</code> },
+              ]}
+            />
+          )}
+        </Async>
       </Card>
     </>
   );

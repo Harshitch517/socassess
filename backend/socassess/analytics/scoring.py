@@ -1,6 +1,8 @@
 """Transparent entity risk score and review prioritisation.
 
 Risk score = min(100, sum over findings of weight[type] x severity_multiplier[severity]).
+Risk band = the score's band, raised to the entity's worst finding severity (one serious finding
+means at least a "high" band, so the band never contradicts the warnings shown).
 Every point is traceable to one finding; the breakdown is stored with the score.
 """
 
@@ -35,7 +37,8 @@ def risk_scores(d: Data, findings: list[Finding], p: dict, anomaly: pd.Series) -
         a = anomaly.get(e.entity_id, np.nan)
         rows.append({"entity_id": e.entity_id, "name": e.name, "sector": e.sector, "size": e.size,
                      "source": e.source, "risk_score": round(score, 2), "raw_points": round(raw, 2),
-                     "band": band(score), "n_findings": len(fs),
+                     "band": max([band(score)] + [f.severity for f in fs], key=SEV_RANK.get),
+                     "n_findings": len(fs),
                      "has_case_data": e.entity_id in d.with_cases(),
                      "anomaly_score": None if pd.isna(a) else round(float(a), 3),
                      "breakdown": breakdown})

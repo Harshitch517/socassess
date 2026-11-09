@@ -1,0 +1,1590 @@
+Timestamp,Priority,Alert Name,Tactic,Device,Sensor
+2026-06-01 00:34:17,Warning,Malicious attachment opened,Phishing,grid-substation-srv-015,IDS
+2026-06-01 06:57:12,Informational,Ransomware behaviour,Malware,grid-substation-srv-026,Firewall
+2026-06-01 07:58:43,Warning,Password spray detected,Brute Force,grid-workstation-016,IDS
+2026-06-01 08:35:32,Informational,DNS tunnelling,Data Exfiltration,grid-workstation-042,EDR
+2026-06-01 08:48:28,High,Multiple failed logons,Brute Force,grid-substation-srv-055,Firewall
+2026-06-01 10:43:01,Warning,Unapproved software,Policy Violation,grid-workstation-027,EDR
+2026-06-01 10:52:08,Warning,Unapproved software,Policy Violation,grid-workstation-027,EDR
+2026-06-01 11:46:21,High,EDR malware detection,Malware,grid-workstation-030,SIEM
+2026-06-01 12:00:35,Warning,EDR malware detection,Malware,grid-firewall-005,SIEM
+2026-06-01 13:26:11,Warning,Phishing URL clicked,Phishing,grid-scada-hmi-008,IDS
+2026-06-01 15:30:00,Warning,Credential phish reported,Phishing,grid-workstation-004,SIEM
+2026-06-01 16:12:08,Warning,Ransomware behaviour,Malware,grid-websubstation-srv-025,IDS
+2026-06-01 16:58:06,Critical,Port scan detected,Recon,grid-firewall-058,Firewall
+2026-06-01 17:19:53,Informational,Port scan detected,Recon,grid-websubstation-srv-006,IDS
+2026-06-01 18:13:39,Informational,EDR malware detection,Malware,grid-database-002,EDR
+2026-06-02 01:45:37,High,EDR malware detection,Malware,grid-mailsubstation-srv-028,IDS
+2026-06-02 08:17:44,Informational,Ransomware behaviour,Malware,grid-substation-srv-026,EDR
+2026-06-02 10:06:40,Informational,Port scan detected,Recon,grid-workstation-020,EDR
+2026-06-02 10:33:33,Warning,Malicious attachment opened,Phishing,grid-workstation-030,EDR
+2026-06-02 11:09:49,Warning,Malicious attachment opened,Phishing,grid-firewall-005,SIEM
+2026-06-02 11:36:23,Warning,Password spray detected,Brute Force,grid-mailsubstation-srv-032,SIEM
+2026-06-02 11:43:07,Warning,USB storage connected,Policy Violation,grid-workstation-023,Firewall
+2026-06-02 12:19:53,Informational,USB storage connected,Policy Violation,grid-workstation-045,EDR
+2026-06-02 13:20:29,High,Suspicious PowerShell download,Malware,grid-database-002,EDR
+2026-06-02 13:23:46,Warning,Credential phish reported,Phishing,grid-workstation-057,SIEM
+2026-06-02 16:49:52,High,Credential phish reported,Phishing,grid-workstation-019,IDS
+2026-06-02 17:25:11,High,USB storage connected,Policy Violation,grid-mailsubstation-srv-000,SIEM
+2026-06-02 17:43:12,Warning,Credential phish reported,Phishing,grid-workstation-040,SIEM
+2026-06-02 18:30:07,Critical,Admin share access,Policy Violation,grid-workstation-023,IDS
+2026-06-02 19:02:35,High,Password spray detected,Brute Force,grid-workstation-054,IDS
+2026-06-03 03:44:39,High,Multiple failed logons,Brute Force,grid-workstation-021,IDS
+2026-06-03 05:37:27,Warning,EDR malware detection,Malware,grid-mailsubstation-srv-028,IDS
+2026-06-03 06:09:00,Warning,Directory enumeration,Recon,grid-workstation-036,SIEM
+2026-06-03 07:00:45,Informational,LDAP reconnaissance,Recon,grid-firewall-005,Firewall
+2026-06-03 07:04:10,Informational,USB storage connected,Policy Violation,grid-domaincontroller-014,IDS
+2026-06-03 10:29:53,Warning,Password spray detected,Brute Force,grid-database-053,Firewall
+2026-06-03 12:25:27,Warning,Multiple failed logons,Brute Force,grid-firewall-058,EDR
+2026-06-03 12:27:58,Critical,Phishing URL clicked,Phishing,grid-substation-srv-050,Firewall
+2026-06-03 13:01:52,Warning,SSH brute force,Brute Force,grid-workstation-045,SIEM
+2026-06-03 13:13:01,Informational,Port scan detected,Recon,grid-substation-srv-049,IDS
+2026-06-03 14:19:58,Informational,Phishing URL clicked,Phishing,grid-substation-srv-047,IDS
+2026-06-03 16:15:38,High,EDR malware detection,Malware,grid-substation-srv-003,SIEM
+2026-06-03 17:04:58,Informational,Phishing URL clicked,Phishing,grid-mailsubstation-srv-000,EDR
+2026-06-03 18:13:41,Critical,Port scan detected,Recon,grid-firewall-037,SIEM
+2026-06-03 18:57:23,Informational,Password spray detected,Brute Force,grid-workstation-023,IDS
+2026-06-04 02:32:13,Informational,Unapproved software,Policy Violation,grid-database-053,SIEM
+2026-06-04 03:51:38,Informational,Directory enumeration,Recon,grid-workstation-042,SIEM
+2026-06-04 05:57:20,Informational,USB storage connected,Policy Violation,grid-workstation-039,EDR
+2026-06-04 09:03:26,Warning,Malicious attachment opened,Phishing,grid-workstation-041,SIEM
+2026-06-04 09:19:16,Informational,Suspicious PowerShell download,Malware,grid-workstation-012,Firewall
+2026-06-04 10:34:16,Warning,SSH brute force,Brute Force,grid-database-010,Firewall
+2026-06-04 11:11:34,Critical,USB storage connected,Policy Violation,grid-domaincontroller-014,SIEM
+2026-06-04 14:00:14,Warning,SSH brute force,Brute Force,grid-workstation-020,Firewall
+2026-06-04 14:17:43,High,Suspicious PowerShell download,Malware,grid-workstation-012,Firewall
+2026-06-04 15:37:06,High,Cloud upload anomaly,Data Exfiltration,grid-firewall-005,EDR
+2026-06-04 15:38:19,High,Multiple failed logons,Brute Force,grid-workstation-027,EDR
+2026-06-04 17:07:22,Warning,Directory enumeration,Recon,grid-workstation-043,EDR
+2026-06-04 18:29:11,Critical,DNS tunnelling,Data Exfiltration,grid-substation-srv-018,IDS
+2026-06-04 20:43:25,High,Phishing URL clicked,Phishing,grid-mailsubstation-srv-000,IDS
+2026-06-05 03:07:50,High,Credential phish reported,Phishing,grid-workstation-022,EDR
+2026-06-05 06:13:22,Critical,Credential phish reported,Phishing,grid-workstation-021,EDR
+2026-06-05 06:15:27,Informational,USB storage connected,Policy Violation,grid-scada-hmi-008,SIEM
+2026-06-05 07:20:52,Informational,Port scan detected,Recon,grid-workstation-041,SIEM
+2026-06-05 07:22:42,Warning,LDAP reconnaissance,Recon,grid-mailsubstation-srv-028,Firewall
+2026-06-05 08:10:12,High,Multiple failed logons,Brute Force,grid-websubstation-srv-025,EDR
+2026-06-05 08:38:30,Informational,Directory enumeration,Recon,grid-substation-srv-055,EDR
+2026-06-05 08:58:44,Critical,Phishing URL clicked,Phishing,grid-workstation-016,EDR
+2026-06-05 10:05:21,High,USB storage connected,Policy Violation,grid-substation-srv-015,IDS
+2026-06-05 10:29:31,Critical,SSH brute force,Brute Force,grid-websubstation-srv-024,IDS
+2026-06-05 12:45:45,Informational,Directory enumeration,Recon,grid-workstation-020,SIEM
+2026-06-05 13:42:48,Warning,Admin share access,Policy Violation,grid-substation-srv-050,SIEM
+2026-06-05 13:46:06,Warning,Admin share access,Policy Violation,grid-workstation-045,Firewall
+2026-06-05 17:28:53,Critical,Credential phish reported,Phishing,grid-websubstation-srv-024,SIEM
+2026-06-05 18:04:03,High,Password spray detected,Brute Force,grid-workstation-039,SIEM
+2026-06-05 18:04:16,Warning,SSH brute force,Brute Force,grid-websubstation-srv-029,EDR
+2026-06-05 22:20:30,Warning,USB storage connected,Policy Violation,grid-workstation-054,SIEM
+2026-06-05 23:04:05,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-013,EDR
+2026-06-06 01:14:04,Informational,Directory enumeration,Recon,grid-workstation-046,IDS
+2026-06-06 07:44:13,Informational,Port scan detected,Recon,grid-workstation-044,Firewall
+2026-06-06 08:32:48,Informational,Malicious attachment opened,Phishing,grid-database-053,EDR
+2026-06-06 09:05:06,Warning,Phishing URL clicked,Phishing,grid-workstation-004,Firewall
+2026-06-06 09:14:11,Informational,Unapproved software,Policy Violation,grid-workstation-007,SIEM
+2026-06-06 10:30:10,Informational,Multiple failed logons,Brute Force,grid-workstation-013,IDS
+2026-06-06 10:35:09,Informational,USB storage connected,Policy Violation,grid-database-002,Firewall
+2026-06-06 10:46:37,Warning,Password spray detected,Brute Force,grid-firewall-005,EDR
+2026-06-06 12:12:32,Warning,EDR malware detection,Malware,grid-workstation-004,SIEM
+2026-06-06 12:38:52,Warning,Admin share access,Policy Violation,grid-workstation-045,Firewall
+2026-06-06 13:01:15,High,USB storage connected,Policy Violation,grid-workstation-048,EDR
+2026-06-06 13:34:14,Informational,Multiple failed logons,Brute Force,grid-workstation-027,EDR
+2026-06-06 14:08:53,Informational,Ransomware behaviour,Malware,grid-database-053,IDS
+2026-06-06 15:41:38,Informational,LDAP reconnaissance,Recon,grid-firewall-037,Firewall
+2026-06-06 16:07:36,Informational,Directory enumeration,Recon,grid-websubstation-srv-006,IDS
+2026-06-06 18:50:20,Warning,Directory enumeration,Recon,grid-workstation-017,IDS
+2026-06-06 21:08:28,High,Phishing URL clicked,Phishing,grid-workstation-019,IDS
+2026-06-06 22:30:18,Informational,Admin share access,Policy Violation,grid-substation-srv-026,Firewall
+2026-06-06 22:38:23,High,Large outbound transfer,Data Exfiltration,grid-workstation-016,Firewall
+2026-06-07 02:28:26,Informational,Unapproved software,Policy Violation,grid-workstation-045,Firewall
+2026-06-07 04:38:25,Informational,Password spray detected,Brute Force,grid-workstation-020,EDR
+2026-06-07 05:25:47,Warning,Phishing URL clicked,Phishing,grid-workstation-012,EDR
+2026-06-07 06:30:00,Informational,Unapproved software,Policy Violation,grid-workstation-001,EDR
+2026-06-07 08:55:05,High,Directory enumeration,Recon,grid-websubstation-srv-024,EDR
+2026-06-07 09:27:40,Warning,SSH brute force,Brute Force,grid-workstation-019,IDS
+2026-06-07 09:28:19,High,Ransomware behaviour,Malware,grid-workstation-042,Firewall
+2026-06-07 11:04:06,High,Phishing URL clicked,Phishing,grid-workstation-034,SIEM
+2026-06-07 11:28:40,Informational,Directory enumeration,Recon,grid-workstation-043,EDR
+2026-06-07 13:12:19,Informational,Credential phish reported,Phishing,grid-workstation-016,Firewall
+2026-06-07 13:40:03,Warning,Unapproved software,Policy Violation,grid-workstation-052,EDR
+2026-06-07 14:43:34,Warning,Password spray detected,Brute Force,grid-workstation-048,IDS
+2026-06-07 16:23:36,Informational,Admin share access,Policy Violation,grid-database-053,SIEM
+2026-06-07 16:41:34,Warning,Malicious attachment opened,Phishing,grid-workstation-027,Firewall
+2026-06-07 16:58:05,Informational,Malicious attachment opened,Phishing,grid-workstation-035,EDR
+2026-06-07 17:06:53,Warning,Port scan detected,Recon,grid-mailsubstation-srv-028,Firewall
+2026-06-07 18:44:30,Warning,USB storage connected,Policy Violation,grid-domaincontroller-014,IDS
+2026-06-07 19:44:38,Warning,Multiple failed logons,Brute Force,grid-substation-srv-031,Firewall
+2026-06-07 20:45:28,Warning,Port scan detected,Recon,grid-substation-srv-011,IDS
+2026-06-08 03:37:01,Informational,Credential phish reported,Phishing,grid-workstation-035,SIEM
+2026-06-08 04:33:09,Informational,Directory enumeration,Recon,grid-workstation-030,Firewall
+2026-06-08 07:24:08,Warning,Credential phish reported,Phishing,grid-workstation-040,SIEM
+2026-06-08 08:39:05,Informational,Credential phish reported,Phishing,grid-mailsubstation-srv-032,EDR
+2026-06-08 08:43:16,Informational,Port scan detected,Recon,grid-workstation-046,EDR
+2026-06-08 12:03:37,High,Malicious attachment opened,Phishing,grid-websubstation-srv-006,IDS
+2026-06-08 12:19:31,High,LDAP reconnaissance,Recon,grid-workstation-043,Firewall
+2026-06-08 12:25:13,Informational,USB storage connected,Policy Violation,grid-workstation-041,IDS
+2026-06-08 13:36:23,Informational,USB storage connected,Policy Violation,grid-workstation-057,Firewall
+2026-06-08 14:31:07,Warning,Unapproved software,Policy Violation,grid-workstation-001,IDS
+2026-06-08 14:35:59,Warning,Port scan detected,Recon,grid-workstation-044,IDS
+2026-06-08 15:35:43,Informational,Password spray detected,Brute Force,grid-workstation-035,EDR
+2026-06-08 15:44:08,High,Phishing URL clicked,Phishing,grid-workstation-030,Firewall
+2026-06-08 15:54:09,Warning,SSH brute force,Brute Force,grid-workstation-016,EDR
+2026-06-08 18:09:36,Informational,USB storage connected,Policy Violation,grid-firewall-058,SIEM
+2026-06-08 18:17:27,Informational,Directory enumeration,Recon,grid-scada-hmi-008,Firewall
+2026-06-08 18:58:11,Informational,Malicious attachment opened,Phishing,grid-firewall-037,IDS
+2026-06-08 20:42:24,Warning,Directory enumeration,Recon,grid-workstation-004,SIEM
+2026-06-08 20:43:48,Warning,Unapproved software,Policy Violation,grid-workstation-027,IDS
+2026-06-08 21:15:57,High,SSH brute force,Brute Force,grid-workstation-052,EDR
+2026-06-09 07:34:42,Warning,Multiple failed logons,Brute Force,grid-websubstation-srv-006,IDS
+2026-06-09 08:23:13,High,Ransomware behaviour,Malware,grid-substation-srv-011,IDS
+2026-06-09 09:03:07,Warning,Phishing URL clicked,Phishing,grid-workstation-012,SIEM
+2026-06-09 10:29:41,Warning,Unapproved software,Policy Violation,grid-mailsubstation-srv-028,IDS
+2026-06-09 12:09:11,Warning,Admin share access,Policy Violation,grid-firewall-058,Firewall
+2026-06-09 13:51:51,High,EDR malware detection,Malware,grid-scada-hmi-008,IDS
+2026-06-09 15:15:18,Informational,Admin share access,Policy Violation,grid-workstation-045,EDR
+2026-06-09 17:11:13,Informational,USB storage connected,Policy Violation,grid-websubstation-srv-006,Firewall
+2026-06-09 17:28:05,Informational,Suspicious PowerShell download,Malware,grid-workstation-059,SIEM
+2026-06-09 20:45:24,High,Multiple failed logons,Brute Force,grid-substation-srv-055,Firewall
+2026-06-10 07:47:19,Warning,Ransomware behaviour,Malware,grid-scada-hmi-008,EDR
+2026-06-10 08:06:01,Informational,USB storage connected,Policy Violation,grid-scada-hmi-008,Firewall
+2026-06-10 08:30:24,Warning,Phishing URL clicked,Phishing,grid-workstation-041,IDS
+2026-06-10 10:18:46,Warning,Phishing URL clicked,Phishing,grid-workstation-039,Firewall
+2026-06-10 10:20:21,Informational,USB storage connected,Policy Violation,grid-workstation-016,SIEM
+2026-06-10 10:32:31,Informational,USB storage connected,Policy Violation,grid-websubstation-srv-024,SIEM
+2026-06-10 11:05:58,Warning,Credential phish reported,Phishing,grid-workstation-021,EDR
+2026-06-10 11:19:12,Informational,USB storage connected,Policy Violation,grid-workstation-030,SIEM
+2026-06-10 11:28:40,Informational,USB storage connected,Policy Violation,grid-workstation-001,SIEM
+2026-06-10 12:22:07,Critical,Phishing URL clicked,Phishing,grid-workstation-007,IDS
+2026-06-10 12:27:42,Warning,Malicious attachment opened,Phishing,grid-scada-hmi-056,SIEM
+2026-06-10 12:42:03,Informational,Suspicious PowerShell download,Malware,grid-workstation-046,IDS
+2026-06-10 13:15:47,Informational,Credential phish reported,Phishing,grid-substation-srv-026,SIEM
+2026-06-10 14:17:10,Informational,Port scan detected,Recon,grid-database-053,IDS
+2026-06-10 16:17:14,High,Admin share access,Policy Violation,grid-workstation-035,EDR
+2026-06-10 16:34:06,Warning,Directory enumeration,Recon,grid-substation-srv-050,EDR
+2026-06-10 17:23:09,Warning,Suspicious PowerShell download,Malware,grid-workstation-030,EDR
+2026-06-10 18:01:17,High,EDR malware detection,Malware,grid-scada-hmi-056,IDS
+2026-06-10 18:14:46,Critical,DNS tunnelling,Data Exfiltration,grid-workstation-036,SIEM
+2026-06-10 21:31:41,Informational,Unapproved software,Policy Violation,grid-workstation-021,EDR
+2026-06-11 02:15:28,Warning,Credential phish reported,Phishing,grid-workstation-045,Firewall
+2026-06-11 10:14:18,High,Multiple failed logons,Brute Force,grid-substation-srv-047,Firewall
+2026-06-11 10:23:01,Warning,Directory enumeration,Recon,grid-workstation-001,Firewall
+2026-06-11 11:39:54,Informational,USB storage connected,Policy Violation,grid-database-033,SIEM
+2026-06-11 11:48:24,Informational,USB storage connected,Policy Violation,grid-workstation-004,EDR
+2026-06-11 11:57:54,Warning,Multiple failed logons,Brute Force,grid-substation-srv-026,Firewall
+2026-06-11 12:51:23,Informational,Multiple failed logons,Brute Force,grid-workstation-052,Firewall
+2026-06-11 13:14:49,High,Suspicious PowerShell download,Malware,grid-workstation-027,Firewall
+2026-06-11 14:48:29,Warning,SSH brute force,Brute Force,grid-domaincontroller-014,EDR
+2026-06-11 14:53:39,Informational,Unapproved software,Policy Violation,grid-workstation-039,IDS
+2026-06-11 15:02:39,High,SSH brute force,Brute Force,grid-workstation-020,EDR
+2026-06-11 15:30:48,Warning,LDAP reconnaissance,Recon,grid-websubstation-srv-025,Firewall
+2026-06-11 15:45:59,Warning,EDR malware detection,Malware,grid-workstation-043,IDS
+2026-06-11 16:23:53,Warning,DNS tunnelling,Data Exfiltration,grid-substation-srv-026,Firewall
+2026-06-11 16:29:33,Informational,Malicious attachment opened,Phishing,grid-substation-srv-047,IDS
+2026-06-11 19:38:41,Warning,Credential phish reported,Phishing,grid-mailsubstation-srv-028,SIEM
+2026-06-11 19:55:27,Informational,Password spray detected,Brute Force,grid-workstation-001,SIEM
+2026-06-12 01:12:43,Informational,SSH brute force,Brute Force,grid-database-010,SIEM
+2026-06-12 02:27:08,Informational,EDR malware detection,Malware,grid-database-053,SIEM
+2026-06-12 05:19:45,Warning,Directory enumeration,Recon,grid-database-053,IDS
+2026-06-12 06:54:38,Warning,Ransomware behaviour,Malware,grid-workstation-009,SIEM
+2026-06-12 07:10:43,Warning,Directory enumeration,Recon,grid-workstation-004,IDS
+2026-06-12 08:40:33,Warning,Phishing URL clicked,Phishing,grid-domaincontroller-014,SIEM
+2026-06-12 08:41:20,Warning,Port scan detected,Recon,grid-firewall-037,EDR
+2026-06-12 09:24:18,Informational,Credential phish reported,Phishing,grid-scada-hmi-056,EDR
+2026-06-12 13:50:59,Informational,SSH brute force,Brute Force,grid-firewall-058,EDR
+2026-06-12 14:12:06,Warning,Multiple failed logons,Brute Force,grid-substation-srv-018,EDR
+2026-06-12 14:41:51,High,Suspicious PowerShell download,Malware,grid-scada-hmi-008,IDS
+2026-06-12 15:27:35,Informational,Port scan detected,Recon,grid-websubstation-srv-029,EDR
+2026-06-12 15:44:52,Warning,Phishing URL clicked,Phishing,grid-websubstation-srv-025,SIEM
+2026-06-12 16:30:38,Informational,LDAP reconnaissance,Recon,grid-database-033,Firewall
+2026-06-12 16:33:17,Warning,Malicious attachment opened,Phishing,grid-workstation-048,EDR
+2026-06-12 17:45:15,Warning,Port scan detected,Recon,grid-database-010,EDR
+2026-06-12 23:08:28,Informational,LDAP reconnaissance,Recon,grid-workstation-027,IDS
+2026-06-13 01:24:26,Informational,USB storage connected,Policy Violation,grid-database-033,IDS
+2026-06-13 07:35:15,Informational,LDAP reconnaissance,Recon,grid-workstation-021,SIEM
+2026-06-13 08:43:21,High,Unapproved software,Policy Violation,grid-substation-srv-003,Firewall
+2026-06-13 10:01:16,Critical,Multiple failed logons,Brute Force,grid-workstation-016,IDS
+2026-06-13 10:07:16,Informational,Admin share access,Policy Violation,grid-workstation-036,SIEM
+2026-06-13 10:11:39,Critical,EDR malware detection,Malware,grid-database-002,IDS
+2026-06-13 10:42:41,Informational,Phishing URL clicked,Phishing,grid-workstation-039,IDS
+2026-06-13 12:54:52,High,Admin share access,Policy Violation,grid-workstation-013,EDR
+2026-06-13 12:57:19,Critical,SSH brute force,Brute Force,grid-workstation-045,IDS
+2026-06-13 13:21:18,High,Suspicious PowerShell download,Malware,grid-scada-hmi-056,Firewall
+2026-06-13 13:39:43,Warning,Password spray detected,Brute Force,grid-firewall-058,EDR
+2026-06-13 14:32:24,Warning,Suspicious PowerShell download,Malware,grid-scada-hmi-056,EDR
+2026-06-13 14:35:36,Warning,USB storage connected,Policy Violation,grid-substation-srv-049,Firewall
+2026-06-13 14:58:03,High,Password spray detected,Brute Force,grid-workstation-059,IDS
+2026-06-13 15:54:34,Informational,Unapproved software,Policy Violation,grid-workstation-052,EDR
+2026-06-13 17:28:34,Informational,Directory enumeration,Recon,grid-workstation-017,SIEM
+2026-06-13 17:34:13,Informational,Phishing URL clicked,Phishing,grid-database-010,Firewall
+2026-06-13 18:46:26,Warning,Ransomware behaviour,Malware,grid-workstation-059,IDS
+2026-06-13 19:51:32,Informational,EDR malware detection,Malware,grid-workstation-001,IDS
+2026-06-14 08:25:00,Warning,Malicious attachment opened,Phishing,grid-workstation-039,IDS
+2026-06-14 08:35:28,Critical,Cloud upload anomaly,Data Exfiltration,grid-substation-srv-050,SIEM
+2026-06-14 08:41:57,Warning,Credential phish reported,Phishing,grid-websubstation-srv-006,Firewall
+2026-06-14 10:27:23,High,EDR malware detection,Malware,grid-substation-srv-050,SIEM
+2026-06-14 10:41:35,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-046,EDR
+2026-06-14 10:55:27,Warning,Port scan detected,Recon,grid-workstation-041,EDR
+2026-06-14 14:57:01,Informational,EDR malware detection,Malware,grid-substation-srv-015,SIEM
+2026-06-14 15:12:42,Informational,Directory enumeration,Recon,grid-workstation-048,IDS
+2026-06-14 16:36:27,High,EDR malware detection,Malware,grid-workstation-020,Firewall
+2026-06-14 20:34:56,Informational,Directory enumeration,Recon,grid-workstation-059,SIEM
+2026-06-15 03:12:27,Informational,Password spray detected,Brute Force,grid-substation-srv-031,Firewall
+2026-06-15 04:11:16,High,SSH brute force,Brute Force,grid-workstation-052,SIEM
+2026-06-15 05:26:28,Informational,Directory enumeration,Recon,grid-workstation-044,EDR
+2026-06-15 05:43:57,Informational,Port scan detected,Recon,grid-firewall-058,Firewall
+2026-06-15 05:55:22,Informational,USB storage connected,Policy Violation,grid-substation-srv-047,SIEM
+2026-06-15 06:56:09,Informational,Directory enumeration,Recon,grid-substation-srv-050,Firewall
+2026-06-15 08:06:07,Informational,SSH brute force,Brute Force,grid-workstation-004,EDR
+2026-06-15 09:01:27,Warning,Malicious attachment opened,Phishing,grid-workstation-022,EDR
+2026-06-15 09:18:33,Warning,Unapproved software,Policy Violation,grid-substation-srv-047,SIEM
+2026-06-15 09:29:01,Informational,Unapproved software,Policy Violation,grid-firewall-005,IDS
+2026-06-15 09:36:18,Informational,SSH brute force,Brute Force,grid-workstation-057,SIEM
+2026-06-15 10:10:45,Informational,Ransomware behaviour,Malware,grid-workstation-043,SIEM
+2026-06-15 10:19:06,Informational,LDAP reconnaissance,Recon,grid-workstation-022,IDS
+2026-06-15 11:20:06,Critical,DNS tunnelling,Data Exfiltration,grid-substation-srv-055,SIEM
+2026-06-15 12:27:03,High,Directory enumeration,Recon,grid-workstation-036,IDS
+2026-06-15 14:17:37,Warning,Port scan detected,Recon,grid-workstation-044,EDR
+2026-06-15 14:24:41,Informational,Port scan detected,Recon,grid-workstation-059,EDR
+2026-06-15 16:45:47,High,Ransomware behaviour,Malware,grid-workstation-007,EDR
+2026-06-15 17:09:06,Critical,EDR malware detection,Malware,grid-firewall-005,Firewall
+2026-06-15 17:10:41,Informational,Unapproved software,Policy Violation,grid-workstation-023,SIEM
+2026-06-15 17:26:46,High,DNS tunnelling,Data Exfiltration,grid-workstation-013,Firewall
+2026-06-15 19:38:03,High,Malicious attachment opened,Phishing,grid-substation-srv-055,SIEM
+2026-06-15 21:00:01,Informational,Phishing URL clicked,Phishing,grid-mailsubstation-srv-032,Firewall
+2026-06-16 06:36:53,Warning,Suspicious PowerShell download,Malware,grid-substation-srv-055,EDR
+2026-06-16 08:26:07,High,Suspicious PowerShell download,Malware,grid-workstation-034,EDR
+2026-06-16 08:42:36,Informational,Directory enumeration,Recon,grid-firewall-005,IDS
+2026-06-16 08:53:42,Informational,Phishing URL clicked,Phishing,grid-substation-srv-015,Firewall
+2026-06-16 11:31:52,Critical,USB storage connected,Policy Violation,grid-database-033,EDR
+2026-06-16 11:35:19,Informational,Unapproved software,Policy Violation,grid-workstation-057,Firewall
+2026-06-16 12:10:25,Informational,Multiple failed logons,Brute Force,grid-workstation-035,Firewall
+2026-06-16 13:15:11,Critical,DNS tunnelling,Data Exfiltration,grid-firewall-037,IDS
+2026-06-16 14:30:50,Informational,Port scan detected,Recon,grid-substation-srv-055,Firewall
+2026-06-16 14:40:29,Informational,Password spray detected,Brute Force,grid-workstation-027,IDS
+2026-06-16 18:28:11,Warning,Port scan detected,Recon,grid-workstation-001,Firewall
+2026-06-16 19:16:14,Warning,Unapproved software,Policy Violation,grid-mailsubstation-srv-032,EDR
+2026-06-16 21:07:32,Warning,Multiple failed logons,Brute Force,grid-workstation-004,Firewall
+2026-06-16 21:09:43,Informational,USB storage connected,Policy Violation,grid-websubstation-srv-024,Firewall
+2026-06-16 21:17:12,Warning,Directory enumeration,Recon,grid-workstation-012,IDS
+2026-06-16 22:16:40,Warning,Phishing URL clicked,Phishing,grid-firewall-058,SIEM
+2026-06-17 02:04:06,Warning,Multiple failed logons,Brute Force,grid-workstation-040,IDS
+2026-06-17 02:39:40,Informational,Malicious attachment opened,Phishing,grid-substation-srv-011,EDR
+2026-06-17 05:30:50,Informational,Port scan detected,Recon,grid-scada-hmi-008,SIEM
+2026-06-17 07:20:04,High,Multiple failed logons,Brute Force,grid-workstation-054,Firewall
+2026-06-17 07:59:45,Warning,Ransomware behaviour,Malware,grid-workstation-057,Firewall
+2026-06-17 09:21:38,Informational,LDAP reconnaissance,Recon,grid-workstation-046,EDR
+2026-06-17 09:24:21,High,DNS tunnelling,Data Exfiltration,grid-substation-srv-038,Firewall
+2026-06-17 09:35:46,Warning,Large outbound transfer,Data Exfiltration,grid-mailsubstation-srv-032,IDS
+2026-06-17 10:34:21,Informational,USB storage connected,Policy Violation,grid-workstation-048,IDS
+2026-06-17 12:25:40,High,Unapproved software,Policy Violation,grid-workstation-022,Firewall
+2026-06-17 13:39:33,Informational,Unapproved software,Policy Violation,grid-domaincontroller-014,SIEM
+2026-06-17 14:28:05,High,Password spray detected,Brute Force,grid-substation-srv-031,SIEM
+2026-06-17 16:29:53,Warning,SSH brute force,Brute Force,grid-workstation-034,Firewall
+2026-06-17 16:39:57,Informational,Password spray detected,Brute Force,grid-domaincontroller-014,EDR
+2026-06-17 20:31:20,High,Multiple failed logons,Brute Force,grid-substation-srv-011,SIEM
+2026-06-17 21:10:49,Critical,Large outbound transfer,Data Exfiltration,grid-workstation-042,Firewall
+2026-06-18 02:37:20,Warning,SSH brute force,Brute Force,grid-substation-srv-050,IDS
+2026-06-18 05:25:46,Warning,SSH brute force,Brute Force,grid-scada-hmi-056,SIEM
+2026-06-18 07:11:52,Critical,Password spray detected,Brute Force,grid-database-002,Firewall
+2026-06-18 07:29:50,Warning,Directory enumeration,Recon,grid-substation-srv-003,Firewall
+2026-06-18 08:24:37,High,Multiple failed logons,Brute Force,grid-workstation-022,Firewall
+2026-06-18 09:15:08,Warning,EDR malware detection,Malware,grid-workstation-042,Firewall
+2026-06-18 09:25:50,Informational,Directory enumeration,Recon,grid-workstation-004,IDS
+2026-06-18 10:29:49,Warning,LDAP reconnaissance,Recon,grid-workstation-016,IDS
+2026-06-18 11:00:36,Warning,USB storage connected,Policy Violation,grid-workstation-054,Firewall
+2026-06-18 11:37:42,Informational,Credential phish reported,Phishing,grid-websubstation-srv-029,SIEM
+2026-06-18 15:40:16,Warning,Password spray detected,Brute Force,grid-mailsubstation-srv-051,Firewall
+2026-06-18 20:10:48,Informational,USB storage connected,Policy Violation,grid-workstation-023,SIEM
+2026-06-19 05:30:35,Warning,Phishing URL clicked,Phishing,grid-firewall-058,EDR
+2026-06-19 06:45:00,Informational,Password spray detected,Brute Force,grid-websubstation-srv-024,IDS
+2026-06-19 08:29:16,Informational,LDAP reconnaissance,Recon,grid-workstation-023,Firewall
+2026-06-19 09:12:53,Warning,Malicious attachment opened,Phishing,grid-firewall-058,EDR
+2026-06-19 10:31:35,Warning,Password spray detected,Brute Force,grid-websubstation-srv-025,SIEM
+2026-06-19 10:43:46,Informational,USB storage connected,Policy Violation,grid-substation-srv-038,IDS
+2026-06-19 10:57:50,Warning,Credential phish reported,Phishing,grid-workstation-017,Firewall
+2026-06-19 13:05:32,Critical,Suspicious PowerShell download,Malware,grid-websubstation-srv-006,SIEM
+2026-06-19 13:30:07,Informational,Directory enumeration,Recon,grid-database-002,IDS
+2026-06-19 14:13:56,Informational,Password spray detected,Brute Force,grid-workstation-019,SIEM
+2026-06-19 16:10:17,Informational,LDAP reconnaissance,Recon,grid-workstation-013,EDR
+2026-06-19 17:28:10,Warning,Admin share access,Policy Violation,grid-mailsubstation-srv-028,IDS
+2026-06-19 17:31:56,Warning,Malicious attachment opened,Phishing,grid-domaincontroller-014,EDR
+2026-06-19 17:56:28,Informational,Directory enumeration,Recon,grid-scada-hmi-008,IDS
+2026-06-19 20:09:26,Informational,Directory enumeration,Recon,grid-database-010,EDR
+2026-06-19 22:02:01,Warning,Ransomware behaviour,Malware,grid-substation-srv-026,IDS
+2026-06-19 23:46:19,Warning,Suspicious PowerShell download,Malware,grid-workstation-057,IDS
+2026-06-20 02:40:19,High,Cloud upload anomaly,Data Exfiltration,grid-websubstation-srv-006,SIEM
+2026-06-20 03:46:05,Informational,Multiple failed logons,Brute Force,grid-substation-srv-047,SIEM
+2026-06-20 06:36:01,Informational,Admin share access,Policy Violation,grid-scada-hmi-008,Firewall
+2026-06-20 07:29:19,Informational,Port scan detected,Recon,grid-database-053,EDR
+2026-06-20 08:58:21,Informational,Phishing URL clicked,Phishing,grid-workstation-009,IDS
+2026-06-20 11:32:56,Informational,USB storage connected,Policy Violation,grid-websubstation-srv-025,SIEM
+2026-06-20 12:50:18,Informational,Port scan detected,Recon,grid-workstation-045,Firewall
+2026-06-20 13:06:06,High,Phishing URL clicked,Phishing,grid-firewall-058,Firewall
+2026-06-20 13:55:44,Informational,Directory enumeration,Recon,grid-websubstation-srv-024,SIEM
+2026-06-20 14:19:59,Informational,Admin share access,Policy Violation,grid-substation-srv-031,SIEM
+2026-06-20 15:30:48,Warning,Phishing URL clicked,Phishing,grid-websubstation-srv-006,IDS
+2026-06-20 15:58:41,Warning,Phishing URL clicked,Phishing,grid-database-002,Firewall
+2026-06-20 17:35:33,Warning,Credential phish reported,Phishing,grid-workstation-001,Firewall
+2026-06-20 19:54:52,Informational,Unapproved software,Policy Violation,grid-workstation-052,IDS
+2026-06-21 06:38:03,Warning,LDAP reconnaissance,Recon,grid-websubstation-srv-024,SIEM
+2026-06-21 07:13:59,Warning,Phishing URL clicked,Phishing,grid-firewall-058,EDR
+2026-06-21 08:02:47,Warning,LDAP reconnaissance,Recon,grid-workstation-013,EDR
+2026-06-21 09:03:18,Informational,Phishing URL clicked,Phishing,grid-workstation-019,SIEM
+2026-06-21 09:36:41,Warning,Phishing URL clicked,Phishing,grid-workstation-013,SIEM
+2026-06-21 11:05:19,Critical,Suspicious PowerShell download,Malware,grid-workstation-045,Firewall
+2026-06-21 12:41:13,Informational,Port scan detected,Recon,grid-workstation-042,EDR
+2026-06-21 12:54:31,Informational,Multiple failed logons,Brute Force,grid-workstation-059,EDR
+2026-06-21 13:01:11,Warning,Malicious attachment opened,Phishing,grid-workstation-027,EDR
+2026-06-21 13:04:46,Warning,EDR malware detection,Malware,grid-workstation-027,IDS
+2026-06-21 14:05:29,Informational,Port scan detected,Recon,grid-substation-srv-003,SIEM
+2026-06-21 14:33:31,Informational,USB storage connected,Policy Violation,grid-substation-srv-031,SIEM
+2026-06-21 17:07:33,High,Password spray detected,Brute Force,grid-scada-hmi-056,Firewall
+2026-06-22 01:47:22,Informational,USB storage connected,Policy Violation,grid-substation-srv-031,SIEM
+2026-06-22 02:46:31,Informational,Unapproved software,Policy Violation,grid-firewall-005,EDR
+2026-06-22 06:12:43,Warning,Suspicious PowerShell download,Malware,grid-database-033,IDS
+2026-06-22 06:59:55,Informational,Password spray detected,Brute Force,grid-substation-srv-003,EDR
+2026-06-22 07:41:09,High,Suspicious PowerShell download,Malware,grid-substation-srv-047,IDS
+2026-06-22 08:23:02,Informational,LDAP reconnaissance,Recon,grid-workstation-040,IDS
+2026-06-22 08:24:35,Warning,LDAP reconnaissance,Recon,grid-scada-hmi-056,EDR
+2026-06-22 10:25:47,Warning,USB storage connected,Policy Violation,grid-database-033,IDS
+2026-06-22 10:37:14,Warning,Cloud upload anomaly,Data Exfiltration,grid-firewall-058,EDR
+2026-06-22 11:54:08,High,Ransomware behaviour,Malware,grid-workstation-017,SIEM
+2026-06-22 13:48:31,Informational,Admin share access,Policy Violation,grid-workstation-054,Firewall
+2026-06-22 14:32:17,Warning,Multiple failed logons,Brute Force,grid-workstation-054,EDR
+2026-06-22 15:12:36,Informational,Unapproved software,Policy Violation,grid-workstation-039,IDS
+2026-06-22 16:32:57,Warning,Directory enumeration,Recon,grid-workstation-054,IDS
+2026-06-22 16:55:40,Warning,Directory enumeration,Recon,grid-workstation-019,IDS
+2026-06-22 18:59:56,Informational,USB storage connected,Policy Violation,grid-workstation-036,SIEM
+2026-06-22 19:46:18,Informational,LDAP reconnaissance,Recon,grid-workstation-001,Firewall
+2026-06-22 22:26:02,Informational,Admin share access,Policy Violation,grid-scada-hmi-056,IDS
+2026-06-22 22:33:03,Informational,LDAP reconnaissance,Recon,grid-workstation-040,SIEM
+2026-06-22 22:52:30,High,Suspicious PowerShell download,Malware,grid-substation-srv-055,SIEM
+2026-06-23 01:37:12,Warning,USB storage connected,Policy Violation,grid-workstation-057,Firewall
+2026-06-23 06:40:11,Critical,Malicious attachment opened,Phishing,grid-workstation-023,Firewall
+2026-06-23 07:31:57,High,Phishing URL clicked,Phishing,grid-database-010,Firewall
+2026-06-23 08:32:47,High,Admin share access,Policy Violation,grid-workstation-048,IDS
+2026-06-23 08:38:33,Informational,Credential phish reported,Phishing,grid-workstation-052,Firewall
+2026-06-23 08:54:13,Warning,USB storage connected,Policy Violation,grid-workstation-048,EDR
+2026-06-23 09:47:23,Critical,Multiple failed logons,Brute Force,grid-websubstation-srv-006,EDR
+2026-06-23 10:07:07,High,Suspicious PowerShell download,Malware,grid-substation-srv-018,IDS
+2026-06-23 10:56:53,Informational,Malicious attachment opened,Phishing,grid-workstation-030,EDR
+2026-06-23 12:34:58,High,Cloud upload anomaly,Data Exfiltration,grid-database-053,Firewall
+2026-06-23 12:48:37,Warning,SSH brute force,Brute Force,grid-mailsubstation-srv-028,EDR
+2026-06-23 12:48:50,Informational,Unapproved software,Policy Violation,grid-substation-srv-011,SIEM
+2026-06-23 14:07:32,Warning,Multiple failed logons,Brute Force,grid-workstation-035,IDS
+2026-06-23 14:46:58,High,Ransomware behaviour,Malware,grid-workstation-017,Firewall
+2026-06-23 15:07:37,Warning,Unapproved software,Policy Violation,grid-database-053,EDR
+2026-06-23 15:10:59,Informational,USB storage connected,Policy Violation,grid-substation-srv-003,Firewall
+2026-06-23 15:15:33,Informational,USB storage connected,Policy Violation,grid-substation-srv-026,SIEM
+2026-06-23 15:23:14,Warning,DNS tunnelling,Data Exfiltration,grid-scada-hmi-008,Firewall
+2026-06-23 17:10:09,High,SSH brute force,Brute Force,grid-scada-hmi-056,IDS
+2026-06-23 19:51:49,Informational,Directory enumeration,Recon,grid-firewall-058,IDS
+2026-06-24 08:41:50,Critical,EDR malware detection,Malware,grid-substation-srv-026,IDS
+2026-06-24 09:38:43,Warning,Port scan detected,Recon,grid-websubstation-srv-029,Firewall
+2026-06-24 09:54:03,Warning,Port scan detected,Recon,grid-database-002,IDS
+2026-06-24 11:00:56,Informational,Directory enumeration,Recon,grid-workstation-054,SIEM
+2026-06-24 12:50:32,Informational,USB storage connected,Policy Violation,grid-workstation-016,SIEM
+2026-06-24 12:56:05,High,Unapproved software,Policy Violation,grid-substation-srv-026,SIEM
+2026-06-24 12:59:30,High,Password spray detected,Brute Force,grid-firewall-058,EDR
+2026-06-24 14:50:00,Informational,Unapproved software,Policy Violation,grid-workstation-046,EDR
+2026-06-24 15:09:34,Critical,Credential phish reported,Phishing,grid-substation-srv-011,Firewall
+2026-06-24 15:28:21,Critical,Suspicious PowerShell download,Malware,grid-mailsubstation-srv-051,SIEM
+2026-06-24 15:36:44,Informational,Phishing URL clicked,Phishing,grid-scada-hmi-008,EDR
+2026-06-24 17:41:23,Informational,Unapproved software,Policy Violation,grid-websubstation-srv-029,SIEM
+2026-06-24 18:31:33,Informational,Admin share access,Policy Violation,grid-scada-hmi-008,SIEM
+2026-06-24 19:34:57,Informational,USB storage connected,Policy Violation,grid-workstation-041,IDS
+2026-06-25 01:40:26,Warning,Credential phish reported,Phishing,grid-scada-hmi-056,SIEM
+2026-06-25 03:52:49,Informational,LDAP reconnaissance,Recon,grid-workstation-046,EDR
+2026-06-25 08:14:51,Informational,Multiple failed logons,Brute Force,grid-workstation-001,IDS
+2026-06-25 08:17:22,High,EDR malware detection,Malware,grid-workstation-009,SIEM
+2026-06-25 09:07:05,High,Suspicious PowerShell download,Malware,grid-mailsubstation-srv-051,IDS
+2026-06-25 09:08:36,Informational,Admin share access,Policy Violation,grid-workstation-013,EDR
+2026-06-25 10:30:35,Warning,LDAP reconnaissance,Recon,grid-workstation-057,IDS
+2026-06-25 10:47:54,Warning,USB storage connected,Policy Violation,grid-firewall-005,EDR
+2026-06-25 10:49:56,High,Multiple failed logons,Brute Force,grid-substation-srv-018,EDR
+2026-06-25 11:13:49,Warning,Phishing URL clicked,Phishing,grid-workstation-044,SIEM
+2026-06-25 11:34:51,Informational,Port scan detected,Recon,grid-database-053,SIEM
+2026-06-25 11:48:11,Warning,Phishing URL clicked,Phishing,grid-workstation-059,IDS
+2026-06-25 12:18:09,Informational,SSH brute force,Brute Force,grid-database-033,Firewall
+2026-06-25 12:58:13,High,Large outbound transfer,Data Exfiltration,grid-workstation-039,Firewall
+2026-06-25 14:25:03,Critical,Suspicious PowerShell download,Malware,grid-workstation-036,Firewall
+2026-06-25 14:52:50,Informational,Port scan detected,Recon,grid-workstation-059,EDR
+2026-06-25 15:30:38,Informational,Port scan detected,Recon,grid-workstation-007,EDR
+2026-06-25 15:42:26,High,Phishing URL clicked,Phishing,grid-substation-srv-015,SIEM
+2026-06-25 16:44:39,Warning,SSH brute force,Brute Force,grid-database-053,IDS
+2026-06-25 17:05:52,Informational,Credential phish reported,Phishing,grid-workstation-016,Firewall
+2026-06-25 17:59:53,Informational,Credential phish reported,Phishing,grid-database-010,Firewall
+2026-06-25 18:10:00,Informational,USB storage connected,Policy Violation,grid-workstation-043,EDR
+2026-06-25 18:48:58,Warning,Credential phish reported,Phishing,grid-workstation-016,Firewall
+2026-06-25 18:58:19,High,Multiple failed logons,Brute Force,grid-workstation-004,SIEM
+2026-06-25 20:00:10,Warning,USB storage connected,Policy Violation,grid-websubstation-srv-029,EDR
+2026-06-25 20:01:52,High,Unapproved software,Policy Violation,grid-workstation-001,EDR
+2026-06-25 20:28:19,High,EDR malware detection,Malware,grid-substation-srv-015,IDS
+2026-06-25 20:37:17,Informational,Directory enumeration,Recon,grid-workstation-012,IDS
+2026-06-25 23:40:57,Informational,Credential phish reported,Phishing,grid-workstation-041,Firewall
+2026-06-26 01:57:36,Warning,Directory enumeration,Recon,grid-database-010,IDS
+2026-06-26 03:40:25,Warning,Password spray detected,Brute Force,grid-workstation-004,IDS
+2026-06-26 06:24:05,High,SSH brute force,Brute Force,grid-database-033,Firewall
+2026-06-26 06:36:14,Informational,Admin share access,Policy Violation,grid-workstation-007,SIEM
+2026-06-26 08:10:24,Informational,LDAP reconnaissance,Recon,grid-workstation-054,SIEM
+2026-06-26 10:46:23,Informational,LDAP reconnaissance,Recon,grid-workstation-017,EDR
+2026-06-26 11:28:42,Informational,Directory enumeration,Recon,grid-workstation-045,SIEM
+2026-06-26 11:30:53,Warning,USB storage connected,Policy Violation,grid-firewall-058,Firewall
+2026-06-26 13:29:51,Warning,Ransomware behaviour,Malware,grid-database-033,EDR
+2026-06-26 15:20:06,Warning,Unapproved software,Policy Violation,grid-workstation-007,Firewall
+2026-06-26 15:42:39,Informational,Password spray detected,Brute Force,grid-workstation-027,Firewall
+2026-06-26 16:58:13,High,Suspicious PowerShell download,Malware,grid-websubstation-srv-024,Firewall
+2026-06-26 18:13:06,Informational,USB storage connected,Policy Violation,grid-websubstation-srv-006,Firewall
+2026-06-26 19:11:28,High,Malicious attachment opened,Phishing,grid-workstation-043,IDS
+2026-06-26 20:35:54,High,Cloud upload anomaly,Data Exfiltration,grid-firewall-005,IDS
+2026-06-26 21:15:36,High,SSH brute force,Brute Force,grid-database-033,Firewall
+2026-06-26 22:32:09,Warning,Admin share access,Policy Violation,grid-substation-srv-038,SIEM
+2026-06-26 22:56:48,Warning,Directory enumeration,Recon,grid-workstation-019,IDS
+2026-06-27 01:02:37,Informational,LDAP reconnaissance,Recon,grid-substation-srv-055,Firewall
+2026-06-27 03:26:19,Informational,Admin share access,Policy Violation,grid-workstation-009,IDS
+2026-06-27 05:43:06,High,Multiple failed logons,Brute Force,grid-workstation-040,Firewall
+2026-06-27 05:47:13,Informational,LDAP reconnaissance,Recon,grid-workstation-039,EDR
+2026-06-27 08:44:18,Informational,Directory enumeration,Recon,grid-substation-srv-015,Firewall
+2026-06-27 10:14:46,Warning,Port scan detected,Recon,grid-workstation-034,EDR
+2026-06-27 10:57:47,Informational,Ransomware behaviour,Malware,grid-scada-hmi-008,IDS
+2026-06-27 12:53:54,High,Malicious attachment opened,Phishing,grid-firewall-037,IDS
+2026-06-27 13:01:26,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-044,EDR
+2026-06-27 13:30:02,High,Credential phish reported,Phishing,grid-workstation-009,EDR
+2026-06-27 15:10:38,Informational,SSH brute force,Brute Force,grid-mailsubstation-srv-032,SIEM
+2026-06-27 16:38:36,Informational,Admin share access,Policy Violation,grid-substation-srv-015,Firewall
+2026-06-27 18:40:54,High,SSH brute force,Brute Force,grid-workstation-023,EDR
+2026-06-27 18:49:42,Critical,Credential phish reported,Phishing,grid-substation-srv-055,SIEM
+2026-06-27 19:29:04,Informational,Multiple failed logons,Brute Force,grid-firewall-058,Firewall
+2026-06-27 20:38:45,Warning,LDAP reconnaissance,Recon,grid-mailsubstation-srv-000,Firewall
+2026-06-27 21:54:19,Warning,Port scan detected,Recon,grid-websubstation-srv-029,EDR
+2026-06-28 04:05:10,Critical,Multiple failed logons,Brute Force,grid-workstation-042,IDS
+2026-06-28 05:43:39,Warning,Directory enumeration,Recon,grid-workstation-042,Firewall
+2026-06-28 08:37:55,Informational,USB storage connected,Policy Violation,grid-workstation-043,Firewall
+2026-06-28 08:57:23,Critical,Multiple failed logons,Brute Force,grid-websubstation-srv-025,Firewall
+2026-06-28 09:19:44,High,DNS tunnelling,Data Exfiltration,grid-database-002,SIEM
+2026-06-28 09:25:07,Informational,Ransomware behaviour,Malware,grid-workstation-030,Firewall
+2026-06-28 10:40:01,Warning,Large outbound transfer,Data Exfiltration,grid-workstation-019,EDR
+2026-06-28 10:58:33,Warning,Credential phish reported,Phishing,grid-firewall-037,EDR
+2026-06-28 13:38:55,High,Suspicious PowerShell download,Malware,grid-substation-srv-026,EDR
+2026-06-28 13:46:48,Informational,Credential phish reported,Phishing,grid-workstation-027,Firewall
+2026-06-28 15:59:26,Informational,Admin share access,Policy Violation,grid-domaincontroller-014,EDR
+2026-06-28 16:25:08,High,Malicious attachment opened,Phishing,grid-scada-hmi-008,SIEM
+2026-06-28 17:18:03,High,Password spray detected,Brute Force,grid-workstation-044,Firewall
+2026-06-28 17:32:13,Informational,SSH brute force,Brute Force,grid-workstation-021,IDS
+2026-06-28 18:45:22,Critical,Cloud upload anomaly,Data Exfiltration,grid-workstation-001,EDR
+2026-06-28 20:59:44,Informational,Unapproved software,Policy Violation,grid-workstation-035,IDS
+2026-06-29 03:36:03,Warning,Multiple failed logons,Brute Force,grid-database-053,SIEM
+2026-06-29 06:46:32,Informational,Unapproved software,Policy Violation,grid-workstation-030,IDS
+2026-06-29 07:48:43,Informational,Admin share access,Policy Violation,grid-database-053,Firewall
+2026-06-29 08:18:56,Informational,Phishing URL clicked,Phishing,grid-workstation-045,SIEM
+2026-06-29 08:56:01,Warning,Password spray detected,Brute Force,grid-workstation-052,Firewall
+2026-06-29 09:13:07,Warning,Phishing URL clicked,Phishing,grid-workstation-059,IDS
+2026-06-29 09:39:35,Informational,Port scan detected,Recon,grid-substation-srv-015,EDR
+2026-06-29 10:13:47,Informational,Admin share access,Policy Violation,grid-workstation-036,EDR
+2026-06-29 11:37:32,Warning,Phishing URL clicked,Phishing,grid-workstation-035,EDR
+2026-06-29 11:59:23,Warning,Password spray detected,Brute Force,grid-substation-srv-038,SIEM
+2026-06-29 12:03:35,Informational,Admin share access,Policy Violation,grid-workstation-012,EDR
+2026-06-29 12:33:37,Warning,Directory enumeration,Recon,grid-firewall-005,EDR
+2026-06-29 16:18:13,Warning,Credential phish reported,Phishing,grid-workstation-007,EDR
+2026-06-30 01:39:24,Informational,Unapproved software,Policy Violation,grid-workstation-048,EDR
+2026-06-30 01:51:06,Critical,Ransomware behaviour,Malware,grid-websubstation-srv-024,SIEM
+2026-06-30 03:37:30,Warning,Cloud upload anomaly,Data Exfiltration,grid-workstation-041,EDR
+2026-06-30 08:45:53,Warning,Password spray detected,Brute Force,grid-workstation-044,EDR
+2026-06-30 09:03:17,High,Multiple failed logons,Brute Force,grid-workstation-022,IDS
+2026-06-30 10:04:17,Informational,Unapproved software,Policy Violation,grid-substation-srv-047,Firewall
+2026-06-30 10:20:39,Warning,EDR malware detection,Malware,grid-workstation-041,IDS
+2026-06-30 10:23:04,Warning,SSH brute force,Brute Force,grid-workstation-044,Firewall
+2026-06-30 10:42:58,Informational,USB storage connected,Policy Violation,grid-workstation-016,Firewall
+2026-06-30 10:57:01,Informational,Port scan detected,Recon,grid-workstation-034,SIEM
+2026-06-30 12:57:33,Informational,Admin share access,Policy Violation,grid-workstation-022,IDS
+2026-06-30 14:22:45,Warning,EDR malware detection,Malware,grid-substation-srv-038,SIEM
+2026-06-30 14:31:25,Informational,Malicious attachment opened,Phishing,grid-substation-srv-047,EDR
+2026-06-30 15:23:56,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-035,Firewall
+2026-06-30 15:37:27,Warning,Credential phish reported,Phishing,grid-domaincontroller-014,Firewall
+2026-06-30 18:56:15,Warning,Credential phish reported,Phishing,grid-substation-srv-031,IDS
+2026-06-30 19:32:14,Warning,Ransomware behaviour,Malware,grid-workstation-043,Firewall
+2026-07-01 07:07:18,Informational,USB storage connected,Policy Violation,grid-workstation-022,EDR
+2026-07-01 07:47:59,Warning,LDAP reconnaissance,Recon,grid-substation-srv-018,SIEM
+2026-07-01 08:14:02,Informational,USB storage connected,Policy Violation,grid-substation-srv-003,IDS
+2026-07-01 08:47:51,High,Suspicious PowerShell download,Malware,grid-firewall-058,SIEM
+2026-07-01 09:21:52,High,Credential phish reported,Phishing,grid-substation-srv-026,IDS
+2026-07-01 09:24:16,Informational,Directory enumeration,Recon,grid-workstation-012,EDR
+2026-07-01 10:00:52,High,EDR malware detection,Malware,grid-substation-srv-049,EDR
+2026-07-01 10:05:19,Informational,Admin share access,Policy Violation,grid-firewall-058,SIEM
+2026-07-01 10:36:53,Informational,USB storage connected,Policy Violation,grid-workstation-040,EDR
+2026-07-01 11:24:03,Warning,Phishing URL clicked,Phishing,grid-workstation-046,Firewall
+2026-07-01 11:54:29,Warning,Suspicious PowerShell download,Malware,grid-workstation-021,Firewall
+2026-07-01 14:03:22,Warning,Phishing URL clicked,Phishing,grid-workstation-021,SIEM
+2026-07-01 15:51:58,High,Credential phish reported,Phishing,grid-substation-srv-031,Firewall
+2026-07-01 16:26:11,High,Suspicious PowerShell download,Malware,grid-database-033,EDR
+2026-07-01 16:45:10,Informational,Credential phish reported,Phishing,grid-workstation-036,SIEM
+2026-07-01 18:39:55,Warning,Suspicious PowerShell download,Malware,grid-workstation-012,Firewall
+2026-07-01 21:02:34,Warning,EDR malware detection,Malware,grid-websubstation-srv-024,EDR
+2026-07-02 03:38:34,Informational,Unapproved software,Policy Violation,grid-workstation-059,IDS
+2026-07-02 07:20:31,Warning,USB storage connected,Policy Violation,grid-workstation-042,EDR
+2026-07-02 09:03:37,Informational,Large outbound transfer,Data Exfiltration,grid-firewall-005,IDS
+2026-07-02 09:07:02,High,Credential phish reported,Phishing,grid-workstation-019,EDR
+2026-07-02 09:38:00,High,Phishing URL clicked,Phishing,grid-workstation-040,Firewall
+2026-07-02 10:13:08,Informational,Port scan detected,Recon,grid-workstation-019,IDS
+2026-07-02 11:08:10,Warning,Multiple failed logons,Brute Force,grid-workstation-017,SIEM
+2026-07-02 11:17:35,Warning,USB storage connected,Policy Violation,grid-firewall-037,SIEM
+2026-07-02 12:17:04,Warning,Unapproved software,Policy Violation,grid-domaincontroller-014,SIEM
+2026-07-02 13:37:58,Informational,Multiple failed logons,Brute Force,grid-workstation-043,SIEM
+2026-07-02 14:08:04,Informational,Phishing URL clicked,Phishing,grid-substation-srv-047,Firewall
+2026-07-02 14:44:17,Warning,USB storage connected,Policy Violation,grid-substation-srv-049,SIEM
+2026-07-02 15:29:59,Critical,Password spray detected,Brute Force,grid-workstation-019,Firewall
+2026-07-02 16:33:57,Informational,USB storage connected,Policy Violation,grid-database-053,IDS
+2026-07-02 16:56:06,Warning,USB storage connected,Policy Violation,grid-substation-srv-026,SIEM
+2026-07-02 17:14:34,High,Port scan detected,Recon,grid-workstation-042,IDS
+2026-07-02 17:14:56,Warning,Ransomware behaviour,Malware,grid-workstation-017,EDR
+2026-07-02 18:08:51,High,EDR malware detection,Malware,grid-workstation-036,EDR
+2026-07-02 19:53:21,Informational,Port scan detected,Recon,grid-workstation-023,Firewall
+2026-07-02 20:33:55,High,Password spray detected,Brute Force,grid-substation-srv-003,EDR
+2026-07-03 00:36:22,Informational,Unapproved software,Policy Violation,grid-workstation-020,IDS
+2026-07-03 08:59:20,Informational,Credential phish reported,Phishing,grid-workstation-021,IDS
+2026-07-03 09:03:31,High,Ransomware behaviour,Malware,grid-workstation-044,IDS
+2026-07-03 09:17:40,Informational,Directory enumeration,Recon,grid-workstation-017,IDS
+2026-07-03 11:01:31,Informational,Directory enumeration,Recon,grid-workstation-045,SIEM
+2026-07-03 11:28:10,High,Phishing URL clicked,Phishing,grid-scada-hmi-056,EDR
+2026-07-03 13:03:58,Warning,LDAP reconnaissance,Recon,grid-firewall-005,SIEM
+2026-07-03 13:10:55,Warning,Admin share access,Policy Violation,grid-workstation-007,SIEM
+2026-07-03 16:23:46,Critical,Admin share access,Policy Violation,grid-scada-hmi-056,SIEM
+2026-07-03 17:46:45,Warning,Admin share access,Policy Violation,grid-mailsubstation-srv-000,Firewall
+2026-07-04 05:17:01,Informational,Ransomware behaviour,Malware,grid-substation-srv-038,Firewall
+2026-07-04 09:38:22,Warning,Phishing URL clicked,Phishing,grid-workstation-016,IDS
+2026-07-04 09:50:30,High,Suspicious PowerShell download,Malware,grid-substation-srv-050,IDS
+2026-07-04 10:22:13,Warning,Credential phish reported,Phishing,grid-substation-srv-026,EDR
+2026-07-04 10:37:22,High,Credential phish reported,Phishing,grid-workstation-007,SIEM
+2026-07-04 11:07:39,Warning,Admin share access,Policy Violation,grid-websubstation-srv-025,Firewall
+2026-07-04 11:37:08,Warning,Credential phish reported,Phishing,grid-websubstation-srv-024,IDS
+2026-07-04 11:43:59,Informational,Credential phish reported,Phishing,grid-mailsubstation-srv-032,EDR
+2026-07-04 12:43:36,High,Port scan detected,Recon,grid-workstation-054,IDS
+2026-07-04 13:14:36,Warning,Multiple failed logons,Brute Force,grid-workstation-046,SIEM
+2026-07-04 13:51:24,Informational,USB storage connected,Policy Violation,grid-substation-srv-011,Firewall
+2026-07-04 14:31:13,Warning,Directory enumeration,Recon,grid-domaincontroller-014,EDR
+2026-07-04 16:29:22,Informational,Credential phish reported,Phishing,grid-workstation-040,SIEM
+2026-07-04 17:26:40,High,Credential phish reported,Phishing,grid-websubstation-srv-024,EDR
+2026-07-04 17:37:52,Informational,Port scan detected,Recon,grid-workstation-012,SIEM
+2026-07-04 17:42:27,Warning,Admin share access,Policy Violation,grid-workstation-016,SIEM
+2026-07-04 18:31:43,Critical,DNS tunnelling,Data Exfiltration,grid-websubstation-srv-024,IDS
+2026-07-04 18:59:07,Informational,Suspicious PowerShell download,Malware,grid-database-053,IDS
+2026-07-05 06:00:56,Critical,EDR malware detection,Malware,grid-firewall-005,SIEM
+2026-07-05 07:40:22,High,Credential phish reported,Phishing,grid-firewall-058,Firewall
+2026-07-05 08:54:29,Informational,Multiple failed logons,Brute Force,grid-workstation-035,SIEM
+2026-07-05 09:37:41,High,EDR malware detection,Malware,grid-workstation-012,Firewall
+2026-07-05 11:21:15,Informational,Malicious attachment opened,Phishing,grid-websubstation-srv-024,Firewall
+2026-07-05 11:29:38,Warning,Unapproved software,Policy Violation,grid-substation-srv-031,EDR
+2026-07-05 13:46:38,Warning,USB storage connected,Policy Violation,grid-scada-hmi-008,EDR
+2026-07-05 14:34:12,Warning,Phishing URL clicked,Phishing,grid-workstation-059,Firewall
+2026-07-05 14:58:09,Warning,Admin share access,Policy Violation,grid-websubstation-srv-029,SIEM
+2026-07-05 15:11:39,High,Credential phish reported,Phishing,grid-websubstation-srv-025,Firewall
+2026-07-05 17:01:47,Warning,Password spray detected,Brute Force,grid-database-033,Firewall
+2026-07-05 17:14:59,High,Ransomware behaviour,Malware,grid-mailsubstation-srv-032,EDR
+2026-07-05 17:46:11,Informational,Directory enumeration,Recon,grid-scada-hmi-056,IDS
+2026-07-05 18:21:06,High,USB storage connected,Policy Violation,grid-workstation-044,EDR
+2026-07-05 19:34:40,Warning,LDAP reconnaissance,Recon,grid-substation-srv-055,IDS
+2026-07-05 21:46:35,Warning,Ransomware behaviour,Malware,grid-domaincontroller-014,Firewall
+2026-07-05 21:59:01,High,LDAP reconnaissance,Recon,grid-workstation-021,IDS
+2026-07-06 04:14:36,Warning,Malicious attachment opened,Phishing,grid-workstation-040,IDS
+2026-07-06 04:31:08,Warning,Phishing URL clicked,Phishing,grid-workstation-043,IDS
+2026-07-06 07:37:09,Warning,Ransomware behaviour,Malware,grid-websubstation-srv-024,IDS
+2026-07-06 08:04:43,High,SSH brute force,Brute Force,grid-database-033,Firewall
+2026-07-06 08:13:51,Warning,USB storage connected,Policy Violation,grid-workstation-042,EDR
+2026-07-06 08:47:25,High,Password spray detected,Brute Force,grid-workstation-046,Firewall
+2026-07-06 11:01:18,Warning,LDAP reconnaissance,Recon,grid-workstation-021,Firewall
+2026-07-06 12:07:43,High,Phishing URL clicked,Phishing,grid-workstation-012,SIEM
+2026-07-06 12:58:09,Warning,Phishing URL clicked,Phishing,grid-substation-srv-047,IDS
+2026-07-06 13:40:04,High,Admin share access,Policy Violation,grid-workstation-012,SIEM
+2026-07-06 13:47:44,Informational,Admin share access,Policy Violation,grid-substation-srv-011,EDR
+2026-07-06 14:24:11,Informational,Admin share access,Policy Violation,grid-domaincontroller-014,Firewall
+2026-07-06 14:41:10,Warning,Unapproved software,Policy Violation,grid-workstation-030,EDR
+2026-07-06 15:36:11,Warning,Credential phish reported,Phishing,grid-domaincontroller-014,EDR
+2026-07-06 16:42:48,Informational,Directory enumeration,Recon,grid-workstation-035,Firewall
+2026-07-06 17:46:05,Warning,Admin share access,Policy Violation,grid-substation-srv-026,Firewall
+2026-07-07 05:47:26,High,Admin share access,Policy Violation,grid-mailsubstation-srv-000,SIEM
+2026-07-07 08:39:52,High,Ransomware behaviour,Malware,grid-database-002,IDS
+2026-07-07 08:51:33,High,Password spray detected,Brute Force,grid-mailsubstation-srv-032,IDS
+2026-07-07 10:02:38,Warning,Multiple failed logons,Brute Force,grid-workstation-001,IDS
+2026-07-07 11:22:54,Critical,Malicious attachment opened,Phishing,grid-substation-srv-018,Firewall
+2026-07-07 11:23:15,High,Ransomware behaviour,Malware,grid-workstation-046,IDS
+2026-07-07 11:53:27,High,EDR malware detection,Malware,grid-workstation-034,Firewall
+2026-07-07 12:00:07,High,Password spray detected,Brute Force,grid-scada-hmi-008,Firewall
+2026-07-07 12:24:09,Informational,USB storage connected,Policy Violation,grid-workstation-039,EDR
+2026-07-07 13:47:06,Warning,Port scan detected,Recon,grid-workstation-016,IDS
+2026-07-07 14:29:59,High,Credential phish reported,Phishing,grid-substation-srv-047,IDS
+2026-07-07 14:40:44,Informational,USB storage connected,Policy Violation,grid-database-033,EDR
+2026-07-07 15:06:56,High,Credential phish reported,Phishing,grid-workstation-019,Firewall
+2026-07-07 15:57:14,Warning,Admin share access,Policy Violation,grid-substation-srv-003,EDR
+2026-07-07 16:46:59,Warning,EDR malware detection,Malware,grid-database-053,EDR
+2026-07-07 17:20:38,Warning,Credential phish reported,Phishing,grid-domaincontroller-014,IDS
+2026-07-07 17:37:15,Warning,Credential phish reported,Phishing,grid-workstation-009,SIEM
+2026-07-07 19:08:00,Informational,Multiple failed logons,Brute Force,grid-firewall-058,Firewall
+2026-07-07 21:24:57,High,Cloud upload anomaly,Data Exfiltration,grid-substation-srv-018,EDR
+2026-07-07 21:26:55,Warning,Suspicious PowerShell download,Malware,grid-workstation-021,SIEM
+2026-07-07 22:19:08,High,Credential phish reported,Phishing,grid-workstation-057,SIEM
+2026-07-08 08:03:19,Informational,LDAP reconnaissance,Recon,grid-workstation-044,SIEM
+2026-07-08 09:10:19,Informational,SSH brute force,Brute Force,grid-workstation-046,IDS
+2026-07-08 09:38:51,Warning,EDR malware detection,Malware,grid-substation-srv-049,Firewall
+2026-07-08 09:45:08,Informational,Port scan detected,Recon,grid-workstation-022,Firewall
+2026-07-08 10:38:58,High,Cloud upload anomaly,Data Exfiltration,grid-substation-srv-003,IDS
+2026-07-08 10:45:35,Warning,Phishing URL clicked,Phishing,grid-domaincontroller-014,EDR
+2026-07-08 11:12:17,Informational,LDAP reconnaissance,Recon,grid-websubstation-srv-024,EDR
+2026-07-08 11:33:49,Informational,Port scan detected,Recon,grid-substation-srv-031,IDS
+2026-07-08 12:28:53,Informational,Malicious attachment opened,Phishing,grid-scada-hmi-008,SIEM
+2026-07-08 13:09:47,High,Malicious attachment opened,Phishing,grid-mailsubstation-srv-032,SIEM
+2026-07-08 13:24:18,High,Unapproved software,Policy Violation,grid-workstation-021,Firewall
+2026-07-08 13:44:13,Informational,Directory enumeration,Recon,grid-database-053,EDR
+2026-07-08 15:45:01,Informational,LDAP reconnaissance,Recon,grid-workstation-001,Firewall
+2026-07-08 16:38:32,Informational,Suspicious PowerShell download,Malware,grid-workstation-039,EDR
+2026-07-08 17:38:47,Warning,LDAP reconnaissance,Recon,grid-workstation-027,SIEM
+2026-07-08 19:07:13,Warning,Credential phish reported,Phishing,grid-database-033,Firewall
+2026-07-09 00:52:12,Warning,USB storage connected,Policy Violation,grid-workstation-059,EDR
+2026-07-09 08:21:12,High,Ransomware behaviour,Malware,grid-websubstation-srv-025,Firewall
+2026-07-09 10:06:16,Critical,Ransomware behaviour,Malware,grid-workstation-027,SIEM
+2026-07-09 10:06:23,High,Credential phish reported,Phishing,grid-workstation-012,EDR
+2026-07-09 11:49:34,Informational,USB storage connected,Policy Violation,grid-workstation-021,EDR
+2026-07-09 11:56:23,High,Large outbound transfer,Data Exfiltration,grid-workstation-019,IDS
+2026-07-09 12:04:56,Informational,Credential phish reported,Phishing,grid-substation-srv-011,EDR
+2026-07-09 12:31:55,Informational,Suspicious PowerShell download,Malware,grid-substation-srv-018,EDR
+2026-07-09 13:32:11,Warning,EDR malware detection,Malware,grid-workstation-001,EDR
+2026-07-09 13:35:06,High,Malicious attachment opened,Phishing,grid-workstation-019,IDS
+2026-07-09 15:28:18,High,Suspicious PowerShell download,Malware,grid-domaincontroller-014,EDR
+2026-07-09 15:32:21,Informational,Port scan detected,Recon,grid-domaincontroller-014,IDS
+2026-07-09 15:58:23,High,SSH brute force,Brute Force,grid-scada-hmi-008,SIEM
+2026-07-09 19:10:22,Warning,EDR malware detection,Malware,grid-database-053,Firewall
+2026-07-09 19:30:41,High,Password spray detected,Brute Force,grid-workstation-041,IDS
+2026-07-09 19:40:40,Warning,USB storage connected,Policy Violation,grid-firewall-037,SIEM
+2026-07-09 22:27:06,High,Credential phish reported,Phishing,grid-workstation-019,SIEM
+2026-07-10 07:38:43,Warning,EDR malware detection,Malware,grid-scada-hmi-056,SIEM
+2026-07-10 08:15:33,Warning,LDAP reconnaissance,Recon,grid-substation-srv-055,SIEM
+2026-07-10 09:39:00,Warning,DNS tunnelling,Data Exfiltration,grid-firewall-037,EDR
+2026-07-10 10:21:50,Critical,Ransomware behaviour,Malware,grid-scada-hmi-008,Firewall
+2026-07-10 10:51:43,Informational,Directory enumeration,Recon,grid-workstation-021,IDS
+2026-07-10 11:09:00,Warning,Password spray detected,Brute Force,grid-substation-srv-049,EDR
+2026-07-10 12:53:27,High,Credential phish reported,Phishing,grid-mailsubstation-srv-028,IDS
+2026-07-10 13:50:46,Informational,Ransomware behaviour,Malware,grid-firewall-058,EDR
+2026-07-10 13:57:31,Informational,Unapproved software,Policy Violation,grid-workstation-001,EDR
+2026-07-10 14:03:17,Informational,Suspicious PowerShell download,Malware,grid-workstation-030,IDS
+2026-07-10 14:44:47,Informational,Password spray detected,Brute Force,grid-websubstation-srv-024,EDR
+2026-07-10 15:29:28,Informational,Password spray detected,Brute Force,grid-workstation-034,IDS
+2026-07-10 15:45:19,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-048,EDR
+2026-07-10 15:53:17,Informational,Unapproved software,Policy Violation,grid-workstation-040,EDR
+2026-07-10 16:25:49,Informational,Phishing URL clicked,Phishing,grid-domaincontroller-014,Firewall
+2026-07-10 17:59:25,Informational,Credential phish reported,Phishing,grid-firewall-058,IDS
+2026-07-11 02:14:50,Warning,EDR malware detection,Malware,grid-workstation-007,Firewall
+2026-07-11 05:26:41,Warning,EDR malware detection,Malware,grid-substation-srv-011,SIEM
+2026-07-11 06:04:23,Informational,Admin share access,Policy Violation,grid-substation-srv-049,IDS
+2026-07-11 07:24:42,Informational,SSH brute force,Brute Force,grid-scada-hmi-056,EDR
+2026-07-11 09:53:30,High,Credential phish reported,Phishing,grid-websubstation-srv-024,IDS
+2026-07-11 13:19:34,Critical,EDR malware detection,Malware,grid-scada-hmi-008,IDS
+2026-07-11 13:26:21,Warning,Credential phish reported,Phishing,grid-substation-srv-031,EDR
+2026-07-11 14:31:40,Informational,USB storage connected,Policy Violation,grid-workstation-059,Firewall
+2026-07-11 15:28:44,Informational,USB storage connected,Policy Violation,grid-workstation-039,SIEM
+2026-07-11 17:35:52,Informational,USB storage connected,Policy Violation,grid-workstation-059,Firewall
+2026-07-11 18:33:36,High,Multiple failed logons,Brute Force,grid-websubstation-srv-024,IDS
+2026-07-11 18:51:18,Warning,Port scan detected,Recon,grid-mailsubstation-srv-028,EDR
+2026-07-11 19:13:33,High,Multiple failed logons,Brute Force,grid-firewall-037,SIEM
+2026-07-11 19:35:50,High,EDR malware detection,Malware,grid-domaincontroller-014,SIEM
+2026-07-11 19:42:16,High,Suspicious PowerShell download,Malware,grid-workstation-040,IDS
+2026-07-11 20:29:19,Informational,Admin share access,Policy Violation,grid-workstation-040,Firewall
+2026-07-11 20:30:06,Warning,Credential phish reported,Phishing,grid-workstation-007,EDR
+2026-07-11 21:24:53,Informational,Port scan detected,Recon,grid-workstation-046,EDR
+2026-07-12 02:06:30,Informational,Credential phish reported,Phishing,grid-workstation-013,EDR
+2026-07-12 02:27:47,Informational,Port scan detected,Recon,grid-workstation-017,EDR
+2026-07-12 07:10:49,Informational,LDAP reconnaissance,Recon,grid-workstation-004,SIEM
+2026-07-12 08:13:44,Warning,Cloud upload anomaly,Data Exfiltration,grid-workstation-030,EDR
+2026-07-12 08:43:58,Warning,Ransomware behaviour,Malware,grid-workstation-012,EDR
+2026-07-12 08:53:53,Informational,USB storage connected,Policy Violation,grid-substation-srv-011,IDS
+2026-07-12 09:41:36,Warning,Ransomware behaviour,Malware,grid-database-010,SIEM
+2026-07-12 10:59:37,Warning,EDR malware detection,Malware,grid-scada-hmi-056,SIEM
+2026-07-12 11:25:38,High,Credential phish reported,Phishing,grid-substation-srv-003,SIEM
+2026-07-12 11:25:51,Informational,Unapproved software,Policy Violation,grid-database-053,EDR
+2026-07-12 12:02:20,Warning,Malicious attachment opened,Phishing,grid-workstation-019,IDS
+2026-07-12 12:12:12,High,SSH brute force,Brute Force,grid-workstation-022,SIEM
+2026-07-12 12:46:36,Warning,Unapproved software,Policy Violation,grid-mailsubstation-srv-051,Firewall
+2026-07-12 13:09:43,Informational,Password spray detected,Brute Force,grid-websubstation-srv-006,EDR
+2026-07-12 15:07:44,Warning,SSH brute force,Brute Force,grid-websubstation-srv-024,IDS
+2026-07-12 15:11:27,Warning,Malicious attachment opened,Phishing,grid-substation-srv-050,IDS
+2026-07-12 15:57:20,Informational,Directory enumeration,Recon,grid-workstation-044,SIEM
+2026-07-12 20:56:19,Informational,USB storage connected,Policy Violation,grid-workstation-059,Firewall
+2026-07-13 03:15:49,High,DNS tunnelling,Data Exfiltration,grid-workstation-048,IDS
+2026-07-13 07:57:39,Informational,USB storage connected,Policy Violation,grid-mailsubstation-srv-000,Firewall
+2026-07-13 09:01:29,Informational,Port scan detected,Recon,grid-database-033,IDS
+2026-07-13 09:07:59,Informational,Unapproved software,Policy Violation,grid-workstation-030,IDS
+2026-07-13 09:33:31,Warning,Directory enumeration,Recon,grid-workstation-054,Firewall
+2026-07-13 10:25:42,Informational,Admin share access,Policy Violation,grid-workstation-045,EDR
+2026-07-13 10:55:45,Informational,Port scan detected,Recon,grid-websubstation-srv-025,IDS
+2026-07-13 12:09:38,Warning,Credential phish reported,Phishing,grid-database-053,Firewall
+2026-07-13 13:03:37,High,Multiple failed logons,Brute Force,grid-substation-srv-055,EDR
+2026-07-13 13:07:02,Informational,Credential phish reported,Phishing,grid-database-053,IDS
+2026-07-13 13:31:52,High,LDAP reconnaissance,Recon,grid-substation-srv-026,SIEM
+2026-07-13 14:04:38,Informational,Malicious attachment opened,Phishing,grid-database-033,EDR
+2026-07-13 14:34:19,High,Malicious attachment opened,Phishing,grid-database-033,Firewall
+2026-07-13 17:05:18,Warning,Suspicious PowerShell download,Malware,grid-substation-srv-011,IDS
+2026-07-13 17:35:21,Warning,LDAP reconnaissance,Recon,grid-database-033,SIEM
+2026-07-14 05:21:54,Informational,EDR malware detection,Malware,grid-workstation-023,Firewall
+2026-07-14 05:49:16,High,DNS tunnelling,Data Exfiltration,grid-workstation-009,Firewall
+2026-07-14 06:21:06,Warning,Port scan detected,Recon,grid-substation-srv-050,SIEM
+2026-07-14 07:10:48,Critical,Large outbound transfer,Data Exfiltration,grid-workstation-022,EDR
+2026-07-14 08:02:38,High,Ransomware behaviour,Malware,grid-workstation-035,Firewall
+2026-07-14 09:23:15,Informational,Credential phish reported,Phishing,grid-workstation-027,SIEM
+2026-07-14 09:56:21,Informational,Directory enumeration,Recon,grid-workstation-054,Firewall
+2026-07-14 10:16:19,Informational,Admin share access,Policy Violation,grid-substation-srv-015,Firewall
+2026-07-14 10:25:31,Informational,Unapproved software,Policy Violation,grid-substation-srv-003,EDR
+2026-07-14 10:36:09,Warning,LDAP reconnaissance,Recon,grid-workstation-001,Firewall
+2026-07-14 10:57:23,Warning,Phishing URL clicked,Phishing,grid-database-053,Firewall
+2026-07-14 11:02:36,Warning,Admin share access,Policy Violation,grid-substation-srv-047,EDR
+2026-07-14 12:21:26,Informational,Unapproved software,Policy Violation,grid-workstation-013,Firewall
+2026-07-14 14:45:27,Informational,Unapproved software,Policy Violation,grid-workstation-019,Firewall
+2026-07-14 14:52:46,Warning,Unapproved software,Policy Violation,grid-websubstation-srv-024,Firewall
+2026-07-14 14:59:37,Informational,USB storage connected,Policy Violation,grid-workstation-023,Firewall
+2026-07-14 15:10:06,High,USB storage connected,Policy Violation,grid-workstation-046,Firewall
+2026-07-14 15:39:42,Informational,Admin share access,Policy Violation,grid-substation-srv-015,IDS
+2026-07-14 15:56:34,High,EDR malware detection,Malware,grid-workstation-041,IDS
+2026-07-14 16:16:57,Warning,Password spray detected,Brute Force,grid-substation-srv-049,IDS
+2026-07-14 16:28:21,Informational,SSH brute force,Brute Force,grid-workstation-036,SIEM
+2026-07-14 17:14:56,Informational,Phishing URL clicked,Phishing,grid-workstation-057,SIEM
+2026-07-14 20:45:51,Informational,Admin share access,Policy Violation,grid-workstation-023,IDS
+2026-07-14 20:49:26,Warning,Port scan detected,Recon,grid-workstation-034,EDR
+2026-07-14 21:12:07,High,EDR malware detection,Malware,grid-mailsubstation-srv-051,Firewall
+2026-07-14 21:17:36,Warning,SSH brute force,Brute Force,grid-workstation-016,IDS
+2026-07-14 21:58:06,Informational,Admin share access,Policy Violation,grid-workstation-036,Firewall
+2026-07-15 05:38:05,High,Ransomware behaviour,Malware,grid-workstation-034,Firewall
+2026-07-15 07:36:02,Informational,USB storage connected,Policy Violation,grid-workstation-009,EDR
+2026-07-15 08:28:28,Informational,Credential phish reported,Phishing,grid-database-033,EDR
+2026-07-15 09:16:18,Informational,Suspicious PowerShell download,Malware,grid-workstation-023,Firewall
+2026-07-15 09:31:36,High,EDR malware detection,Malware,grid-database-053,IDS
+2026-07-15 10:03:00,Informational,USB storage connected,Policy Violation,grid-workstation-019,IDS
+2026-07-15 10:31:28,High,Credential phish reported,Phishing,grid-firewall-058,IDS
+2026-07-15 10:44:29,Warning,USB storage connected,Policy Violation,grid-scada-hmi-056,Firewall
+2026-07-15 12:23:03,Informational,Directory enumeration,Recon,grid-workstation-048,SIEM
+2026-07-15 15:07:53,Warning,Credential phish reported,Phishing,grid-workstation-019,Firewall
+2026-07-15 15:33:04,Informational,Multiple failed logons,Brute Force,grid-workstation-043,EDR
+2026-07-15 15:37:21,Warning,Malicious attachment opened,Phishing,grid-database-033,IDS
+2026-07-15 16:42:51,Informational,USB storage connected,Policy Violation,grid-workstation-042,EDR
+2026-07-15 17:52:43,High,Port scan detected,Recon,grid-workstation-044,IDS
+2026-07-15 19:01:27,High,Suspicious PowerShell download,Malware,grid-websubstation-srv-024,Firewall
+2026-07-15 19:33:12,Critical,Malicious attachment opened,Phishing,grid-workstation-040,Firewall
+2026-07-15 21:15:59,High,Large outbound transfer,Data Exfiltration,grid-workstation-044,SIEM
+2026-07-16 01:20:26,Warning,EDR malware detection,Malware,grid-substation-srv-003,IDS
+2026-07-16 02:27:23,Warning,Large outbound transfer,Data Exfiltration,grid-substation-srv-031,SIEM
+2026-07-16 07:06:58,Warning,Admin share access,Policy Violation,grid-workstation-012,EDR
+2026-07-16 08:18:55,Warning,Malicious attachment opened,Phishing,grid-workstation-012,SIEM
+2026-07-16 08:28:03,Warning,Port scan detected,Recon,grid-workstation-019,Firewall
+2026-07-16 08:28:29,Informational,SSH brute force,Brute Force,grid-substation-srv-015,EDR
+2026-07-16 09:11:06,Warning,Suspicious PowerShell download,Malware,grid-workstation-012,SIEM
+2026-07-16 10:06:56,High,Ransomware behaviour,Malware,grid-workstation-052,Firewall
+2026-07-16 12:08:48,Informational,Unapproved software,Policy Violation,grid-workstation-046,IDS
+2026-07-16 13:24:49,High,Large outbound transfer,Data Exfiltration,grid-substation-srv-003,SIEM
+2026-07-16 14:34:45,Warning,Directory enumeration,Recon,grid-workstation-007,IDS
+2026-07-16 14:56:32,Warning,Password spray detected,Brute Force,grid-workstation-054,SIEM
+2026-07-16 14:58:20,Warning,Ransomware behaviour,Malware,grid-substation-srv-055,SIEM
+2026-07-16 16:23:24,High,SSH brute force,Brute Force,grid-workstation-027,IDS
+2026-07-16 18:28:27,High,Phishing URL clicked,Phishing,grid-database-033,SIEM
+2026-07-17 00:01:50,Warning,Port scan detected,Recon,grid-workstation-042,IDS
+2026-07-17 01:44:08,High,EDR malware detection,Malware,grid-database-033,SIEM
+2026-07-17 05:17:13,Informational,Multiple failed logons,Brute Force,grid-substation-srv-018,SIEM
+2026-07-17 07:36:13,High,Credential phish reported,Phishing,grid-substation-srv-050,EDR
+2026-07-17 10:02:13,Informational,Phishing URL clicked,Phishing,grid-substation-srv-031,Firewall
+2026-07-17 10:12:14,Warning,Port scan detected,Recon,grid-substation-srv-031,SIEM
+2026-07-17 10:54:04,Informational,Directory enumeration,Recon,grid-mailsubstation-srv-051,EDR
+2026-07-17 12:17:15,Informational,LDAP reconnaissance,Recon,grid-websubstation-srv-024,Firewall
+2026-07-17 12:23:37,Informational,Phishing URL clicked,Phishing,grid-mailsubstation-srv-051,Firewall
+2026-07-17 15:27:01,Informational,Directory enumeration,Recon,grid-workstation-027,SIEM
+2026-07-17 18:04:46,Warning,Directory enumeration,Recon,grid-substation-srv-050,Firewall
+2026-07-17 18:15:54,Informational,EDR malware detection,Malware,grid-database-033,SIEM
+2026-07-17 22:10:47,Warning,SSH brute force,Brute Force,grid-websubstation-srv-029,SIEM
+2026-07-17 23:24:54,Warning,Credential phish reported,Phishing,grid-websubstation-srv-029,IDS
+2026-07-18 02:33:35,High,Unapproved software,Policy Violation,grid-substation-srv-018,IDS
+2026-07-18 06:34:07,Warning,SSH brute force,Brute Force,grid-workstation-039,EDR
+2026-07-18 08:01:48,Informational,Multiple failed logons,Brute Force,grid-workstation-054,EDR
+2026-07-18 08:05:21,Informational,Port scan detected,Recon,grid-scada-hmi-008,EDR
+2026-07-18 11:06:03,Warning,Phishing URL clicked,Phishing,grid-scada-hmi-008,SIEM
+2026-07-18 12:25:59,High,Cloud upload anomaly,Data Exfiltration,grid-websubstation-srv-029,IDS
+2026-07-18 13:03:58,Informational,Admin share access,Policy Violation,grid-firewall-058,IDS
+2026-07-18 13:23:12,Warning,EDR malware detection,Malware,grid-workstation-016,SIEM
+2026-07-18 13:44:54,Informational,Directory enumeration,Recon,grid-workstation-044,IDS
+2026-07-18 14:13:24,Warning,Directory enumeration,Recon,grid-database-033,SIEM
+2026-07-18 15:20:26,Warning,Suspicious PowerShell download,Malware,grid-scada-hmi-056,EDR
+2026-07-18 16:16:55,Warning,Unapproved software,Policy Violation,grid-substation-srv-049,Firewall
+2026-07-18 16:49:57,Warning,Suspicious PowerShell download,Malware,grid-substation-srv-031,SIEM
+2026-07-18 16:58:31,Warning,Unapproved software,Policy Violation,grid-websubstation-srv-025,EDR
+2026-07-18 17:54:19,High,EDR malware detection,Malware,grid-database-033,SIEM
+2026-07-18 18:23:53,Warning,Port scan detected,Recon,grid-firewall-005,EDR
+2026-07-18 18:25:26,Warning,Multiple failed logons,Brute Force,grid-firewall-005,EDR
+2026-07-18 21:19:07,Critical,Password spray detected,Brute Force,grid-mailsubstation-srv-028,SIEM
+2026-07-18 21:43:03,Informational,Directory enumeration,Recon,grid-firewall-058,SIEM
+2026-07-19 07:37:25,Warning,Admin share access,Policy Violation,grid-substation-srv-018,SIEM
+2026-07-19 07:37:32,High,Credential phish reported,Phishing,grid-workstation-042,IDS
+2026-07-19 08:08:53,Warning,Phishing URL clicked,Phishing,grid-workstation-004,SIEM
+2026-07-19 08:24:21,Informational,Admin share access,Policy Violation,grid-firewall-037,Firewall
+2026-07-19 09:15:26,Critical,Credential phish reported,Phishing,grid-workstation-023,Firewall
+2026-07-19 10:02:23,Informational,Password spray detected,Brute Force,grid-firewall-005,EDR
+2026-07-19 10:27:54,Informational,Malicious attachment opened,Phishing,grid-scada-hmi-056,Firewall
+2026-07-19 11:24:20,Warning,Admin share access,Policy Violation,grid-workstation-022,Firewall
+2026-07-19 11:25:52,Warning,Credential phish reported,Phishing,grid-substation-srv-038,EDR
+2026-07-19 11:30:52,Warning,Unapproved software,Policy Violation,grid-workstation-012,IDS
+2026-07-19 11:58:01,Informational,SSH brute force,Brute Force,grid-workstation-057,Firewall
+2026-07-19 12:37:10,Warning,EDR malware detection,Malware,grid-workstation-004,SIEM
+2026-07-19 12:50:57,Warning,SSH brute force,Brute Force,grid-database-033,EDR
+2026-07-19 12:56:13,Informational,Directory enumeration,Recon,grid-substation-srv-050,EDR
+2026-07-19 12:56:49,Warning,Suspicious PowerShell download,Malware,grid-scada-hmi-008,Firewall
+2026-07-19 13:47:03,Warning,Ransomware behaviour,Malware,grid-scada-hmi-008,Firewall
+2026-07-19 14:12:33,Informational,Admin share access,Policy Violation,grid-workstation-043,SIEM
+2026-07-19 14:55:11,Informational,Password spray detected,Brute Force,grid-workstation-023,SIEM
+2026-07-19 15:10:59,High,Credential phish reported,Phishing,grid-workstation-022,SIEM
+2026-07-19 15:47:17,Warning,Unapproved software,Policy Violation,grid-firewall-005,Firewall
+2026-07-19 16:04:22,Warning,Suspicious PowerShell download,Malware,grid-workstation-057,IDS
+2026-07-19 19:21:57,Informational,Password spray detected,Brute Force,grid-domaincontroller-014,IDS
+2026-07-19 22:06:34,Warning,Port scan detected,Recon,grid-workstation-019,IDS
+2026-07-19 22:26:14,Informational,Port scan detected,Recon,grid-scada-hmi-008,EDR
+2026-07-19 23:22:40,Warning,EDR malware detection,Malware,grid-domaincontroller-014,Firewall
+2026-07-20 06:25:21,High,USB storage connected,Policy Violation,grid-workstation-041,EDR
+2026-07-20 07:43:16,Warning,Phishing URL clicked,Phishing,grid-scada-hmi-056,Firewall
+2026-07-20 08:23:52,Informational,USB storage connected,Policy Violation,grid-workstation-057,EDR
+2026-07-20 08:27:09,High,Password spray detected,Brute Force,grid-workstation-046,SIEM
+2026-07-20 08:28:54,Informational,Unapproved software,Policy Violation,grid-workstation-001,Firewall
+2026-07-20 10:13:07,Informational,LDAP reconnaissance,Recon,grid-substation-srv-026,Firewall
+2026-07-20 10:43:44,Warning,Ransomware behaviour,Malware,grid-workstation-052,Firewall
+2026-07-20 10:45:18,Informational,USB storage connected,Policy Violation,grid-websubstation-srv-029,IDS
+2026-07-20 10:46:16,Warning,Credential phish reported,Phishing,grid-workstation-039,Firewall
+2026-07-20 12:50:30,Informational,Ransomware behaviour,Malware,grid-workstation-048,Firewall
+2026-07-20 13:46:19,Warning,Port scan detected,Recon,grid-websubstation-srv-006,SIEM
+2026-07-20 16:20:27,Informational,Port scan detected,Recon,grid-workstation-013,SIEM
+2026-07-20 17:47:04,Informational,USB storage connected,Policy Violation,grid-workstation-017,Firewall
+2026-07-20 19:09:55,Warning,Credential phish reported,Phishing,grid-substation-srv-018,Firewall
+2026-07-20 19:49:41,Informational,Phishing URL clicked,Phishing,grid-workstation-045,IDS
+2026-07-21 04:43:04,Informational,LDAP reconnaissance,Recon,grid-firewall-005,IDS
+2026-07-21 05:48:31,Warning,LDAP reconnaissance,Recon,grid-workstation-001,Firewall
+2026-07-21 08:30:14,Informational,EDR malware detection,Malware,grid-domaincontroller-014,EDR
+2026-07-21 08:33:51,Warning,Directory enumeration,Recon,grid-substation-srv-031,IDS
+2026-07-21 09:26:07,Warning,Suspicious PowerShell download,Malware,grid-workstation-019,SIEM
+2026-07-21 10:52:46,Warning,Ransomware behaviour,Malware,grid-workstation-059,SIEM
+2026-07-21 10:58:17,Warning,SSH brute force,Brute Force,grid-scada-hmi-008,IDS
+2026-07-21 11:53:03,Informational,USB storage connected,Policy Violation,grid-firewall-037,Firewall
+2026-07-21 13:03:28,Warning,Malicious attachment opened,Phishing,grid-workstation-023,EDR
+2026-07-21 13:04:54,Warning,Phishing URL clicked,Phishing,grid-domaincontroller-014,IDS
+2026-07-21 13:52:24,High,Ransomware behaviour,Malware,grid-substation-srv-049,Firewall
+2026-07-21 14:32:33,High,SSH brute force,Brute Force,grid-mailsubstation-srv-051,EDR
+2026-07-21 14:39:44,Informational,LDAP reconnaissance,Recon,grid-workstation-048,EDR
+2026-07-21 17:10:53,Informational,Phishing URL clicked,Phishing,grid-workstation-039,Firewall
+2026-07-21 18:23:13,Informational,USB storage connected,Policy Violation,grid-workstation-036,SIEM
+2026-07-21 18:33:31,Informational,Ransomware behaviour,Malware,grid-substation-srv-047,IDS
+2026-07-22 01:07:13,Informational,Credential phish reported,Phishing,grid-substation-srv-018,Firewall
+2026-07-22 04:17:49,Informational,USB storage connected,Policy Violation,grid-workstation-020,SIEM
+2026-07-22 06:05:37,Informational,Phishing URL clicked,Phishing,grid-workstation-034,Firewall
+2026-07-22 07:11:08,Warning,EDR malware detection,Malware,grid-scada-hmi-056,IDS
+2026-07-22 07:51:56,Warning,Phishing URL clicked,Phishing,grid-substation-srv-050,EDR
+2026-07-22 08:11:46,Warning,Password spray detected,Brute Force,grid-firewall-058,EDR
+2026-07-22 09:20:53,High,Unapproved software,Policy Violation,grid-websubstation-srv-006,Firewall
+2026-07-22 09:54:24,Warning,USB storage connected,Policy Violation,grid-database-033,Firewall
+2026-07-22 10:34:56,Informational,Directory enumeration,Recon,grid-substation-srv-047,EDR
+2026-07-22 11:01:55,Warning,SSH brute force,Brute Force,grid-database-053,EDR
+2026-07-22 11:31:38,Informational,Multiple failed logons,Brute Force,grid-scada-hmi-056,EDR
+2026-07-22 11:48:44,Warning,Large outbound transfer,Data Exfiltration,grid-workstation-009,IDS
+2026-07-22 11:51:18,Informational,SSH brute force,Brute Force,grid-substation-srv-026,Firewall
+2026-07-22 13:34:36,Informational,Port scan detected,Recon,grid-workstation-017,EDR
+2026-07-22 14:29:08,Informational,Port scan detected,Recon,grid-firewall-005,IDS
+2026-07-22 14:37:28,High,Cloud upload anomaly,Data Exfiltration,grid-substation-srv-015,SIEM
+2026-07-22 14:38:29,Informational,Directory enumeration,Recon,grid-scada-hmi-056,Firewall
+2026-07-22 14:44:55,High,Malicious attachment opened,Phishing,grid-substation-srv-050,EDR
+2026-07-22 15:33:54,Critical,Suspicious PowerShell download,Malware,grid-firewall-005,Firewall
+2026-07-22 15:47:14,High,Ransomware behaviour,Malware,grid-workstation-045,SIEM
+2026-07-22 17:56:31,Warning,Suspicious PowerShell download,Malware,grid-database-033,EDR
+2026-07-22 19:42:06,Warning,Password spray detected,Brute Force,grid-firewall-005,SIEM
+2026-07-22 19:50:45,Warning,Malicious attachment opened,Phishing,grid-workstation-045,Firewall
+2026-07-22 20:32:02,Informational,Multiple failed logons,Brute Force,grid-workstation-004,IDS
+2026-07-23 01:18:05,Warning,Phishing URL clicked,Phishing,grid-workstation-016,Firewall
+2026-07-23 06:37:43,Informational,Unapproved software,Policy Violation,grid-workstation-036,Firewall
+2026-07-23 06:39:00,Warning,Admin share access,Policy Violation,grid-substation-srv-018,SIEM
+2026-07-23 07:37:26,Informational,LDAP reconnaissance,Recon,grid-scada-hmi-056,EDR
+2026-07-23 07:53:18,Warning,Directory enumeration,Recon,grid-workstation-054,IDS
+2026-07-23 09:20:31,Warning,Password spray detected,Brute Force,grid-workstation-043,SIEM
+2026-07-23 10:30:21,Informational,USB storage connected,Policy Violation,grid-substation-srv-050,SIEM
+2026-07-23 12:49:15,Warning,Malicious attachment opened,Phishing,grid-workstation-027,Firewall
+2026-07-23 14:30:10,Warning,Unapproved software,Policy Violation,grid-workstation-042,Firewall
+2026-07-23 14:51:01,Informational,Phishing URL clicked,Phishing,grid-workstation-046,EDR
+2026-07-23 15:39:25,Warning,Phishing URL clicked,Phishing,grid-workstation-016,Firewall
+2026-07-23 15:50:24,High,Multiple failed logons,Brute Force,grid-workstation-057,Firewall
+2026-07-23 16:37:48,Informational,USB storage connected,Policy Violation,grid-workstation-039,Firewall
+2026-07-23 17:14:01,Warning,Admin share access,Policy Violation,grid-database-010,EDR
+2026-07-23 17:23:39,High,Ransomware behaviour,Malware,grid-database-033,EDR
+2026-07-23 17:48:53,Warning,Malicious attachment opened,Phishing,grid-workstation-054,Firewall
+2026-07-23 21:35:37,Informational,Unapproved software,Policy Violation,grid-workstation-059,EDR
+2026-07-24 08:19:03,High,Admin share access,Policy Violation,grid-substation-srv-049,SIEM
+2026-07-24 09:29:07,Informational,Port scan detected,Recon,grid-firewall-005,EDR
+2026-07-24 10:01:41,Warning,Port scan detected,Recon,grid-workstation-039,IDS
+2026-07-24 10:11:14,High,Port scan detected,Recon,grid-websubstation-srv-024,IDS
+2026-07-24 11:06:08,High,Malicious attachment opened,Phishing,grid-workstation-035,SIEM
+2026-07-24 11:33:37,Informational,Directory enumeration,Recon,grid-websubstation-srv-024,Firewall
+2026-07-24 12:30:53,Informational,Directory enumeration,Recon,grid-mailsubstation-srv-000,IDS
+2026-07-24 12:54:50,Warning,Ransomware behaviour,Malware,grid-workstation-004,EDR
+2026-07-24 12:58:19,High,EDR malware detection,Malware,grid-workstation-030,EDR
+2026-07-24 13:21:34,Informational,Admin share access,Policy Violation,grid-domaincontroller-014,IDS
+2026-07-24 14:21:37,Critical,DNS tunnelling,Data Exfiltration,grid-substation-srv-038,SIEM
+2026-07-24 15:18:37,Informational,Admin share access,Policy Violation,grid-workstation-004,EDR
+2026-07-24 16:16:54,High,Credential phish reported,Phishing,grid-websubstation-srv-006,EDR
+2026-07-24 16:39:08,Warning,Admin share access,Policy Violation,grid-workstation-021,EDR
+2026-07-24 17:33:18,High,Phishing URL clicked,Phishing,grid-database-033,EDR
+2026-07-24 18:33:26,High,EDR malware detection,Malware,grid-websubstation-srv-024,Firewall
+2026-07-24 19:46:50,Informational,Unapproved software,Policy Violation,grid-domaincontroller-014,Firewall
+2026-07-24 20:57:04,Critical,Malicious attachment opened,Phishing,grid-substation-srv-003,IDS
+2026-07-24 21:43:33,High,LDAP reconnaissance,Recon,grid-workstation-027,Firewall
+2026-07-25 01:35:51,Informational,Unapproved software,Policy Violation,grid-domaincontroller-014,Firewall
+2026-07-25 07:54:17,Warning,EDR malware detection,Malware,grid-websubstation-srv-025,EDR
+2026-07-25 08:17:02,Informational,Suspicious PowerShell download,Malware,grid-mailsubstation-srv-032,Firewall
+2026-07-25 08:40:49,Informational,Port scan detected,Recon,grid-workstation-007,IDS
+2026-07-25 09:36:03,Warning,LDAP reconnaissance,Recon,grid-database-010,IDS
+2026-07-25 09:39:28,Warning,Admin share access,Policy Violation,grid-substation-srv-050,EDR
+2026-07-25 10:35:06,High,Password spray detected,Brute Force,grid-workstation-019,Firewall
+2026-07-25 11:04:23,Informational,Password spray detected,Brute Force,grid-scada-hmi-056,SIEM
+2026-07-25 12:13:38,High,Suspicious PowerShell download,Malware,grid-websubstation-srv-006,IDS
+2026-07-25 13:27:30,Warning,Admin share access,Policy Violation,grid-workstation-017,SIEM
+2026-07-25 13:59:37,Warning,Admin share access,Policy Violation,grid-websubstation-srv-025,IDS
+2026-07-25 14:30:29,Warning,Password spray detected,Brute Force,grid-websubstation-srv-006,Firewall
+2026-07-25 15:19:10,Informational,SSH brute force,Brute Force,grid-workstation-001,EDR
+2026-07-25 15:44:44,Informational,Directory enumeration,Recon,grid-workstation-021,IDS
+2026-07-25 15:59:27,High,Port scan detected,Recon,grid-firewall-037,SIEM
+2026-07-25 16:41:35,Informational,Directory enumeration,Recon,grid-substation-srv-047,EDR
+2026-07-25 16:48:52,Warning,Large outbound transfer,Data Exfiltration,grid-workstation-001,SIEM
+2026-07-25 18:36:47,Warning,LDAP reconnaissance,Recon,grid-firewall-005,Firewall
+2026-07-25 21:41:27,Informational,LDAP reconnaissance,Recon,grid-mailsubstation-srv-028,SIEM
+2026-07-26 03:14:12,High,Credential phish reported,Phishing,grid-scada-hmi-056,EDR
+2026-07-26 06:19:57,Warning,USB storage connected,Policy Violation,grid-workstation-059,Firewall
+2026-07-26 08:14:17,Informational,Phishing URL clicked,Phishing,grid-workstation-057,EDR
+2026-07-26 08:36:47,Warning,Credential phish reported,Phishing,grid-websubstation-srv-025,Firewall
+2026-07-26 08:59:00,Warning,SSH brute force,Brute Force,grid-workstation-021,EDR
+2026-07-26 09:43:11,High,EDR malware detection,Malware,grid-websubstation-srv-024,EDR
+2026-07-26 10:07:51,Warning,Malicious attachment opened,Phishing,grid-database-002,IDS
+2026-07-26 11:20:51,Informational,EDR malware detection,Malware,grid-workstation-035,Firewall
+2026-07-26 11:35:27,Warning,Ransomware behaviour,Malware,grid-websubstation-srv-029,SIEM
+2026-07-26 11:53:49,Informational,Multiple failed logons,Brute Force,grid-substation-srv-026,IDS
+2026-07-26 12:58:14,Warning,Phishing URL clicked,Phishing,grid-workstation-040,SIEM
+2026-07-26 13:09:22,Informational,Admin share access,Policy Violation,grid-domaincontroller-014,IDS
+2026-07-26 13:18:17,Informational,Phishing URL clicked,Phishing,grid-substation-srv-011,SIEM
+2026-07-26 14:32:59,Informational,Phishing URL clicked,Phishing,grid-substation-srv-031,EDR
+2026-07-26 14:56:40,Warning,SSH brute force,Brute Force,grid-workstation-046,IDS
+2026-07-26 15:54:21,Warning,Password spray detected,Brute Force,grid-substation-srv-050,Firewall
+2026-07-26 16:25:14,High,Password spray detected,Brute Force,grid-substation-srv-003,IDS
+2026-07-26 19:48:44,Warning,Credential phish reported,Phishing,grid-workstation-020,IDS
+2026-07-26 20:38:51,Critical,Multiple failed logons,Brute Force,grid-substation-srv-055,EDR
+2026-07-27 07:18:11,Critical,DNS tunnelling,Data Exfiltration,grid-database-053,IDS
+2026-07-27 07:36:01,Warning,Credential phish reported,Phishing,grid-substation-srv-038,Firewall
+2026-07-27 07:59:56,Warning,Port scan detected,Recon,grid-substation-srv-015,IDS
+2026-07-27 09:35:25,Informational,Unapproved software,Policy Violation,grid-database-033,EDR
+2026-07-27 10:38:54,Informational,LDAP reconnaissance,Recon,grid-workstation-041,IDS
+2026-07-27 11:36:06,Informational,Admin share access,Policy Violation,grid-websubstation-srv-024,EDR
+2026-07-27 12:24:19,High,SSH brute force,Brute Force,grid-substation-srv-018,EDR
+2026-07-27 13:04:37,Informational,Admin share access,Policy Violation,grid-scada-hmi-008,Firewall
+2026-07-27 13:25:41,Informational,Admin share access,Policy Violation,grid-workstation-012,SIEM
+2026-07-27 14:23:33,Informational,Unapproved software,Policy Violation,grid-workstation-016,EDR
+2026-07-27 15:00:59,High,Suspicious PowerShell download,Malware,grid-workstation-021,EDR
+2026-07-27 18:09:23,Informational,Password spray detected,Brute Force,grid-mailsubstation-srv-028,IDS
+2026-07-27 18:42:27,Informational,USB storage connected,Policy Violation,grid-workstation-017,Firewall
+2026-07-27 19:36:32,Informational,Admin share access,Policy Violation,grid-workstation-013,IDS
+2026-07-27 20:20:36,Informational,Port scan detected,Recon,grid-substation-srv-026,EDR
+2026-07-28 07:48:05,Warning,Credential phish reported,Phishing,grid-database-002,SIEM
+2026-07-28 08:22:15,Warning,Credential phish reported,Phishing,grid-workstation-057,SIEM
+2026-07-28 10:36:17,Informational,LDAP reconnaissance,Recon,grid-substation-srv-047,SIEM
+2026-07-28 13:14:34,High,Phishing URL clicked,Phishing,grid-scada-hmi-008,EDR
+2026-07-28 14:34:41,Warning,Password spray detected,Brute Force,grid-substation-srv-055,SIEM
+2026-07-28 14:47:30,Informational,Admin share access,Policy Violation,grid-substation-srv-018,IDS
+2026-07-28 15:07:58,Warning,Suspicious PowerShell download,Malware,grid-workstation-001,Firewall
+2026-07-28 15:17:13,Warning,Suspicious PowerShell download,Malware,grid-workstation-021,IDS
+2026-07-28 15:35:11,Informational,Port scan detected,Recon,grid-firewall-005,IDS
+2026-07-28 15:50:22,Informational,Directory enumeration,Recon,grid-scada-hmi-056,Firewall
+2026-07-28 16:41:11,High,Password spray detected,Brute Force,grid-workstation-057,SIEM
+2026-07-28 17:51:30,Informational,Phishing URL clicked,Phishing,grid-workstation-043,SIEM
+2026-07-28 18:00:53,Warning,Malicious attachment opened,Phishing,grid-workstation-036,Firewall
+2026-07-28 19:27:52,Warning,Unapproved software,Policy Violation,grid-workstation-045,EDR
+2026-07-28 21:35:35,Informational,Port scan detected,Recon,grid-workstation-020,IDS
+2026-07-28 22:48:56,Informational,Unapproved software,Policy Violation,grid-websubstation-srv-029,EDR
+2026-07-28 22:56:43,Warning,Phishing URL clicked,Phishing,grid-database-010,EDR
+2026-07-29 03:01:39,Informational,Malicious attachment opened,Phishing,grid-substation-srv-038,IDS
+2026-07-29 08:38:39,Informational,Malicious attachment opened,Phishing,grid-scada-hmi-008,SIEM
+2026-07-29 08:53:32,Critical,Port scan detected,Recon,grid-workstation-052,EDR
+2026-07-29 10:59:37,Warning,Credential phish reported,Phishing,grid-workstation-021,EDR
+2026-07-29 11:18:52,Warning,Password spray detected,Brute Force,grid-workstation-043,IDS
+2026-07-29 13:13:02,High,EDR malware detection,Malware,grid-database-053,Firewall
+2026-07-29 13:32:17,Informational,Multiple failed logons,Brute Force,grid-firewall-037,IDS
+2026-07-29 14:29:21,Informational,Unapproved software,Policy Violation,grid-database-002,SIEM
+2026-07-29 15:04:35,Informational,Admin share access,Policy Violation,grid-scada-hmi-056,EDR
+2026-07-29 15:21:12,Informational,Directory enumeration,Recon,grid-mailsubstation-srv-000,EDR
+2026-07-29 16:09:03,Informational,LDAP reconnaissance,Recon,grid-websubstation-srv-029,IDS
+2026-07-29 16:18:05,High,Directory enumeration,Recon,grid-firewall-058,SIEM
+2026-07-29 16:51:01,Warning,Port scan detected,Recon,grid-workstation-040,SIEM
+2026-07-29 17:02:08,Warning,USB storage connected,Policy Violation,grid-database-002,SIEM
+2026-07-29 17:49:56,Informational,LDAP reconnaissance,Recon,grid-workstation-046,Firewall
+2026-07-29 18:23:16,Informational,EDR malware detection,Malware,grid-firewall-058,SIEM
+2026-07-30 03:02:46,Warning,EDR malware detection,Malware,grid-domaincontroller-014,SIEM
+2026-07-30 06:05:32,Warning,USB storage connected,Policy Violation,grid-substation-srv-050,SIEM
+2026-07-30 07:11:38,Critical,Directory enumeration,Recon,grid-websubstation-srv-006,IDS
+2026-07-30 08:32:15,Informational,Unapproved software,Policy Violation,grid-workstation-040,Firewall
+2026-07-30 08:58:22,Informational,Password spray detected,Brute Force,grid-substation-srv-011,Firewall
+2026-07-30 11:19:28,Informational,Credential phish reported,Phishing,grid-workstation-007,IDS
+2026-07-30 12:29:37,Warning,Unapproved software,Policy Violation,grid-scada-hmi-056,EDR
+2026-07-30 14:55:38,High,LDAP reconnaissance,Recon,grid-database-033,SIEM
+2026-07-30 18:34:44,Informational,Unapproved software,Policy Violation,grid-database-033,SIEM
+2026-07-30 21:53:03,Warning,Admin share access,Policy Violation,grid-workstation-044,IDS
+2026-07-31 00:22:07,Informational,Admin share access,Policy Violation,grid-substation-srv-050,EDR
+2026-07-31 07:15:21,High,Password spray detected,Brute Force,grid-workstation-027,IDS
+2026-07-31 07:26:06,Informational,Admin share access,Policy Violation,grid-workstation-045,SIEM
+2026-07-31 07:31:41,Critical,Cloud upload anomaly,Data Exfiltration,grid-workstation-022,Firewall
+2026-07-31 08:43:31,Informational,LDAP reconnaissance,Recon,grid-substation-srv-015,EDR
+2026-07-31 08:47:25,Informational,Port scan detected,Recon,grid-workstation-001,IDS
+2026-07-31 09:07:46,Warning,Ransomware behaviour,Malware,grid-substation-srv-026,IDS
+2026-07-31 09:30:10,Warning,Phishing URL clicked,Phishing,grid-firewall-058,EDR
+2026-07-31 10:00:26,Warning,LDAP reconnaissance,Recon,grid-workstation-052,IDS
+2026-07-31 11:02:58,Informational,Unapproved software,Policy Violation,grid-substation-srv-047,EDR
+2026-07-31 11:38:57,Informational,Admin share access,Policy Violation,grid-workstation-030,IDS
+2026-07-31 12:38:19,High,DNS tunnelling,Data Exfiltration,grid-database-033,EDR
+2026-07-31 12:40:00,High,EDR malware detection,Malware,grid-substation-srv-015,IDS
+2026-07-31 14:31:59,Informational,Malicious attachment opened,Phishing,grid-websubstation-srv-006,IDS
+2026-07-31 14:49:39,Informational,Port scan detected,Recon,grid-firewall-058,EDR
+2026-07-31 16:52:13,Warning,Credential phish reported,Phishing,grid-workstation-039,SIEM
+2026-07-31 21:30:06,High,Phishing URL clicked,Phishing,grid-workstation-023,IDS
+2026-07-31 22:44:46,Informational,Unapproved software,Policy Violation,grid-database-033,Firewall
+2026-08-01 00:28:10,Informational,Admin share access,Policy Violation,grid-workstation-042,EDR
+2026-08-01 02:14:48,Informational,Unapproved software,Policy Violation,grid-workstation-044,EDR
+2026-08-01 06:11:59,Informational,Admin share access,Policy Violation,grid-substation-srv-049,SIEM
+2026-08-01 06:42:47,Informational,LDAP reconnaissance,Recon,grid-firewall-005,SIEM
+2026-08-01 07:26:03,Warning,SSH brute force,Brute Force,grid-workstation-057,EDR
+2026-08-01 07:54:29,Informational,Phishing URL clicked,Phishing,grid-database-033,SIEM
+2026-08-01 08:55:10,Critical,EDR malware detection,Malware,grid-workstation-030,EDR
+2026-08-01 09:30:00,Warning,SSH brute force,Brute Force,grid-substation-srv-038,SIEM
+2026-08-01 09:33:52,High,Ransomware behaviour,Malware,grid-substation-srv-018,IDS
+2026-08-01 10:23:21,High,Port scan detected,Recon,grid-substation-srv-018,EDR
+2026-08-01 10:32:43,Warning,Admin share access,Policy Violation,grid-workstation-052,EDR
+2026-08-01 11:37:44,Informational,Port scan detected,Recon,grid-substation-srv-038,IDS
+2026-08-01 12:25:43,Warning,Multiple failed logons,Brute Force,grid-firewall-005,SIEM
+2026-08-01 12:34:24,Informational,SSH brute force,Brute Force,grid-workstation-001,EDR
+2026-08-01 13:06:29,Informational,Unapproved software,Policy Violation,grid-substation-srv-050,Firewall
+2026-08-01 13:40:30,Informational,Directory enumeration,Recon,grid-mailsubstation-srv-032,SIEM
+2026-08-01 14:50:01,Informational,LDAP reconnaissance,Recon,grid-workstation-016,EDR
+2026-08-01 15:30:31,Critical,Ransomware behaviour,Malware,grid-workstation-057,SIEM
+2026-08-01 16:50:46,Critical,Phishing URL clicked,Phishing,grid-substation-srv-050,EDR
+2026-08-01 16:56:04,Informational,Port scan detected,Recon,grid-workstation-012,Firewall
+2026-08-01 17:11:40,Warning,Phishing URL clicked,Phishing,grid-scada-hmi-056,IDS
+2026-08-01 20:59:18,High,Malicious attachment opened,Phishing,grid-substation-srv-038,SIEM
+2026-08-02 00:37:29,High,EDR malware detection,Malware,grid-websubstation-srv-006,SIEM
+2026-08-02 05:33:56,Warning,Multiple failed logons,Brute Force,grid-workstation-034,EDR
+2026-08-02 05:34:31,Warning,Multiple failed logons,Brute Force,grid-workstation-009,EDR
+2026-08-02 06:23:10,Informational,Ransomware behaviour,Malware,grid-workstation-039,IDS
+2026-08-02 09:00:38,Warning,Phishing URL clicked,Phishing,grid-firewall-005,SIEM
+2026-08-02 09:08:56,Informational,USB storage connected,Policy Violation,grid-database-053,EDR
+2026-08-02 09:20:19,Warning,Suspicious PowerShell download,Malware,grid-workstation-042,SIEM
+2026-08-02 10:45:37,High,Multiple failed logons,Brute Force,grid-database-033,IDS
+2026-08-02 11:44:06,Warning,Phishing URL clicked,Phishing,grid-workstation-044,Firewall
+2026-08-02 12:01:34,High,Directory enumeration,Recon,grid-substation-srv-011,Firewall
+2026-08-02 12:29:37,Warning,Unapproved software,Policy Violation,grid-workstation-030,SIEM
+2026-08-02 13:01:35,Warning,Credential phish reported,Phishing,grid-workstation-044,SIEM
+2026-08-02 15:06:32,Informational,Malicious attachment opened,Phishing,grid-workstation-022,Firewall
+2026-08-02 18:17:43,High,Malicious attachment opened,Phishing,grid-substation-srv-050,Firewall
+2026-08-02 20:10:08,Warning,Credential phish reported,Phishing,grid-substation-srv-018,SIEM
+2026-08-02 21:22:13,Informational,Admin share access,Policy Violation,grid-substation-srv-038,Firewall
+2026-08-03 06:07:15,Warning,LDAP reconnaissance,Recon,grid-database-053,EDR
+2026-08-03 10:04:23,Critical,Suspicious PowerShell download,Malware,grid-substation-srv-015,SIEM
+2026-08-03 12:43:46,High,Port scan detected,Recon,grid-substation-srv-026,Firewall
+2026-08-03 14:17:41,Warning,LDAP reconnaissance,Recon,grid-substation-srv-015,EDR
+2026-08-03 14:59:21,Warning,Phishing URL clicked,Phishing,grid-workstation-001,IDS
+2026-08-03 14:59:23,Informational,Unapproved software,Policy Violation,grid-workstation-012,Firewall
+2026-08-03 15:52:32,High,SSH brute force,Brute Force,grid-substation-srv-038,IDS
+2026-08-03 16:59:50,High,Password spray detected,Brute Force,grid-scada-hmi-008,IDS
+2026-08-03 18:24:21,Informational,Credential phish reported,Phishing,grid-workstation-023,EDR
+2026-08-03 18:30:27,Warning,Suspicious PowerShell download,Malware,grid-workstation-016,IDS
+2026-08-04 00:13:16,Informational,Phishing URL clicked,Phishing,grid-workstation-020,SIEM
+2026-08-04 06:21:02,Informational,Port scan detected,Recon,grid-workstation-030,EDR
+2026-08-04 08:58:36,Warning,Malicious attachment opened,Phishing,grid-substation-srv-055,IDS
+2026-08-04 09:57:40,Informational,Malicious attachment opened,Phishing,grid-workstation-019,Firewall
+2026-08-04 11:00:10,High,Password spray detected,Brute Force,grid-workstation-043,SIEM
+2026-08-04 11:49:54,Informational,Ransomware behaviour,Malware,grid-substation-srv-049,EDR
+2026-08-04 11:57:25,Critical,DNS tunnelling,Data Exfiltration,grid-websubstation-srv-006,IDS
+2026-08-04 12:13:47,Informational,Unapproved software,Policy Violation,grid-workstation-059,EDR
+2026-08-04 12:23:15,Informational,LDAP reconnaissance,Recon,grid-mailsubstation-srv-051,EDR
+2026-08-04 14:05:07,High,SSH brute force,Brute Force,grid-substation-srv-018,SIEM
+2026-08-04 14:15:27,Warning,LDAP reconnaissance,Recon,grid-workstation-042,Firewall
+2026-08-04 14:18:09,Warning,SSH brute force,Brute Force,grid-substation-srv-011,SIEM
+2026-08-04 14:27:38,Warning,Password spray detected,Brute Force,grid-scada-hmi-056,EDR
+2026-08-04 15:02:03,Informational,Phishing URL clicked,Phishing,grid-workstation-057,SIEM
+2026-08-04 17:46:17,Warning,DNS tunnelling,Data Exfiltration,grid-workstation-023,Firewall
+2026-08-04 17:55:56,Warning,Malicious attachment opened,Phishing,grid-workstation-004,IDS
+2026-08-04 18:03:43,Informational,USB storage connected,Policy Violation,grid-mailsubstation-srv-028,EDR
+2026-08-04 18:46:10,High,Port scan detected,Recon,grid-workstation-043,Firewall
+2026-08-04 23:40:36,High,Malicious attachment opened,Phishing,grid-workstation-001,IDS
+2026-08-05 01:27:45,High,Ransomware behaviour,Malware,grid-substation-srv-015,SIEM
+2026-08-05 05:26:02,Informational,LDAP reconnaissance,Recon,grid-workstation-046,EDR
+2026-08-05 07:03:13,Informational,USB storage connected,Policy Violation,grid-workstation-030,EDR
+2026-08-05 08:46:17,Informational,Credential phish reported,Phishing,grid-firewall-037,IDS
+2026-08-05 10:11:59,Warning,Credential phish reported,Phishing,grid-workstation-041,Firewall
+2026-08-05 10:24:36,Warning,Port scan detected,Recon,grid-workstation-023,Firewall
+2026-08-05 10:54:59,Informational,LDAP reconnaissance,Recon,grid-firewall-005,IDS
+2026-08-05 12:43:02,Informational,Unapproved software,Policy Violation,grid-workstation-041,EDR
+2026-08-05 13:50:46,Warning,Directory enumeration,Recon,grid-firewall-005,EDR
+2026-08-05 14:05:44,Warning,Phishing URL clicked,Phishing,grid-substation-srv-015,SIEM
+2026-08-05 14:19:23,Warning,SSH brute force,Brute Force,grid-workstation-004,Firewall
+2026-08-05 14:41:34,High,Unapproved software,Policy Violation,grid-websubstation-srv-024,EDR
+2026-08-05 17:04:32,Informational,Multiple failed logons,Brute Force,grid-workstation-009,SIEM
+2026-08-05 17:32:12,High,USB storage connected,Policy Violation,grid-workstation-042,SIEM
+2026-08-05 18:25:27,High,EDR malware detection,Malware,grid-firewall-005,EDR
+2026-08-06 06:09:56,Critical,Suspicious PowerShell download,Malware,grid-workstation-021,IDS
+2026-08-06 06:41:17,Warning,Multiple failed logons,Brute Force,grid-substation-srv-038,IDS
+2026-08-06 11:33:35,Warning,Suspicious PowerShell download,Malware,grid-workstation-039,EDR
+2026-08-06 14:32:00,Informational,Phishing URL clicked,Phishing,grid-workstation-022,SIEM
+2026-08-06 20:31:37,High,EDR malware detection,Malware,grid-firewall-058,Firewall
+2026-08-06 21:32:59,Informational,Credential phish reported,Phishing,grid-workstation-052,Firewall
+2026-08-07 01:08:22,Informational,Admin share access,Policy Violation,grid-scada-hmi-056,EDR
+2026-08-07 01:29:11,High,Password spray detected,Brute Force,grid-websubstation-srv-006,SIEM
+2026-08-07 02:23:31,High,DNS tunnelling,Data Exfiltration,grid-websubstation-srv-029,SIEM
+2026-08-07 03:56:09,Warning,USB storage connected,Policy Violation,grid-substation-srv-018,SIEM
+2026-08-07 07:21:44,Critical,Multiple failed logons,Brute Force,grid-mailsubstation-srv-028,Firewall
+2026-08-07 07:56:26,Informational,Password spray detected,Brute Force,grid-substation-srv-049,Firewall
+2026-08-07 08:12:49,Informational,Unapproved software,Policy Violation,grid-websubstation-srv-006,Firewall
+2026-08-07 08:42:30,Informational,Admin share access,Policy Violation,grid-mailsubstation-srv-000,EDR
+2026-08-07 08:49:25,Informational,Phishing URL clicked,Phishing,grid-workstation-057,IDS
+2026-08-07 09:46:28,Informational,Port scan detected,Recon,grid-workstation-021,IDS
+2026-08-07 09:54:53,High,Cloud upload anomaly,Data Exfiltration,grid-substation-srv-031,IDS
+2026-08-07 11:24:56,Informational,LDAP reconnaissance,Recon,grid-workstation-012,EDR
+2026-08-07 13:39:48,Informational,Malicious attachment opened,Phishing,grid-workstation-036,SIEM
+2026-08-07 13:49:41,High,Password spray detected,Brute Force,grid-database-010,EDR
+2026-08-07 14:16:20,Warning,USB storage connected,Policy Violation,grid-substation-srv-049,Firewall
+2026-08-07 14:51:03,Informational,Suspicious PowerShell download,Malware,grid-workstation-030,IDS
+2026-08-07 15:06:17,Warning,SSH brute force,Brute Force,grid-scada-hmi-056,EDR
+2026-08-07 15:39:40,Warning,Multiple failed logons,Brute Force,grid-websubstation-srv-024,Firewall
+2026-08-07 16:26:51,Informational,Directory enumeration,Recon,grid-workstation-054,SIEM
+2026-08-07 16:43:35,Critical,Admin share access,Policy Violation,grid-workstation-021,EDR
+2026-08-07 17:19:09,Critical,Multiple failed logons,Brute Force,grid-substation-srv-050,EDR
+2026-08-07 17:58:33,Informational,Unapproved software,Policy Violation,grid-workstation-057,EDR
+2026-08-07 21:47:17,Warning,USB storage connected,Policy Violation,grid-websubstation-srv-024,SIEM
+2026-08-08 00:10:12,High,Malicious attachment opened,Phishing,grid-workstation-054,SIEM
+2026-08-08 02:16:02,Warning,Multiple failed logons,Brute Force,grid-workstation-004,EDR
+2026-08-08 03:14:12,Informational,LDAP reconnaissance,Recon,grid-workstation-016,IDS
+2026-08-08 05:29:53,Informational,LDAP reconnaissance,Recon,grid-workstation-007,EDR
+2026-08-08 06:54:15,Informational,Directory enumeration,Recon,grid-workstation-035,Firewall
+2026-08-08 07:00:59,Informational,USB storage connected,Policy Violation,grid-substation-srv-015,SIEM
+2026-08-08 07:15:46,Critical,Suspicious PowerShell download,Malware,grid-mailsubstation-srv-032,SIEM
+2026-08-08 08:02:47,Warning,Phishing URL clicked,Phishing,grid-workstation-016,Firewall
+2026-08-08 10:07:42,Warning,Malicious attachment opened,Phishing,grid-substation-srv-026,EDR
+2026-08-08 10:41:10,Informational,Unapproved software,Policy Violation,grid-websubstation-srv-029,IDS
+2026-08-08 10:49:54,High,SSH brute force,Brute Force,grid-domaincontroller-014,SIEM
+2026-08-08 10:54:08,High,Credential phish reported,Phishing,grid-workstation-020,EDR
+2026-08-08 11:52:36,Warning,EDR malware detection,Malware,grid-substation-srv-003,Firewall
+2026-08-08 12:01:17,High,SSH brute force,Brute Force,grid-workstation-022,Firewall
+2026-08-08 13:29:20,High,Ransomware behaviour,Malware,grid-workstation-039,Firewall
+2026-08-08 14:02:21,Informational,USB storage connected,Policy Violation,grid-mailsubstation-srv-000,SIEM
+2026-08-08 15:07:35,Informational,Port scan detected,Recon,grid-websubstation-srv-029,SIEM
+2026-08-08 15:13:06,High,Phishing URL clicked,Phishing,grid-workstation-012,Firewall
+2026-08-08 15:50:45,Warning,SSH brute force,Brute Force,grid-websubstation-srv-025,SIEM
+2026-08-08 15:54:31,Warning,EDR malware detection,Malware,grid-workstation-017,SIEM
+2026-08-08 16:29:41,High,Large outbound transfer,Data Exfiltration,grid-workstation-012,IDS
+2026-08-08 19:24:39,Informational,LDAP reconnaissance,Recon,grid-firewall-058,Firewall
+2026-08-09 02:14:41,Critical,Cloud upload anomaly,Data Exfiltration,grid-substation-srv-003,EDR
+2026-08-09 03:48:16,Informational,Port scan detected,Recon,grid-substation-srv-026,EDR
+2026-08-09 06:18:34,Warning,USB storage connected,Policy Violation,grid-workstation-054,IDS
+2026-08-09 07:03:14,Critical,EDR malware detection,Malware,grid-substation-srv-047,EDR
+2026-08-09 08:19:31,Warning,SSH brute force,Brute Force,grid-scada-hmi-008,IDS
+2026-08-09 08:30:47,Warning,LDAP reconnaissance,Recon,grid-workstation-013,EDR
+2026-08-09 08:47:45,Informational,Port scan detected,Recon,grid-workstation-017,Firewall
+2026-08-09 10:51:20,Informational,Unapproved software,Policy Violation,grid-substation-srv-026,SIEM
+2026-08-09 12:16:32,Informational,USB storage connected,Policy Violation,grid-workstation-040,Firewall
+2026-08-09 14:24:33,High,Suspicious PowerShell download,Malware,grid-mailsubstation-srv-000,IDS
+2026-08-09 14:25:52,Critical,Suspicious PowerShell download,Malware,grid-mailsubstation-srv-028,IDS
+2026-08-09 15:07:25,Informational,Port scan detected,Recon,grid-database-002,IDS
+2026-08-09 15:44:33,Informational,Directory enumeration,Recon,grid-database-033,SIEM
+2026-08-09 15:49:22,Warning,Malicious attachment opened,Phishing,grid-workstation-019,SIEM
+2026-08-09 16:05:04,Informational,LDAP reconnaissance,Recon,grid-scada-hmi-008,IDS
+2026-08-09 20:31:32,Informational,USB storage connected,Policy Violation,grid-domaincontroller-014,SIEM
+2026-08-10 00:37:04,Warning,LDAP reconnaissance,Recon,grid-substation-srv-011,IDS
+2026-08-10 02:36:26,Warning,Directory enumeration,Recon,grid-substation-srv-031,Firewall
+2026-08-10 05:05:29,Warning,SSH brute force,Brute Force,grid-workstation-034,SIEM
+2026-08-10 06:47:33,Informational,Directory enumeration,Recon,grid-workstation-046,Firewall
+2026-08-10 07:48:36,High,Password spray detected,Brute Force,grid-workstation-030,EDR
+2026-08-10 10:46:36,Warning,Phishing URL clicked,Phishing,grid-workstation-020,Firewall
+2026-08-10 10:49:23,High,Multiple failed logons,Brute Force,grid-workstation-035,Firewall
+2026-08-10 11:35:22,Informational,Unapproved software,Policy Violation,grid-substation-srv-050,IDS
+2026-08-10 11:37:29,Informational,Port scan detected,Recon,grid-workstation-012,IDS
+2026-08-10 11:49:33,Informational,Port scan detected,Recon,grid-websubstation-srv-024,Firewall
+2026-08-10 11:52:39,Informational,Ransomware behaviour,Malware,grid-domaincontroller-014,EDR
+2026-08-10 12:03:37,Informational,Phishing URL clicked,Phishing,grid-workstation-046,SIEM
+2026-08-10 13:39:03,Critical,Malicious attachment opened,Phishing,grid-workstation-012,SIEM
+2026-08-10 13:53:22,Warning,Port scan detected,Recon,grid-mailsubstation-srv-028,Firewall
+2026-08-10 14:45:49,High,Credential phish reported,Phishing,grid-substation-srv-047,SIEM
+2026-08-10 15:09:07,High,SSH brute force,Brute Force,grid-firewall-058,IDS
+2026-08-10 15:35:22,Informational,Credential phish reported,Phishing,grid-mailsubstation-srv-032,IDS
+2026-08-10 18:47:08,Informational,Directory enumeration,Recon,grid-workstation-012,IDS
+2026-08-10 20:36:20,Informational,LDAP reconnaissance,Recon,grid-workstation-022,Firewall
+2026-08-11 01:00:03,High,Credential phish reported,Phishing,grid-workstation-041,Firewall
+2026-08-11 02:17:36,Informational,USB storage connected,Policy Violation,grid-workstation-041,EDR
+2026-08-11 03:25:41,High,Credential phish reported,Phishing,grid-workstation-021,Firewall
+2026-08-11 07:11:47,Informational,Port scan detected,Recon,grid-workstation-034,IDS
+2026-08-11 07:34:11,Warning,Directory enumeration,Recon,grid-workstation-017,Firewall
+2026-08-11 08:27:28,High,Suspicious PowerShell download,Malware,grid-websubstation-srv-006,SIEM
+2026-08-11 08:33:38,Informational,Unapproved software,Policy Violation,grid-workstation-057,IDS
+2026-08-11 08:34:32,High,DNS tunnelling,Data Exfiltration,grid-workstation-030,IDS
+2026-08-11 09:34:56,Warning,Password spray detected,Brute Force,grid-workstation-039,EDR
+2026-08-11 09:51:14,Warning,Ransomware behaviour,Malware,grid-workstation-042,IDS
+2026-08-11 10:05:40,High,Credential phish reported,Phishing,grid-workstation-022,SIEM
+2026-08-11 11:00:34,High,Credential phish reported,Phishing,grid-substation-srv-038,Firewall
+2026-08-11 11:21:19,Informational,Port scan detected,Recon,grid-workstation-057,Firewall
+2026-08-11 11:50:07,Warning,Suspicious PowerShell download,Malware,grid-workstation-040,Firewall
+2026-08-11 12:28:14,Informational,SSH brute force,Brute Force,grid-mailsubstation-srv-051,SIEM
+2026-08-11 12:55:01,Warning,Malicious attachment opened,Phishing,grid-substation-srv-050,Firewall
+2026-08-11 13:47:17,Informational,Unapproved software,Policy Violation,grid-substation-srv-055,IDS
+2026-08-11 13:49:17,Informational,Credential phish reported,Phishing,grid-database-053,EDR
+2026-08-11 15:04:58,Informational,Ransomware behaviour,Malware,grid-workstation-019,IDS
+2026-08-11 15:31:06,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-027,SIEM
+2026-08-11 15:43:15,Informational,Malicious attachment opened,Phishing,grid-workstation-057,IDS
+2026-08-11 15:48:07,Warning,DNS tunnelling,Data Exfiltration,grid-workstation-059,EDR
+2026-08-11 16:45:30,Informational,Port scan detected,Recon,grid-workstation-020,IDS
+2026-08-11 16:56:55,High,Suspicious PowerShell download,Malware,grid-domaincontroller-014,Firewall
+2026-08-11 17:29:43,Warning,Admin share access,Policy Violation,grid-workstation-013,IDS
+2026-08-11 17:50:22,Informational,Phishing URL clicked,Phishing,grid-workstation-023,EDR
+2026-08-12 00:19:11,Informational,Malicious attachment opened,Phishing,grid-workstation-035,IDS
+2026-08-12 09:06:12,High,EDR malware detection,Malware,grid-firewall-037,Firewall
+2026-08-12 10:18:39,Informational,Port scan detected,Recon,grid-substation-srv-050,IDS
+2026-08-12 10:57:16,Warning,EDR malware detection,Malware,grid-workstation-036,Firewall
+2026-08-12 11:25:39,Informational,Admin share access,Policy Violation,grid-workstation-042,IDS
+2026-08-12 12:03:49,Warning,Admin share access,Policy Violation,grid-workstation-043,Firewall
+2026-08-12 12:04:33,Informational,Port scan detected,Recon,grid-workstation-045,SIEM
+2026-08-12 14:12:53,Informational,Credential phish reported,Phishing,grid-workstation-030,Firewall
+2026-08-12 14:55:03,Warning,Malicious attachment opened,Phishing,grid-substation-srv-031,IDS
+2026-08-12 15:22:36,Informational,USB storage connected,Policy Violation,grid-workstation-027,EDR
+2026-08-12 15:55:59,Informational,USB storage connected,Policy Violation,grid-substation-srv-003,SIEM
+2026-08-12 16:16:19,Warning,Multiple failed logons,Brute Force,grid-workstation-059,IDS
+2026-08-12 16:29:13,High,Password spray detected,Brute Force,grid-database-053,IDS
+2026-08-13 03:40:02,Warning,Directory enumeration,Recon,grid-workstation-048,SIEM
+2026-08-13 05:11:46,High,Suspicious PowerShell download,Malware,grid-workstation-041,SIEM
+2026-08-13 06:01:06,Warning,Ransomware behaviour,Malware,grid-database-053,IDS
+2026-08-13 08:04:51,Informational,Multiple failed logons,Brute Force,grid-workstation-019,IDS
+2026-08-13 09:16:20,Informational,Admin share access,Policy Violation,grid-scada-hmi-008,SIEM
+2026-08-13 09:25:31,Warning,EDR malware detection,Malware,grid-workstation-020,Firewall
+2026-08-13 10:09:37,Warning,Password spray detected,Brute Force,grid-firewall-037,EDR
+2026-08-13 10:39:32,Informational,Directory enumeration,Recon,grid-firewall-058,IDS
+2026-08-13 11:16:16,Informational,Port scan detected,Recon,grid-workstation-048,SIEM
+2026-08-13 11:17:41,High,Suspicious PowerShell download,Malware,grid-websubstation-srv-029,IDS
+2026-08-13 12:12:07,Warning,Credential phish reported,Phishing,grid-websubstation-srv-024,SIEM
+2026-08-13 12:28:46,Informational,Port scan detected,Recon,grid-workstation-046,EDR
+2026-08-13 12:35:43,Warning,Suspicious PowerShell download,Malware,grid-workstation-043,IDS
+2026-08-13 12:45:49,Informational,Unapproved software,Policy Violation,grid-database-033,IDS
+2026-08-13 14:14:37,High,Malicious attachment opened,Phishing,grid-substation-srv-026,EDR
+2026-08-13 14:35:08,Informational,USB storage connected,Policy Violation,grid-workstation-059,Firewall
+2026-08-13 15:26:46,Informational,Credential phish reported,Phishing,grid-workstation-057,IDS
+2026-08-13 15:54:05,Warning,Malicious attachment opened,Phishing,grid-scada-hmi-008,EDR
+2026-08-13 16:17:25,Informational,USB storage connected,Policy Violation,grid-mailsubstation-srv-000,EDR
+2026-08-13 16:39:45,High,Multiple failed logons,Brute Force,grid-workstation-016,EDR
+2026-08-13 21:04:41,High,Malicious attachment opened,Phishing,grid-firewall-058,Firewall
+2026-08-13 21:57:30,High,Credential phish reported,Phishing,grid-substation-srv-026,Firewall
+2026-08-14 03:21:15,Warning,Password spray detected,Brute Force,grid-substation-srv-031,EDR
+2026-08-14 05:53:48,Critical,USB storage connected,Policy Violation,grid-substation-srv-055,IDS
+2026-08-14 07:15:35,Informational,Password spray detected,Brute Force,grid-scada-hmi-008,Firewall
+2026-08-14 07:50:30,Informational,LDAP reconnaissance,Recon,grid-substation-srv-038,SIEM
+2026-08-14 08:57:13,Informational,Directory enumeration,Recon,grid-workstation-044,Firewall
+2026-08-14 09:16:46,Informational,Multiple failed logons,Brute Force,grid-workstation-009,EDR
+2026-08-14 09:39:35,Warning,Unapproved software,Policy Violation,grid-workstation-017,Firewall
+2026-08-14 09:40:49,Informational,Unapproved software,Policy Violation,grid-workstation-035,EDR
+2026-08-14 10:15:06,Warning,EDR malware detection,Malware,grid-workstation-004,Firewall
+2026-08-14 12:38:32,Informational,Directory enumeration,Recon,grid-workstation-020,Firewall
+2026-08-14 13:19:11,Informational,USB storage connected,Policy Violation,grid-workstation-041,SIEM
+2026-08-14 14:00:54,Warning,Directory enumeration,Recon,grid-substation-srv-018,SIEM
+2026-08-14 14:10:18,Informational,Directory enumeration,Recon,grid-substation-srv-049,EDR
+2026-08-14 16:09:07,Informational,SSH brute force,Brute Force,grid-workstation-034,EDR
+2026-08-14 18:42:42,Warning,Phishing URL clicked,Phishing,grid-substation-srv-049,EDR
+2026-08-14 18:52:28,High,Password spray detected,Brute Force,grid-workstation-016,EDR
+2026-08-14 20:39:17,Warning,SSH brute force,Brute Force,grid-workstation-023,SIEM
+2026-08-15 00:03:52,Informational,Directory enumeration,Recon,grid-scada-hmi-008,Firewall
+2026-08-15 05:50:44,High,Suspicious PowerShell download,Malware,grid-workstation-054,IDS
+2026-08-15 06:14:20,Warning,Malicious attachment opened,Phishing,grid-database-010,EDR
+2026-08-15 07:07:54,Critical,Directory enumeration,Recon,grid-firewall-005,SIEM
+2026-08-15 07:26:57,Informational,Directory enumeration,Recon,grid-workstation-035,EDR
+2026-08-15 08:27:32,Critical,EDR malware detection,Malware,grid-workstation-043,IDS
+2026-08-15 09:21:33,Warning,Port scan detected,Recon,grid-workstation-041,IDS
+2026-08-15 10:29:42,Warning,Port scan detected,Recon,grid-substation-srv-038,Firewall
+2026-08-15 11:48:20,Warning,Multiple failed logons,Brute Force,grid-workstation-007,IDS
+2026-08-15 11:48:47,High,Admin share access,Policy Violation,grid-firewall-058,IDS
+2026-08-15 12:26:17,Critical,DNS tunnelling,Data Exfiltration,grid-domaincontroller-014,Firewall
+2026-08-15 12:40:11,Warning,Port scan detected,Recon,grid-firewall-037,SIEM
+2026-08-15 12:55:46,Informational,USB storage connected,Policy Violation,grid-workstation-036,SIEM
+2026-08-15 13:18:44,Warning,Password spray detected,Brute Force,grid-substation-srv-047,IDS
+2026-08-15 15:05:09,Warning,SSH brute force,Brute Force,grid-mailsubstation-srv-051,EDR
+2026-08-15 15:40:35,Warning,USB storage connected,Policy Violation,grid-domaincontroller-014,EDR
+2026-08-15 16:01:23,Informational,SSH brute force,Brute Force,grid-workstation-045,EDR
+2026-08-15 16:28:21,Informational,Admin share access,Policy Violation,grid-substation-srv-055,Firewall
+2026-08-15 17:32:21,High,Phishing URL clicked,Phishing,grid-substation-srv-003,IDS
+2026-08-15 18:47:10,Warning,Malicious attachment opened,Phishing,grid-workstation-019,SIEM
+2026-08-15 20:28:38,Warning,LDAP reconnaissance,Recon,grid-domaincontroller-014,Firewall
+2026-08-15 21:03:42,Warning,Credential phish reported,Phishing,grid-database-053,EDR
+2026-08-15 21:29:52,Informational,Multiple failed logons,Brute Force,grid-workstation-030,IDS
+2026-08-16 00:40:02,Warning,Malicious attachment opened,Phishing,grid-workstation-007,EDR
+2026-08-16 08:27:56,Critical,Cloud upload anomaly,Data Exfiltration,grid-workstation-023,IDS
+2026-08-16 08:57:08,High,Port scan detected,Recon,grid-scada-hmi-056,SIEM
+2026-08-16 09:04:01,Warning,Malicious attachment opened,Phishing,grid-domaincontroller-014,SIEM
+2026-08-16 09:39:29,Warning,Phishing URL clicked,Phishing,grid-workstation-052,Firewall
+2026-08-16 11:20:29,Informational,Credential phish reported,Phishing,grid-workstation-046,Firewall
+2026-08-16 11:35:29,Informational,Multiple failed logons,Brute Force,grid-workstation-057,SIEM
+2026-08-16 11:55:29,Informational,Unapproved software,Policy Violation,grid-substation-srv-055,SIEM
+2026-08-16 13:29:02,Warning,LDAP reconnaissance,Recon,grid-workstation-016,Firewall
+2026-08-16 13:46:24,Warning,EDR malware detection,Malware,grid-workstation-045,IDS
+2026-08-16 14:13:10,Warning,DNS tunnelling,Data Exfiltration,grid-firewall-005,IDS
+2026-08-16 14:30:18,High,SSH brute force,Brute Force,grid-workstation-023,SIEM
+2026-08-16 14:36:18,Informational,Phishing URL clicked,Phishing,grid-mailsubstation-srv-032,Firewall
+2026-08-16 16:32:28,Warning,Unapproved software,Policy Violation,grid-workstation-048,EDR
+2026-08-16 17:01:21,Informational,EDR malware detection,Malware,grid-substation-srv-038,IDS
+2026-08-16 17:59:14,Warning,Password spray detected,Brute Force,grid-substation-srv-047,SIEM
+2026-08-16 18:43:15,Informational,LDAP reconnaissance,Recon,grid-substation-srv-026,SIEM
+2026-08-16 19:40:44,High,Ransomware behaviour,Malware,grid-substation-srv-055,SIEM
+2026-08-16 20:12:26,Warning,USB storage connected,Policy Violation,grid-scada-hmi-056,Firewall
+2026-08-16 22:57:08,Warning,Port scan detected,Recon,grid-substation-srv-011,EDR
+2026-08-17 05:00:24,Informational,Admin share access,Policy Violation,grid-mailsubstation-srv-000,IDS
+2026-08-17 08:12:04,Warning,DNS tunnelling,Data Exfiltration,grid-database-053,IDS
+2026-08-17 08:59:18,Warning,Malicious attachment opened,Phishing,grid-substation-srv-026,EDR
+2026-08-17 09:53:02,Informational,Directory enumeration,Recon,grid-domaincontroller-014,SIEM
+2026-08-17 11:52:49,Warning,Large outbound transfer,Data Exfiltration,grid-workstation-001,SIEM
+2026-08-17 11:56:51,Informational,Malicious attachment opened,Phishing,grid-workstation-007,IDS
+2026-08-17 12:32:08,Warning,Admin share access,Policy Violation,grid-workstation-001,SIEM
+2026-08-17 12:54:07,Critical,Password spray detected,Brute Force,grid-workstation-027,EDR
+2026-08-17 13:57:54,Critical,SSH brute force,Brute Force,grid-mailsubstation-srv-051,EDR
+2026-08-17 14:10:54,Informational,Suspicious PowerShell download,Malware,grid-mailsubstation-srv-051,EDR
+2026-08-17 14:41:02,Informational,SSH brute force,Brute Force,grid-websubstation-srv-024,EDR
+2026-08-17 14:45:58,Warning,Password spray detected,Brute Force,grid-websubstation-srv-025,IDS
+2026-08-17 15:16:08,Critical,Suspicious PowerShell download,Malware,grid-mailsubstation-srv-032,IDS
+2026-08-17 15:28:37,Informational,LDAP reconnaissance,Recon,grid-firewall-005,Firewall
+2026-08-17 15:35:44,High,EDR malware detection,Malware,grid-workstation-040,IDS
+2026-08-17 16:06:26,High,Port scan detected,Recon,grid-workstation-019,IDS
+2026-08-17 17:36:48,Warning,SSH brute force,Brute Force,grid-workstation-054,SIEM
+2026-08-17 17:55:46,Warning,Phishing URL clicked,Phishing,grid-workstation-019,Firewall
+2026-08-17 21:46:40,Critical,Multiple failed logons,Brute Force,grid-workstation-046,Firewall
+2026-08-18 01:00:23,High,Port scan detected,Recon,grid-workstation-041,SIEM
+2026-08-18 07:03:11,Informational,Unapproved software,Policy Violation,grid-substation-srv-003,IDS
+2026-08-18 09:11:08,Warning,USB storage connected,Policy Violation,grid-workstation-016,Firewall
+2026-08-18 09:46:16,High,SSH brute force,Brute Force,grid-database-053,EDR
+2026-08-18 11:02:42,Informational,Unapproved software,Policy Violation,grid-workstation-041,SIEM
+2026-08-18 12:10:53,Informational,Malicious attachment opened,Phishing,grid-workstation-042,SIEM
+2026-08-18 13:45:20,High,Malicious attachment opened,Phishing,grid-substation-srv-011,Firewall
+2026-08-18 14:21:23,Informational,Unapproved software,Policy Violation,grid-firewall-005,Firewall
+2026-08-18 16:27:44,Warning,Password spray detected,Brute Force,grid-workstation-048,SIEM
+2026-08-18 16:39:02,High,USB storage connected,Policy Violation,grid-substation-srv-018,Firewall
+2026-08-18 19:21:50,Warning,USB storage connected,Policy Violation,grid-workstation-044,IDS
+2026-08-18 19:24:47,High,Ransomware behaviour,Malware,grid-workstation-040,SIEM
+2026-08-19 01:56:39,High,USB storage connected,Policy Violation,grid-websubstation-srv-006,SIEM
+2026-08-19 09:19:09,Warning,Password spray detected,Brute Force,grid-workstation-027,IDS
+2026-08-19 11:02:49,Critical,Suspicious PowerShell download,Malware,grid-workstation-041,EDR
+2026-08-19 11:32:49,High,Malicious attachment opened,Phishing,grid-workstation-021,Firewall
+2026-08-19 12:25:53,Informational,Directory enumeration,Recon,grid-workstation-046,EDR
+2026-08-19 14:33:07,Critical,Ransomware behaviour,Malware,grid-workstation-034,EDR
+2026-08-19 15:05:56,Informational,Credential phish reported,Phishing,grid-websubstation-srv-024,SIEM
+2026-08-19 15:46:16,Informational,USB storage connected,Policy Violation,grid-workstation-057,SIEM
+2026-08-19 15:50:32,Critical,Multiple failed logons,Brute Force,grid-substation-srv-049,SIEM
+2026-08-19 16:16:39,Informational,Admin share access,Policy Violation,grid-workstation-030,IDS
+2026-08-19 23:01:11,Critical,Suspicious PowerShell download,Malware,grid-substation-srv-049,Firewall
+2026-08-20 04:17:19,Warning,Ransomware behaviour,Malware,grid-substation-srv-018,IDS
+2026-08-20 04:39:49,Critical,SSH brute force,Brute Force,grid-firewall-037,EDR
+2026-08-20 08:21:29,Informational,Credential phish reported,Phishing,grid-workstation-030,EDR
+2026-08-20 08:21:29,Informational,Malicious attachment opened,Phishing,grid-substation-srv-015,SIEM
+2026-08-20 08:39:49,Warning,Credential phish reported,Phishing,grid-workstation-007,Firewall
+2026-08-20 09:17:31,Critical,Port scan detected,Recon,grid-substation-srv-011,IDS
+2026-08-20 09:20:32,Informational,Port scan detected,Recon,grid-workstation-036,EDR
+2026-08-20 10:00:53,Warning,Directory enumeration,Recon,grid-firewall-058,Firewall
+2026-08-20 10:41:12,Warning,EDR malware detection,Malware,grid-workstation-040,Firewall
+2026-08-20 13:14:15,Informational,USB storage connected,Policy Violation,grid-database-033,SIEM
+2026-08-20 18:03:32,Warning,Port scan detected,Recon,grid-workstation-036,SIEM
+2026-08-21 05:18:33,Warning,Password spray detected,Brute Force,grid-workstation-046,SIEM
+2026-08-21 07:23:37,Warning,Password spray detected,Brute Force,grid-substation-srv-003,Firewall
+2026-08-21 08:06:47,High,Large outbound transfer,Data Exfiltration,grid-workstation-009,Firewall
+2026-08-21 09:22:05,High,Suspicious PowerShell download,Malware,grid-workstation-004,SIEM
+2026-08-21 10:20:25,High,Suspicious PowerShell download,Malware,grid-database-033,IDS
+2026-08-21 11:26:12,Informational,LDAP reconnaissance,Recon,grid-database-033,SIEM
+2026-08-21 12:19:31,Informational,SSH brute force,Brute Force,grid-database-010,Firewall
+2026-08-21 13:19:25,Informational,Directory enumeration,Recon,grid-substation-srv-047,Firewall
+2026-08-21 14:00:39,High,EDR malware detection,Malware,grid-workstation-017,SIEM
+2026-08-21 14:20:26,High,EDR malware detection,Malware,grid-websubstation-srv-024,IDS
+2026-08-21 14:46:53,Warning,DNS tunnelling,Data Exfiltration,grid-websubstation-srv-025,IDS
+2026-08-21 17:45:34,High,Phishing URL clicked,Phishing,grid-substation-srv-026,EDR
+2026-08-21 18:15:04,Informational,LDAP reconnaissance,Recon,grid-workstation-016,IDS
+2026-08-21 18:39:16,High,Suspicious PowerShell download,Malware,grid-workstation-022,EDR
+2026-08-21 20:43:19,Warning,Ransomware behaviour,Malware,grid-database-002,Firewall
+2026-08-21 21:37:09,Informational,USB storage connected,Policy Violation,grid-substation-srv-026,SIEM
+2026-08-21 21:39:07,Informational,Unapproved software,Policy Violation,grid-domaincontroller-014,SIEM
+2026-08-22 05:09:37,Warning,EDR malware detection,Malware,grid-substation-srv-038,Firewall
+2026-08-22 06:27:01,Warning,Malicious attachment opened,Phishing,grid-workstation-035,EDR
+2026-08-22 06:31:16,Warning,Phishing URL clicked,Phishing,grid-firewall-058,Firewall
+2026-08-22 07:02:00,High,Cloud upload anomaly,Data Exfiltration,grid-mailsubstation-srv-000,IDS
+2026-08-22 08:18:40,Informational,Port scan detected,Recon,grid-scada-hmi-008,SIEM
+2026-08-22 08:31:45,Informational,Password spray detected,Brute Force,grid-workstation-007,IDS
+2026-08-22 09:09:00,Informational,Credential phish reported,Phishing,grid-workstation-027,EDR
+2026-08-22 09:10:19,High,SSH brute force,Brute Force,grid-workstation-004,Firewall
+2026-08-22 09:28:01,High,Suspicious PowerShell download,Malware,grid-scada-hmi-008,EDR
+2026-08-22 09:48:50,Warning,Malicious attachment opened,Phishing,grid-workstation-035,IDS
+2026-08-22 10:16:47,Informational,Admin share access,Policy Violation,grid-mailsubstation-srv-000,EDR
+2026-08-22 10:40:08,Warning,Suspicious PowerShell download,Malware,grid-firewall-005,IDS
+2026-08-22 10:45:34,High,Unapproved software,Policy Violation,grid-workstation-007,EDR
+2026-08-22 10:51:20,High,SSH brute force,Brute Force,grid-firewall-005,EDR
+2026-08-22 11:26:05,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-044,SIEM
+2026-08-22 11:31:47,Informational,Multiple failed logons,Brute Force,grid-substation-srv-011,Firewall
+2026-08-22 14:28:11,High,USB storage connected,Policy Violation,grid-workstation-019,Firewall
+2026-08-22 15:13:01,Warning,Unapproved software,Policy Violation,grid-substation-srv-003,IDS
+2026-08-22 15:26:53,Critical,Ransomware behaviour,Malware,grid-workstation-001,EDR
+2026-08-22 16:32:57,Informational,Unapproved software,Policy Violation,grid-scada-hmi-008,SIEM
+2026-08-22 17:54:51,Warning,Ransomware behaviour,Malware,grid-database-010,IDS
+2026-08-22 18:18:49,Informational,Unapproved software,Policy Violation,grid-substation-srv-038,Firewall
+2026-08-22 21:31:13,Informational,USB storage connected,Policy Violation,grid-workstation-045,EDR
+2026-08-23 01:55:12,High,DNS tunnelling,Data Exfiltration,grid-websubstation-srv-024,IDS
+2026-08-23 08:14:07,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-044,SIEM
+2026-08-23 09:06:14,Informational,USB storage connected,Policy Violation,grid-websubstation-srv-006,Firewall
+2026-08-23 09:16:46,Warning,Unapproved software,Policy Violation,grid-mailsubstation-srv-028,SIEM
+2026-08-23 09:37:34,Warning,Directory enumeration,Recon,grid-workstation-013,IDS
+2026-08-23 09:42:34,Informational,Port scan detected,Recon,grid-domaincontroller-014,SIEM
+2026-08-23 09:54:12,High,Multiple failed logons,Brute Force,grid-workstation-004,Firewall
+2026-08-23 10:16:17,Informational,Password spray detected,Brute Force,grid-scada-hmi-008,IDS
+2026-08-23 11:20:55,Informational,LDAP reconnaissance,Recon,grid-substation-srv-011,IDS
+2026-08-23 11:45:59,Warning,LDAP reconnaissance,Recon,grid-workstation-039,EDR
+2026-08-23 12:46:12,Informational,Admin share access,Policy Violation,grid-scada-hmi-008,Firewall
+2026-08-23 13:15:20,High,Password spray detected,Brute Force,grid-firewall-037,EDR
+2026-08-23 14:01:19,Warning,Port scan detected,Recon,grid-workstation-043,SIEM
+2026-08-23 15:10:24,Informational,LDAP reconnaissance,Recon,grid-workstation-036,Firewall
+2026-08-23 15:37:12,Warning,Directory enumeration,Recon,grid-domaincontroller-014,Firewall
+2026-08-23 15:51:24,Warning,LDAP reconnaissance,Recon,grid-websubstation-srv-024,SIEM
+2026-08-23 16:22:03,Informational,USB storage connected,Policy Violation,grid-database-053,IDS
+2026-08-23 17:08:16,High,Phishing URL clicked,Phishing,grid-substation-srv-015,IDS
+2026-08-23 17:36:56,Informational,USB storage connected,Policy Violation,grid-workstation-004,SIEM
+2026-08-23 17:49:18,High,SSH brute force,Brute Force,grid-mailsubstation-srv-051,SIEM
+2026-08-23 20:35:16,Informational,Port scan detected,Recon,grid-substation-srv-038,Firewall
+2026-08-23 22:13:10,Warning,Directory enumeration,Recon,grid-workstation-041,Firewall
+2026-08-23 22:47:47,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-035,Firewall
+2026-08-24 05:35:18,Critical,EDR malware detection,Malware,grid-workstation-059,EDR
+2026-08-24 06:46:46,Informational,Suspicious PowerShell download,Malware,grid-scada-hmi-008,IDS
+2026-08-24 11:51:22,Informational,USB storage connected,Policy Violation,grid-workstation-039,EDR
+2026-08-24 13:09:56,Informational,Directory enumeration,Recon,grid-database-002,Firewall
+2026-08-24 13:30:29,Informational,Directory enumeration,Recon,grid-substation-srv-047,Firewall
+2026-08-24 14:15:50,High,Suspicious PowerShell download,Malware,grid-firewall-058,SIEM
+2026-08-24 15:33:41,Informational,Multiple failed logons,Brute Force,grid-workstation-045,IDS
+2026-08-24 17:39:01,Informational,DNS tunnelling,Data Exfiltration,grid-workstation-019,Firewall
+2026-08-24 18:28:43,Warning,USB storage connected,Policy Violation,grid-database-053,IDS
+2026-08-24 19:10:33,Warning,Ransomware behaviour,Malware,grid-substation-srv-031,IDS
+2026-08-24 19:58:29,Warning,Ransomware behaviour,Malware,grid-workstation-044,Firewall
+2026-08-25 02:16:39,High,Suspicious PowerShell download,Malware,grid-substation-srv-026,SIEM
+2026-08-25 05:45:32,Warning,Directory enumeration,Recon,grid-workstation-021,SIEM
+2026-08-25 09:04:11,Informational,EDR malware detection,Malware,grid-substation-srv-015,IDS
+2026-08-25 09:14:36,Warning,Ransomware behaviour,Malware,grid-workstation-035,Firewall
+2026-08-25 09:47:30,Informational,USB storage connected,Policy Violation,grid-database-053,Firewall
+2026-08-25 11:15:28,Informational,Malicious attachment opened,Phishing,grid-websubstation-srv-024,SIEM
+2026-08-25 11:43:15,Critical,Password spray detected,Brute Force,grid-workstation-043,Firewall
+2026-08-25 11:59:44,Warning,Password spray detected,Brute Force,grid-domaincontroller-014,SIEM
+2026-08-25 12:29:41,High,Large outbound transfer,Data Exfiltration,grid-domaincontroller-014,SIEM
+2026-08-25 12:46:57,Informational,Admin share access,Policy Violation,grid-workstation-012,SIEM
+2026-08-25 13:39:47,High,Admin share access,Policy Violation,grid-workstation-039,EDR
+2026-08-25 13:56:49,Informational,Admin share access,Policy Violation,grid-database-053,EDR
+2026-08-25 14:36:27,Informational,Directory enumeration,Recon,grid-substation-srv-049,Firewall
+2026-08-25 16:09:44,Warning,Port scan detected,Recon,grid-firewall-037,Firewall
+2026-08-25 16:57:34,Warning,Credential phish reported,Phishing,grid-workstation-036,EDR
+2026-08-25 18:42:56,Warning,Ransomware behaviour,Malware,grid-mailsubstation-srv-051,EDR
+2026-08-25 18:45:08,Warning,Unapproved software,Policy Violation,grid-workstation-030,SIEM
+2026-08-25 19:31:40,Warning,Credential phish reported,Phishing,grid-workstation-034,EDR
+2026-08-25 19:37:14,Informational,USB storage connected,Policy Violation,grid-workstation-027,EDR
+2026-08-25 21:53:20,Informational,Credential phish reported,Phishing,grid-workstation-040,Firewall
+2026-08-25 22:44:24,Informational,Directory enumeration,Recon,grid-workstation-004,IDS
+2026-08-25 23:38:54,Informational,USB storage connected,Policy Violation,grid-database-053,IDS
+2026-08-26 06:15:54,Warning,SSH brute force,Brute Force,grid-workstation-039,IDS
+2026-08-26 08:59:02,Warning,Admin share access,Policy Violation,grid-domaincontroller-014,Firewall
+2026-08-26 09:02:11,Informational,Unapproved software,Policy Violation,grid-domaincontroller-014,Firewall
+2026-08-26 09:31:25,High,USB storage connected,Policy Violation,grid-workstation-054,EDR
+2026-08-26 09:32:42,Informational,LDAP reconnaissance,Recon,grid-workstation-045,IDS
+2026-08-26 09:44:34,Informational,LDAP reconnaissance,Recon,grid-firewall-058,IDS
+2026-08-26 10:32:17,Informational,Port scan detected,Recon,grid-scada-hmi-056,EDR
+2026-08-26 10:55:00,Warning,Port scan detected,Recon,grid-domaincontroller-014,SIEM
+2026-08-26 12:10:25,Informational,Admin share access,Policy Violation,grid-scada-hmi-056,SIEM
+2026-08-26 12:54:36,Critical,EDR malware detection,Malware,grid-workstation-041,IDS
+2026-08-26 13:21:34,Warning,Cloud upload anomaly,Data Exfiltration,grid-workstation-040,SIEM
+2026-08-26 13:27:01,Informational,SSH brute force,Brute Force,grid-workstation-042,IDS
+2026-08-26 14:03:23,Warning,Port scan detected,Recon,grid-workstation-034,EDR
+2026-08-26 14:48:00,Critical,Multiple failed logons,Brute Force,grid-database-033,IDS
+2026-08-26 16:10:39,High,EDR malware detection,Malware,grid-workstation-045,Firewall
+2026-08-26 16:31:04,Warning,LDAP reconnaissance,Recon,grid-workstation-012,IDS
+2026-08-26 17:02:23,Warning,Admin share access,Policy Violation,grid-substation-srv-038,IDS
+2026-08-26 18:14:49,High,Suspicious PowerShell download,Malware,grid-workstation-004,Firewall
+2026-08-27 05:55:20,High,Multiple failed logons,Brute Force,grid-scada-hmi-008,SIEM
+2026-08-27 07:53:20,High,Multiple failed logons,Brute Force,grid-substation-srv-038,EDR
+2026-08-27 08:31:54,High,DNS tunnelling,Data Exfiltration,grid-database-053,Firewall
+2026-08-27 09:54:18,Informational,Admin share access,Policy Violation,grid-scada-hmi-056,Firewall
+2026-08-27 12:01:58,High,Credential phish reported,Phishing,grid-substation-srv-003,EDR
+2026-08-27 12:08:31,High,Directory enumeration,Recon,grid-websubstation-srv-024,SIEM
+2026-08-27 12:21:10,Informational,Admin share access,Policy Violation,grid-scada-hmi-008,SIEM
+2026-08-27 12:36:38,High,Password spray detected,Brute Force,grid-websubstation-srv-024,IDS
+2026-08-27 13:03:16,Warning,EDR malware detection,Malware,grid-workstation-021,Firewall
+2026-08-27 13:43:58,Warning,SSH brute force,Brute Force,grid-workstation-040,IDS
+2026-08-27 13:57:17,Warning,Credential phish reported,Phishing,grid-websubstation-srv-024,Firewall
+2026-08-27 14:49:04,Warning,LDAP reconnaissance,Recon,grid-workstation-044,IDS
+2026-08-27 15:03:14,Critical,EDR malware detection,Malware,grid-database-010,SIEM
+2026-08-27 16:35:36,High,Cloud upload anomaly,Data Exfiltration,grid-scada-hmi-008,IDS
+2026-08-27 17:06:40,High,Cloud upload anomaly,Data Exfiltration,grid-mailsubstation-srv-028,EDR
+2026-08-27 20:21:40,Warning,Admin share access,Policy Violation,grid-mailsubstation-srv-032,EDR
+2026-08-27 20:30:51,Informational,Malicious attachment opened,Phishing,grid-workstation-045,IDS
+2026-08-28 04:50:04,Warning,LDAP reconnaissance,Recon,grid-scada-hmi-056,SIEM
+2026-08-28 08:41:32,Warning,Phishing URL clicked,Phishing,grid-websubstation-srv-029,Firewall
+2026-08-28 09:11:13,Warning,Port scan detected,Recon,grid-workstation-027,EDR
+2026-08-28 09:54:23,Critical,Credential phish reported,Phishing,grid-workstation-035,Firewall
+2026-08-28 10:14:29,Informational,USB storage connected,Policy Violation,grid-workstation-042,IDS
+2026-08-28 10:48:52,Critical,Large outbound transfer,Data Exfiltration,grid-scada-hmi-008,IDS
+2026-08-28 11:13:40,High,Suspicious PowerShell download,Malware,grid-substation-srv-055,IDS
+2026-08-28 12:50:53,High,EDR malware detection,Malware,grid-workstation-023,IDS
+2026-08-28 12:52:23,Informational,LDAP reconnaissance,Recon,grid-websubstation-srv-006,Firewall
+2026-08-28 13:00:37,High,Phishing URL clicked,Phishing,grid-workstation-009,IDS
+2026-08-28 13:21:10,Informational,Port scan detected,Recon,grid-mailsubstation-srv-051,EDR
+2026-08-28 13:31:18,High,SSH brute force,Brute Force,grid-mailsubstation-srv-051,SIEM
+2026-08-28 14:15:26,Critical,Admin share access,Policy Violation,grid-substation-srv-031,IDS
+2026-08-28 14:38:06,High,Ransomware behaviour,Malware,grid-substation-srv-011,Firewall
+2026-08-28 14:55:49,Informational,Malicious attachment opened,Phishing,grid-workstation-023,IDS
+2026-08-28 15:01:29,High,Credential phish reported,Phishing,grid-substation-srv-055,IDS
+2026-08-28 15:27:26,High,Admin share access,Policy Violation,grid-workstation-045,Firewall
+2026-08-28 16:44:20,High,EDR malware detection,Malware,grid-workstation-030,IDS
+2026-08-28 16:52:30,High,Multiple failed logons,Brute Force,grid-database-053,Firewall
+2026-08-28 18:07:35,Informational,Malicious attachment opened,Phishing,grid-firewall-058,Firewall
+2026-08-28 18:32:11,Warning,Directory enumeration,Recon,grid-domaincontroller-014,SIEM
+2026-08-28 23:15:54,Warning,Suspicious PowerShell download,Malware,grid-workstation-009,SIEM
+2026-08-29 02:11:46,High,EDR malware detection,Malware,grid-workstation-017,SIEM
+2026-08-29 03:11:50,High,Malicious attachment opened,Phishing,grid-mailsubstation-srv-051,Firewall
+2026-08-29 06:57:08,High,Ransomware behaviour,Malware,grid-scada-hmi-056,EDR
+2026-08-29 07:32:51,High,Multiple failed logons,Brute Force,grid-mailsubstation-srv-051,IDS
+2026-08-29 07:37:37,Warning,Admin share access,Policy Violation,grid-workstation-034,IDS
+2026-08-29 07:45:39,Critical,Suspicious PowerShell download,Malware,grid-database-053,EDR
+2026-08-29 08:05:00,Informational,DNS tunnelling,Data Exfiltration,grid-workstation-052,SIEM
+2026-08-29 08:50:51,Warning,SSH brute force,Brute Force,grid-database-033,EDR
+2026-08-29 09:20:17,High,Cloud upload anomaly,Data Exfiltration,grid-database-033,SIEM
+2026-08-29 09:26:20,High,Credential phish reported,Phishing,grid-substation-srv-026,EDR
+2026-08-29 10:21:34,Warning,Phishing URL clicked,Phishing,grid-database-053,Firewall
+2026-08-29 10:25:40,Informational,Password spray detected,Brute Force,grid-domaincontroller-014,EDR
+2026-08-29 10:45:40,Warning,SSH brute force,Brute Force,grid-firewall-005,Firewall
+2026-08-29 11:16:04,Informational,LDAP reconnaissance,Recon,grid-workstation-019,EDR
+2026-08-29 12:17:02,Critical,DNS tunnelling,Data Exfiltration,grid-workstation-023,IDS
+2026-08-29 12:35:04,Warning,Port scan detected,Recon,grid-workstation-041,Firewall
+2026-08-29 14:07:02,Informational,Multiple failed logons,Brute Force,grid-websubstation-srv-025,EDR
+2026-08-29 14:54:13,High,Credential phish reported,Phishing,grid-workstation-046,Firewall
+2026-08-29 16:37:10,Informational,LDAP reconnaissance,Recon,grid-substation-srv-047,EDR
+2026-08-29 16:39:33,Informational,Admin share access,Policy Violation,grid-workstation-043,IDS
+2026-08-29 17:02:52,Warning,Ransomware behaviour,Malware,grid-websubstation-srv-024,SIEM
+2026-08-29 17:26:08,Informational,Port scan detected,Recon,grid-websubstation-srv-025,EDR
+2026-08-29 17:50:03,Informational,Credential phish reported,Phishing,grid-database-033,EDR
+2026-08-29 19:16:30,Informational,Port scan detected,Recon,grid-database-002,SIEM
+2026-08-29 19:22:18,Informational,LDAP reconnaissance,Recon,grid-database-053,IDS
+2026-08-30 05:52:34,High,Directory enumeration,Recon,grid-substation-srv-049,Firewall
+2026-08-30 06:20:41,Warning,Port scan detected,Recon,grid-firewall-005,IDS
+2026-08-30 07:07:06,Informational,Admin share access,Policy Violation,grid-workstation-052,EDR
+2026-08-30 08:59:03,High,DNS tunnelling,Data Exfiltration,grid-workstation-013,Firewall
+2026-08-30 09:03:18,Informational,Ransomware behaviour,Malware,grid-domaincontroller-014,SIEM
+2026-08-30 09:20:14,High,Unapproved software,Policy Violation,grid-workstation-017,Firewall
+2026-08-30 09:33:03,Informational,Multiple failed logons,Brute Force,grid-workstation-042,EDR
+2026-08-30 09:41:28,High,Password spray detected,Brute Force,grid-mailsubstation-srv-051,EDR
+2026-08-30 09:42:17,Warning,Unapproved software,Policy Violation,grid-workstation-036,IDS
+2026-08-30 09:55:56,High,Suspicious PowerShell download,Malware,grid-workstation-022,IDS
+2026-08-30 10:10:26,Warning,Unapproved software,Policy Violation,grid-websubstation-srv-029,Firewall
+2026-08-30 10:37:36,Warning,SSH brute force,Brute Force,grid-mailsubstation-srv-028,EDR
+2026-08-30 11:23:50,Warning,USB storage connected,Policy Violation,grid-mailsubstation-srv-032,IDS
+2026-08-30 11:57:03,Warning,Suspicious PowerShell download,Malware,grid-mailsubstation-srv-028,EDR
+2026-08-30 12:23:10,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-041,SIEM
+2026-08-30 12:24:37,High,Password spray detected,Brute Force,grid-websubstation-srv-006,SIEM
+2026-08-30 12:32:15,High,EDR malware detection,Malware,grid-workstation-020,Firewall
+2026-08-30 13:39:54,Informational,USB storage connected,Policy Violation,grid-firewall-058,IDS
+2026-08-30 13:40:03,Critical,Large outbound transfer,Data Exfiltration,grid-substation-srv-050,SIEM
+2026-08-30 14:21:15,Warning,Ransomware behaviour,Malware,grid-workstation-045,SIEM
+2026-08-30 14:45:22,Warning,USB storage connected,Policy Violation,grid-workstation-034,IDS
+2026-08-30 15:24:46,Warning,Password spray detected,Brute Force,grid-workstation-034,Firewall
+2026-08-30 16:52:41,High,Cloud upload anomaly,Data Exfiltration,grid-workstation-043,Firewall
+2026-08-30 17:21:20,Warning,Unapproved software,Policy Violation,grid-workstation-016,SIEM
+2026-08-30 17:35:02,Critical,DNS tunnelling,Data Exfiltration,grid-workstation-012,SIEM

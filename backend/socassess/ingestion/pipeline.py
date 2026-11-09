@@ -75,7 +75,8 @@ def ingest_tables(con: duckdb.DuckDBPyConnection, raw: dict[str, pd.DataFrame], 
 
 def ingest_path(con: duckdb.DuckDBPyConnection, path: str | Path, source: str = "upload",
                 entity_name: str | None = None, auto_map: bool = True,
-                source_name: str | None = None) -> IngestResult:
+                source_name: str | None = None, sector: str | None = None,
+                size: str | None = None) -> IngestResult:
     """Ingest a file or folder. With auto_map, non-schema exports (e.g. a SIEM alert CSV) are mapped
     automatically; every assumption is returned as a warning prefixed 'auto-mapping:'."""
     path = Path(path)
@@ -85,7 +86,7 @@ def ingest_path(con: duckdb.DuckDBPyConnection, path: str | Path, source: str = 
     else:
         raw, ignored, extra = load_any(path)
         raw, notes = adapt(raw, extra, known_entities=store.known_entities(con),
-                           default_entity=entity_name or path.stem)
+                           default_entity=entity_name or path.stem, sector=sector, size=size)
         used_extra = any(n.startswith("'") and "treated as the alerts table" in n for n in notes)
         warn = [f"auto-mapping: {n}" for n in notes]
         if not used_extra:

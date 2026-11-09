@@ -167,6 +167,42 @@ export interface Summary {
   totals: Record<string, number>;
 }
 
+export interface Guess {
+  value: string;
+  label: string;
+  confidence: "high" | "medium" | "low" | "user";
+  reasons: string[];
+  source?: "user" | "auto";
+}
+
+export interface Detection {
+  data_type: Guess;
+  sector: Guess;
+  size: Guess;
+  rows: number;
+  tables: Record<string, number>;
+  columns: string[];
+  mapping: Record<string, string>;
+  missing_for_full: string[];
+  preview: Record<string, string>[];
+}
+
+export interface Classification {
+  data_type?: string;
+  sector?: string;
+  size?: string;
+}
+
+export interface UploadResult {
+  run_id: string;
+  entity_ids: string[];
+  row_counts: Record<string, number>;
+  warnings: string[];
+  analysis_run_id?: string;
+  classification: Record<"data_type" | "sector" | "size", Guess>;
+  auto_classified: string[];
+}
+
 export class ApiError extends Error {
   constructor(public status: number, message: string, public errors: string[] = []) {
     super(message);
@@ -239,16 +275,18 @@ export const api = {
       "/api/analysis/run",
       { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ params }) },
     ),
-  upload: (files: File[], analyse = true, entityName?: string) => {
+  upload: (files: File[], analyse = true, entityName?: string, cls: Classification = {}) => {
     const fd = new FormData();
     for (const f of files) fd.append("files", f);
-    return request<{
-      run_id: string;
-      entity_ids: string[];
-      row_counts: Record<string, number>;
-      warnings: string[];
-      analysis_run_id?: string;
-    }>(`/api/ingest${qs({ analyse, entity_name: entityName })}`, { method: "POST", body: fd });
+    return request<UploadResult>(
+      `/api/ingest${qs({ analyse, entity_name: entityName, sector: cls.sector, size: cls.size, data_type: cls.data_type })}`,
+      { method: "POST", body: fd },
+    );
+  },
+  detect: (files: File[]) => {
+    const fd = new FormData();
+    for (const f of files) fd.append("files", f);
+    return request<Detection>("/api/detect", { method: "POST", body: fd });
   },
   reportUrl: (path: string) => `${API_BASE}/api/reports/${path}`,
 };

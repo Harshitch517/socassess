@@ -46,7 +46,7 @@ export function ErrorBox({ error, onRetry }: { error: Error; onRetry?: () => voi
       )}
       <div className="mt-3 flex gap-3">
         {noRun && (
-          <Link className="font-medium text-accent hover:underline" to="/upload">
+          <Link className="font-medium text-accent hover:underline" to="/">
             Upload data
           </Link>
         )}

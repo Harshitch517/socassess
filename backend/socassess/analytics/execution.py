@@ -153,6 +153,38 @@ def near_duplicate_groups(texts: pd.Series, similarity: float, chunk: int = 1500
     return labels[inverse]
 
 
+_GROUP_CACHE: dict[str, dict[str, int]] = {}
+
+
+def cached_groups(texts: pd.Series, similarity: float) -> np.ndarray:
+    """near_duplicate_groups, memoised per organisation on the SET of distinct normalised notes
+    (order-independent) and the threshold. In the long-running API an upload changes one
+    organisation's notes, so the others are not recomputed."""
+    import hashlib
+    norm = texts.fillna("").map(_normalise)
+    uniq = sorted(set(norm))
+    h = hashlib.sha1(f"{similarity}".encode())
+    for t in uniq:
+        h.update(t.encode("utf-8", "replace"))
+        h.update(b"\x00")
+    key = h.hexdigest()
+    if key not in _GROUP_CACHE:
+        if len(_GROUP_CACHE) > 256:
+            _GROUP_CACHE.clear()
+        labels = near_duplicate_groups(pd.Series(uniq), similarity)
+        _GROUP_CACHE[key] = dict(zip(uniq, (int(x) for x in labels), strict=True))
+    lookup = _GROUP_CACHE[key]
+    return norm.map(lookup).to_numpy()
+
+
+def warm_note_cache(con, similarity: float) -> int:
+    """Pre-compute note groups for every organisation (used at API start-up, in the background)."""
+    df = con.execute("SELECT entity_id, notes FROM cases").df()
+    for _, g in df.groupby("entity_id"):
+        cached_groups(g.notes, similarity)
+    return df.entity_id.nunique()
+
+
 def template_notes(d: Data, p: dict) -> list[Finding]:
     cfg = p["template_notes"]
     c = d.cases.copy()
@@ -161,7 +193,7 @@ def template_notes(d: Data, p: dict) -> list[Finding]:
     parts = []
     for _eid, grp in c.groupby("entity_id"):
         grp = grp.copy()
-        grp["group"] = near_duplicate_groups(grp.notes, cfg["similarity"])
+        grp["group"] = cached_groups(grp.notes, cfg["similarity"])
         size = grp.groupby("group").case_id.transform("size")
         grp["templated"] = (size >= cfg["min_group"]) & (grp.notes.fillna("").str.len() >= cfg["min_chars"])
         grp["group_size"] = size
@@ -208,11 +240,12 @@ def repeated_no_remediation(d: Data, p: dict) -> list[Finding]:
     # min_span_days+ with no fix in between means the root cause was left in place that long
     # (whether or not someone eventually fixed it).
     a = a.sort_values(key + ["ts"])
+    a["has_fix"] = a.remediation.notna()
     fixed = a.remediation.notna().astype(int)
     a["segment"] = fixed.groupby([a[k] for k in key]).cumsum() - fixed  # fix closes its segment
     seg = key + ["segment"]
     g = a.groupby(seg).agg(n=("alert_id", "size"), first=("ts", "min"), last=("ts", "max"),
-                           ended_by_fix=("remediation", lambda s: s.notna().any())).reset_index()
+                           ended_by_fix=("has_fix", "max")).reset_index()
     g["span_days"] = (g["last"] - g["first"]).dt.total_seconds() / 86400
     hits = g[(g.n >= cfg["min_alerts"]) & (g.span_days >= cfg["min_span_days"])]
     crit = dict(zip(d.assets.asset_id, d.assets.criticality, strict=True))

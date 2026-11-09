@@ -12,13 +12,13 @@ import Reports from "./pages/Reports";
 import Results from "./pages/Results";
 import ReviewQueue from "./pages/ReviewQueue";
 import Trends from "./pages/Trends";
-import Upload from "./pages/Upload";
+import Analyze from "./pages/Analyze";
 
 function NotFound() {
   return (
     <div className="py-16 text-center">
       <h1 className="text-lg font-semibold">Page not found</h1>
-      <Link to="/" className="mt-2 inline-block text-accent hover:underline">Back to overview</Link>
+      <Link to="/" className="mt-2 inline-block text-accent hover:underline">Back to the start</Link>
     </div>
   );
 }
@@ -28,14 +28,15 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { index: true, element: <Overview /> },
+      { index: true, element: <Analyze /> },
+      { path: "overview", element: <Overview /> },
       { path: "entities/:id", element: <EntityDetail /> },
       { path: "findings", element: <Findings /> },
       { path: "findings/:id", element: <FindingDetail /> },
       { path: "clusters", element: <Clusters /> },
       { path: "trends", element: <Trends /> },
       { path: "review", element: <ReviewQueue /> },
-      { path: "upload", element: <Upload /> },
+      { path: "upload", element: <Analyze /> },
       { path: "results", element: <Results /> },
       { path: "reports", element: <Reports /> },
       { path: "*", element: <NotFound /> },
