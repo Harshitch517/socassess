@@ -252,6 +252,13 @@ export default function Analyze() {
         <HeroArt className="hidden h-44 w-56 shrink-0 md:block" />
       </header>
       <Stepper step={step} />
+      {health.data?.public_demo && !ro && (
+        <div className="no-print mb-4 rounded-xl border border-[var(--st-warning)] bg-[color-mix(in_srgb,var(--st-warning)_10%,transparent)] p-3 text-sm text-ink-2" role="note">
+          <b className="text-ink">Public demo.</b> Please don't upload confidential data: files are processed on a shared
+          demo server (kept until it restarts, max {health.data.max_upload_mb} MB). For real SOC data, run SOCAssess offline
+          on your own computer.
+        </div>
+      )}
       {ro && (
         <div className="mb-4 rounded-xl border border-line bg-surface-2 p-3 text-sm text-ink-2">
           This is a read-only demo. Adding data is turned off here, but you can open <a className="text-accent underline" href="/results">the demo results</a>.

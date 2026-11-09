@@ -130,7 +130,7 @@ def _candidate_pairs(x, similarity: float, chunk: int, dims: int = 64,
     return np.concatenate(rows), np.concatenate(cols)
 
 
-def near_duplicate_groups(texts: pd.Series, similarity: float, chunk: int = 1500,
+def near_duplicate_groups(texts: pd.Series, similarity: float, chunk: int = 400,
                           exact_limit: int = 3000) -> np.ndarray:
     """Group label per text: texts whose TF-IDF cosine >= similarity share a label (transitively).
 

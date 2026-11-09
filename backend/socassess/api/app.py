@@ -19,6 +19,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Annotated, Literal
 
+import duckdb
 from fastapi import Depends, FastAPI, File, HTTPException, Query, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse, Response
@@ -26,6 +27,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 import socassess
+from socassess import store
 from socassess.analytics.engine import latest_run_id, persist, run_analysis
 from socassess.analytics.params import DEFAULT_PARAMS
 from socassess.api import reports
@@ -47,12 +49,25 @@ class Settings:
             "SOCASSESS_CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(",") if o.strip()]
         self.max_upload_mb = int(os.environ.get("SOCASSESS_MAX_UPLOAD_MB", "200"))
         self.read_only = os.environ.get("SOCASSESS_READ_ONLY", "0") == "1"
+        self.public_demo = os.environ.get("SOCASSESS_PUBLIC_DEMO", "0") == "1"
+        self.keep_uploads = int(os.environ.get("SOCASSESS_KEEP_UPLOADS", "0"))  # 0 = keep all
         self.frontend_dir = os.environ.get("SOCASSESS_FRONTEND_DIR")
 
 
 class RunRequest(BaseModel):
     params: dict = Field(default_factory=dict, description="parameter overrides (see params.py)")
     entity_ids: list[str] | None = None
+
+
+def release_memory() -> None:
+    """Return freed memory to the OS after an analysis (matters on 512 MB hosts)."""
+    import gc
+    gc.collect()
+    try:
+        import ctypes
+        ctypes.CDLL("libc.so.6").malloc_trim(0)  # glibc only (Linux / Docker); no-op elsewhere
+    except (OSError, AttributeError):
+        pass
 
 
 def _db(request: Request) -> Database:
@@ -82,7 +97,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             except Exception:  # warming is an optimisation only
                 pass
 
-        threading.Thread(target=warm, daemon=True, name="note-cache-warmup").start()
+        if os.environ.get("SOCASSESS_WARM_CACHE", "1") == "1":  # set 0 on small (512 MB) hosts
+            threading.Thread(target=warm, daemon=True, name="note-cache-warmup").start()
         yield
         app.state.db.close()
 
@@ -112,6 +128,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         with d.connection() as con:
             rid = latest_run_id(con)
         return {"status": "ok", "version": socassess.__version__, "read_only": settings.read_only,
+                "public_demo": settings.public_demo, "max_upload_mb": settings.max_upload_mb,
                 "latest_run": rid, "entities": d.scalar("SELECT count(*) FROM entities")}
 
     @app.get("/api/runs")
@@ -207,6 +224,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     res = ingest_path(con, target, source="upload", entity_name=entity_name or Path(names[0]).stem,
                                       source_name=", ".join(names)[:200],
                                       sector=classification["sector"]["value"], size=classification["size"]["value"])
+                    if settings.keep_uploads:
+                        store.prune_uploads(con, settings.keep_uploads)
                     out = {"run_id": res.run_id, "input_sha256": res.input_sha256, "entity_ids": res.entity_ids,
                            "row_counts": res.row_counts, "warnings": res.warnings,
                            "classification": classification,
@@ -215,11 +234,18 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                         ar = run_analysis(con)
                         persist(con, ar, trigger="upload")
                         out["analysis_run_id"] = ar.run_id
+                        del ar
+                        release_memory()
             except ValidationError as e:
                 raise HTTPException(422, {"message": "Validation failed", "errors": e.report.errors,
                                           "warnings": e.report.warnings}) from e
             except LoadError as e:
                 raise HTTPException(422, {"message": str(e), "errors": [str(e)]}) from e
+            except (MemoryError, duckdb.OutOfMemoryException) as e:
+                release_memory()
+                msg = ("This file is too large for this server's memory. Try a smaller file, or run SOCAssess "
+                       "on your own computer, where there is no such limit.")
+                raise HTTPException(413, {"message": msg, "errors": [msg]}) from e
             return out
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
@@ -230,6 +256,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         with d.connection() as con:
             res = run_analysis(con, body.params, body.entity_ids)
             persist(con, res, trigger="api", entity_ids=body.entity_ids)
+        release_memory()
         return {"run_id": res.run_id, "duration_s": res.duration_s, "input_hash": res.input_hash,
                 "code_version": res.code_version, "n_findings": len(res.findings),
                 "detector_errors": res.detector_errors}

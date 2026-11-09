@@ -63,7 +63,14 @@ def load_data(con: duckdb.DuckDBPyConnection, entity_ids: list[str] | None = Non
 
     def q(sql: str) -> pd.DataFrame:
         # Timestamps go through VARCHAR -> pandas UTC so results don't depend on the local TZ.
-        return con.execute(sql, params).df()
+        # Relation -> Arrow -> pandas uses far less temporary memory than .df() (matters on 512 MB hosts)
+        # A private cursor, so a caller's unfinished result on `con` cannot block the read.
+        cur = con.cursor()
+        try:
+            rel = cur.sql(sql, params=params) if params else cur.sql(sql)
+            return rel.to_arrow_table().to_pandas()
+        finally:
+            cur.close()
 
     ent = q(f"SELECT * FROM entities {where}")
     ent["source"] = ent["source"].fillna("upload")

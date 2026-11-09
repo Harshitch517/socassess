@@ -151,6 +151,8 @@ export interface Health {
   status: string;
   version: string;
   read_only: boolean;
+  public_demo?: boolean;
+  max_upload_mb?: number;
   latest_run: string | null;
   entities: number;
 }

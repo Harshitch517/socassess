@@ -190,3 +190,18 @@ def test_upload_any_alert_csv(tmp_path):
         assert any(w.startswith("auto-mapping:") for w in body["warnings"])
         s = c.get("/api/summary", params={"entity_id": "MY-SOC"}).json()
         assert s["totals"]["alerts"] == 2
+
+
+def test_public_demo_keeps_only_recent_uploads(tmp_path, monkeypatch):
+    monkeypatch.setenv("SOCASSESS_KEEP_UPLOADS", "2")
+    s = Settings()
+    s.db_path = str(tmp_path / "demo.duckdb")
+    with TestClient(create_app(s)) as c:
+        for i in range(4):
+            csv = f"Timestamp,Severity\n2026-06-0{i + 1} 10:00,High\n"
+            r = c.post("/api/ingest", params={"entity_name": f"Org {i}", "analyse": False},
+                       files=[("files", (f"o{i}.csv", csv, "text/csv"))])
+            assert r.status_code == 200, r.text
+        assert c.post("/api/analysis/run", json={}).status_code == 200
+        ids = {e["entity_id"] for e in c.get("/api/entities").json()["entities"]}
+        assert ids == {"ORG-2", "ORG-3"}

@@ -1,0 +1,32 @@
+# Render blueprint for the public SOCAssess demo (free tier: 512 MB RAM, sleeps when idle, disk resets on restart).
+# The limits below were measured in a 512 MB container (see DECISIONS.md #63-65).
+services:
+  - type: web
+    name: socassess-api
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: SOCASSESS_PUBLIC_DEMO        # shows the "don't upload confidential data" notice
+        value: "1"
+      - key: SOCASSESS_MAX_UPLOAD_MB      # 5 MB ~ 50,000 alerts: the largest size that fits 512 MB safely
+        value: "5"
+      - key: SOCASSESS_MAX_UNZIPPED_MB
+        value: "50"
+      - key: SOCASSESS_KEEP_UPLOADS       # keep only the 5 most recent visitor uploads
+        value: "5"
+      - key: SOCASSESS_DUCKDB_MEMORY
+        value: "128MB"
+      - key: SOCASSESS_DUCKDB_THREADS
+        value: "2"
+      - key: SOCASSESS_WARM_CACHE         # no background warm-up on a 512 MB host
+        value: "0"
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: OPENBLAS_NUM_THREADS
+        value: "1"
+      - key: SOCASSESS_CORS_ORIGINS       # set to the Vercel frontend URL after it is created
+        value: "https://socassess.vercel.app"
