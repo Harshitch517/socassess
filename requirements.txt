@@ -1,0 +1,18 @@
+# Runtime (all free / open-source: MIT, BSD or Apache-2.0)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2.7
+pandas>=2.2
+numpy>=1.26
+pyarrow>=16
+duckdb>=1.1
+scikit-learn>=1.5        # includes sklearn.cluster.HDBSCAN, IsolationForest, TF-IDF
+reportlab>=4.2           # PDF report export (BSD)
+matplotlib>=3.9          # validation charts
+requests>=2.32
+kaggle>=1.6              # dataset download (Apache-2.0); needs user's token
+# Dev / test
+pytest>=8.2
+httpx>=0.27
+ruff>=0.5

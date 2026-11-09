@@ -1,0 +1,25 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+# Node
+node_modules/
+frontend/dist/
+# Data (raw downloads never committed; processed outputs are regenerated)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+!data/processed/ground_truth.json
+*.duckdb
+*.duckdb.wal
+# Secrets
+.env
+kaggle.json
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
