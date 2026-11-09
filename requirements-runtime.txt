@@ -1,0 +1,13 @@
+# Runtime-only dependencies for the container (pinned from requirements.lock.txt).
+fastapi==0.162.2
+uvicorn==0.54.0
+python-multipart==0.0.33
+pydantic==2.14.3
+pandas==3.1.1
+numpy==2.4.6
+pyarrow==26.0.1
+duckdb==2.0.0
+pytz==2026.6
+scikit-learn==1.9.1
+scipy==1.17.1
+reportlab==5.1.0

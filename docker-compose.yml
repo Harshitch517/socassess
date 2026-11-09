@@ -1,0 +1,16 @@
+# Offline deployment: docker compose up -d   ->  http://localhost:8000
+services:
+  socassess:
+    build: .
+    image: socassess:latest
+    ports:
+      - "8000:8000"
+    environment:
+      SOCASSESS_READ_ONLY: "0"        # set to "1" for a view-only demo
+      SOCASSESS_MAX_UPLOAD_MB: "200"
+    volumes:
+      - socassess-data:/app/data/processed   # store, uploads and results survive restarts
+    mem_limit: 4g
+    restart: unless-stopped
+volumes:
+  socassess-data:

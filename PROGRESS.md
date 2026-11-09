@@ -40,3 +40,10 @@
 - Checked visually with headless Chrome screenshots (dark, light, narrow). Typecheck + production build clean (228 kB gzip JS).
 - Dev: `cd frontend && npm install && npm run dev` (proxies /api to :8000). Prod: `npm run build`, then run the API with `SOCASSESS_FRONTEND_DIR=frontend/dist` and open http://localhost:8000.
 - Tests: 70 passed (added a frontend-serving test).
+
+## Stage 6 — Validation (2026-11-09) ✅
+- `backend/socassess/validation.py` (scoring vs ground truth, review-effort curves) + `scripts/validate.py` (generate → ingest → analyse → evaluate, per seed; charts; report).
+- Results (`docs/validation_report.md`), 5 seeds of which 4 held out: **70/70 planted weaknesses detected, 0 wrong findings, 0/20 healthy entities flagged, AUC 1.00, evidence precision 99.0–99.4% and recall 99.8–100%.**
+- Tool vs manual sampling: the review queue confirms every weakness after about 54 records (≈4.5 h); random review of the same 54 records confirms 22–33%, and even 3,840 records (≈320 h) plateaus at 64%, because negative-space weaknesses leave no case to sample.
+- Tests: 73 passed (3 validation-maths tests).
+- Run: `python scripts/validate.py` (about 8 min for 5 seeds; `--seeds 7 --runs 20` for a quick check).
