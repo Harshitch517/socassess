@@ -10,7 +10,7 @@ where = ["backend"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["backend", "tests"]
-filterwarnings = ["ignore:The inplace keyword in DataFrame.drop:DeprecationWarning", "ignore::pandas.errors.Pandas4Warning"]
+filterwarnings = ["ignore:The inplace keyword in DataFrame.drop:DeprecationWarning", "ignore::pandas.errors.Pandas4Warning", "ignore:Using `httpx` with `starlette.testclient`"]
 
 [tool.ruff]
 line-length = 120

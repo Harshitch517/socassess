@@ -29,3 +29,7 @@
 | 25 | 2026-11-09 | 3 | The review queue adds a seeded random control sample of high/critical cases per entity. | Lets the supervisor check the tool's blind spots, and is the basis for the Stage 6 manual-sampling baseline. |
 | 26 | 2026-11-09 | 3 | The analysis input hash = ingest input hashes + per-table row count + XOR of row hashes. | A pure file-hash missed a change in ingestion mapping; the content fingerprint catches any changed value. |
 | 27 | 2026-11-09 | 3 | AIT: Wazuh `freshclam` (AV signature update) → `av_update`, not malware. | The `virus` group label on update events was mislabelling routine updates as malware. |
+| 28 | 2026-11-09 | 4 | One DuckDB connection per API process, serialised with a lock. | DuckDB allows a single writer per file; requests take milliseconds, so a lock is simpler and safe. |
+| 29 | 2026-11-09 | 4 | Uploads go to a temp folder, are size-limited (200 MB default) and type-checked, and are deleted after ingest; by default an upload re-runs the analysis. | Safe handling of untrusted files; the dashboard updates immediately. |
+| 30 | 2026-11-09 | 4 | `SOCASSESS_READ_ONLY=1` demo mode blocks upload/analysis. | The public demo deployment must not accept arbitrary data. |
+| 31 | 2026-11-09 | 4 | PDF via reportlab; each PDF footer carries run id, input fingerprint and code version. | Free/offline; printed reports stay traceable to an exact run. |
