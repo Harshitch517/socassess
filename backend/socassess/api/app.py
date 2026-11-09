@@ -123,13 +123,21 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     "n_evidence, metric_values, detector, points")
 
     # ------------------------------------------------------------------ meta
+    health_cache: dict = {"latest_run": None, "entities": None}
+
     @app.get("/api/health")
     def health(d: DB):
-        with d.connection() as con:
-            rid = latest_run_id(con)
-        return {"status": "ok", "version": socassess.__version__, "read_only": settings.read_only,
-                "public_demo": settings.public_demo, "max_upload_mb": settings.max_upload_mb,
-                "latest_run": rid, "entities": d.scalar("SELECT count(*) FROM entities")}
+        """Never blocks: while an analysis holds the database, answer from the last known values.
+        (Hosting platforms restart a service whose health check times out.)"""
+        busy = not d.lock.acquire(blocking=False)
+        if not busy:
+            try:
+                health_cache["latest_run"] = latest_run_id(d._con)
+                health_cache["entities"] = d._con.execute("SELECT count(*) FROM entities").fetchone()[0]
+            finally:
+                d.lock.release()
+        return {"status": "ok", "busy": busy, "version": socassess.__version__, "read_only": settings.read_only,
+                "public_demo": settings.public_demo, "max_upload_mb": settings.max_upload_mb, **health_cache}
 
     @app.get("/api/runs")
     def runs(d: DB, limit: int = Query(50, le=500)):

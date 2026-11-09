@@ -205,3 +205,28 @@ def test_public_demo_keeps_only_recent_uploads(tmp_path, monkeypatch):
         assert c.post("/api/analysis/run", json={}).status_code == 200
         ids = {e["entity_id"] for e in c.get("/api/entities").json()["entities"]}
         assert ids == {"ORG-2", "ORG-3"}
+
+
+def test_health_never_blocks_during_analysis(db_path):
+    import threading
+    import time
+
+    with client(db_path) as c:
+        c.get("/api/health")  # fill the cache
+        db = c.app.state.db
+        held = threading.Event()
+        release = threading.Event()
+
+        def hold():
+            with db.lock:
+                held.set()
+                release.wait(10)
+
+        t = threading.Thread(target=hold)
+        t.start()
+        held.wait(5)
+        t0 = time.perf_counter()
+        h = c.get("/api/health").json()
+        release.set()
+        t.join()
+        assert time.perf_counter() - t0 < 1 and h["busy"] is True and h["entities"] == 8

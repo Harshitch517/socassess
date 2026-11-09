@@ -503,7 +503,7 @@ export default function Analyze() {
             <button className="rounded-xl border border-line bg-surface px-4 py-2.5 font-medium text-ink hover:bg-surface-2" onClick={() => setStep(1)}>← Back</button>
             <button className="btn-primary inline-flex items-center gap-2 rounded-xl px-5 py-2.5 font-medium disabled:opacity-50"
               disabled={!!busy || ro || (!det && !(mode === "paste" && text.trim().split("\n").length >= 2))} onClick={analyse}>
-              {busy === "analysing" ? <><Loader2 className="h-4 w-4 animate-spin" /> Analysing… (up to a minute)</> : "Analyse my data →"}
+              {busy === "analysing" ? <><Loader2 className="h-4 w-4 animate-spin" /> Analysing… {health.data?.public_demo ? "(up to 2 minutes on the free demo server)" : "(usually under a minute)"}</> : "Analyse my data →"}
             </button>
           </div>
         </div>

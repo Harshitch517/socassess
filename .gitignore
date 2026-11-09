@@ -26,3 +26,7 @@ Thumbs.db
 
 # build info
 *.tsbuildinfo
+
+# Vercel CLI link
+.vercel/
+frontend/.vercel/
