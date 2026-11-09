@@ -21,6 +21,7 @@ from socassess.ingestion.pipeline import hash_input, ingest_path, ingest_tables 
 from socassess.ingestion.validate import ValidationError  # noqa: E402
 
 AIT_SAMPLE = ROOT / "data" / "processed" / "ait" / "sample_alerts.parquet"
+GUIDE_SAMPLE = ROOT / "data" / "processed" / "guide" / "sample_alerts.parquet"
 
 
 def main() -> int:
@@ -29,6 +30,7 @@ def main() -> int:
     ap.add_argument("--db", type=Path, default=DB_PATH)
     ap.add_argument("--fresh", action="store_true")
     ap.add_argument("--no-ait", action="store_true")
+    ap.add_argument("--no-guide", action="store_true")
     args = ap.parse_args()
     if args.fresh and args.db.exists():
         args.db.unlink()
@@ -46,6 +48,10 @@ def main() -> int:
         r = ingest_tables(con, load_ait_tables(AIT_SAMPLE), source_name=AIT_SAMPLE.name,
                           input_sha256=hash_input(AIT_SAMPLE), source="ait")
         print(f"ok   AIT sample run={r.run_id} {r.row_counts}")
+    if not args.paths and not args.no_guide and GUIDE_SAMPLE.exists():
+        # through the same automatic mapping a user's own alert export goes through
+        r = ingest_path(con, GUIDE_SAMPLE, source="guide", entity_name="GUIDE")
+        print(f"ok   GUIDE sample run={r.run_id} {r.row_counts}")
     for t in ("entities", "assets", "alerts", "cases", "escalations", "telemetry", "ingest_runs"):
         print(f"{t:12} {con.execute(f'SELECT count(*) FROM {t}').fetchone()[0]:>9,}")
     con.close()

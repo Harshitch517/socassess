@@ -155,6 +155,18 @@ export interface Health {
   entities: number;
 }
 
+export interface Summary {
+  run: Run;
+  entity_ids: string[];
+  bands: { band: Severity; n: number }[];
+  by_type: { type: string; category: string; n: number; points: number }[];
+  by_severity: { severity: Severity; n: number }[];
+  by_category: { category: string; n: number; points: number }[];
+  alert_severity: { severity: Severity; n: number }[];
+  alert_category: { category: string; n: number }[];
+  totals: Record<string, number>;
+}
+
 export class ApiError extends Error {
   constructor(public status: number, message: string, public errors: string[] = []) {
     super(message);
@@ -189,14 +201,8 @@ const qs = (p: Record<string, string | number | boolean | undefined | null>) => 
 
 export const api = {
   health: () => request<Health>("/api/health"),
-  summary: () =>
-    request<{
-      run: Run;
-      bands: { band: Severity; n: number }[];
-      by_type: { type: string; category: string; n: number; points: number }[];
-      by_severity: { severity: Severity; n: number }[];
-      totals: Record<string, number>;
-    }>("/api/summary"),
+  summary: (entityIds: string[] = []) =>
+    request<Summary>(`/api/summary${qs({ entity_id: entityIds.join(",") })}`),
   entities: () => request<{ run_id: string; entities: EntityScore[] }>("/api/entities"),
   entity: (id: string) => request<EntityDetail>(`/api/entities/${encodeURIComponent(id)}`),
   heatmap: () =>
@@ -233,7 +239,7 @@ export const api = {
       "/api/analysis/run",
       { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ params }) },
     ),
-  upload: (files: File[], analyse = true) => {
+  upload: (files: File[], analyse = true, entityName?: string) => {
     const fd = new FormData();
     for (const f of files) fd.append("files", f);
     return request<{
@@ -242,7 +248,7 @@ export const api = {
       row_counts: Record<string, number>;
       warnings: string[];
       analysis_run_id?: string;
-    }>(`/api/ingest${qs({ analyse })}`, { method: "POST", body: fd });
+    }>(`/api/ingest${qs({ analyse, entity_name: entityName })}`, { method: "POST", body: fd });
   },
   reportUrl: (path: string) => `${API_BASE}/api/reports/${path}`,
 };

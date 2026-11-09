@@ -79,8 +79,8 @@ def missing_categories(d: Data, p: dict) -> list[Finding]:
     family = ent.sector.map(lambda s: fam_map.get(s, "general"))
     out = []
     for eid in counts.index:
-        src = ent.at[eid, "source"]
-        same_src = [e for e in counts.index if e != eid and ent.at[e, "source"] == src]
+        src = ent.at[eid, "peer_group"]
+        same_src = [e for e in counts.index if e != eid and ent.at[e, "peer_group"] == src]
         fam_peers = [e for e in same_src if family[e] == family[eid]]
         expected: dict[str, tuple[float, str]] = {}
         for peers, label in ((same_src, "all peers"), (fam_peers, f"{family[eid]} sector peers")):
@@ -89,6 +89,13 @@ def missing_categories(d: Data, p: dict) -> list[Finding]:
             presence = (counts.loc[peers] >= cfg["min_alerts_present"]).mean()
             for cat, share in presence[presence >= cfg["peer_presence"]].items():
                 expected.setdefault(cat, (float(share), label))
+        # Only judge coverage when the entity uses the peers' category vocabulary: an export with its own
+        # naming (or no categories at all) would otherwise look like it is "missing" everything.
+        peer_vocab = set(counts.columns[(counts.loc[same_src] > 0).any()]) if same_src else set()
+        own = counts.loc[eid]
+        shared_share = own[[c for c in own.index if c in peer_vocab]].sum() / max(1, own.sum())
+        if shared_share < cfg.get("min_shared_vocabulary", 0.5):
+            continue
         missing = [c for c in expected if counts.at[eid, c] == 0] if expected else []
         if not missing:
             continue
@@ -163,7 +170,7 @@ def low_activity(d: Data, p: dict) -> list[Finding]:
     if len(df) < 3:
         return []
     df["rate"] = df.alerts / df.assets / df.days
-    df["source"] = ent.source.reindex(df.index)
+    df["source"] = ent.peer_group.reindex(df.index)
     df["log_rate"] = np.log(df.rate)
     df["z"] = peer_z(df.log_rate, df.source, cfg["min_scale"])
     df["peer_median"] = np.exp(peer_median(df.log_rate, df.source))

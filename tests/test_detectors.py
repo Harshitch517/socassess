@@ -175,3 +175,15 @@ def test_entity_without_cases_is_not_judged_on_case_detectors(tables, params):
     _, d = load(tables)
     for det in (ns.missing_records, ex.fast_closure, ex.template_notes):
         assert all(f.entity_id != "E2" for f in det(d, params))
+
+
+def test_single_uploaded_entity_is_compared_with_reference_population(tables, params):
+    # E1 arrives as an organisation's own upload: no peers of its own source
+    tables["entities"].loc[tables["entities"].entity_id == "E1", "source"] = "upload"
+    c = tables["cases"]
+    sev = c.case_id.map(tables["alerts"].set_index("case_id").severity)
+    hit = (c.entity_id == "E1") & sev.isin(["high", "critical"]) & (c.index % 2 == 0)
+    c.loc[hit, "closed_at"] = c.loc[hit, "opened_at"] + pd.Timedelta(minutes=2)
+    _, d = load(tables)
+    assert d.source_of()["E1"] == "synthetic"
+    only(ex.fast_closure(d, params), "E1", "fast_closure")

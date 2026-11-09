@@ -94,10 +94,49 @@ def _normalise(text: str) -> str:
     return " ".join(_NORM.sub(" ", text.lower()).split())
 
 
-def near_duplicate_groups(texts: pd.Series, similarity: float, chunk: int = 1500) -> np.ndarray:
+def _exact_pairs(x, similarity: float, chunk: int) -> tuple[np.ndarray, np.ndarray]:
+    rows, cols = [], []
+    for start in range(0, x.shape[0], chunk):
+        s = (x[start:start + chunk] @ x.T).tocoo()
+        keep = (s.data >= similarity) & (s.row + start != s.col)
+        rows.append(s.row[keep] + start)
+        cols.append(s.col[keep])
+    return np.concatenate(rows), np.concatenate(cols)
+
+
+def _candidate_pairs(x, similarity: float, chunk: int, dims: int = 64,
+                     margin: float = 0.12) -> tuple[np.ndarray, np.ndarray]:
+    """Fast path for many texts: find candidate pairs in a 64-d SVD projection (dense matmul),
+    then keep only pairs whose exact TF-IDF cosine passes. The margin keeps the projection from
+    missing true pairs; verification keeps it from adding false ones."""
+    from sklearn.decomposition import TruncatedSVD
+    k = max(2, min(dims, x.shape[1] - 1, x.shape[0] - 1))
+    z = TruncatedSVD(k, random_state=0).fit_transform(x).astype(np.float32)
+    z /= np.maximum(np.linalg.norm(z, axis=1, keepdims=True), 1e-9)
+    rows, cols = [], []
+    for start in range(0, z.shape[0], chunk):
+        sim = z[start:start + chunk] @ z.T
+        r, c = np.nonzero(sim >= similarity - margin)
+        r = r + start
+        keep = r < c
+        r, c = r[keep], c[keep]
+        if len(r):
+            exact = np.asarray(x[r].multiply(x[c]).sum(axis=1)).ravel()
+            ok = exact >= similarity
+            rows.append(r[ok])
+            cols.append(c[ok])
+    if not rows:
+        return np.array([], dtype=int), np.array([], dtype=int)
+    return np.concatenate(rows), np.concatenate(cols)
+
+
+def near_duplicate_groups(texts: pd.Series, similarity: float, chunk: int = 1500,
+                          exact_limit: int = 3000) -> np.ndarray:
     """Group label per text: texts whose TF-IDF cosine >= similarity share a label (transitively).
 
     Exact duplicates (after normalisation) are merged first, so only distinct texts are compared.
+    Up to `exact_limit` distinct texts are compared exhaustively; above that, an SVD candidate
+    search with exact verification is used (same groups, much faster).
     """
     norm = texts.fillna("").map(_normalise)
     uniq, inverse = np.unique(norm.to_numpy(), return_inverse=True)
@@ -106,15 +145,9 @@ def near_duplicate_groups(texts: pd.Series, similarity: float, chunk: int = 1500
         return inverse
     vec = TfidfVectorizer(ngram_range=(1, 2), sublinear_tf=True, min_df=1,
                           token_pattern=r"(?u)\b\w+\b")
-    x = vec.fit_transform(uniq)
-    rows, cols = [], []
-    for start in range(0, n, chunk):
-        s = (x[start:start + chunk] @ x.T).tocoo()
-        keep = (s.data >= similarity) & (s.row + start != s.col)
-        rows.append(s.row[keep] + start)
-        cols.append(s.col[keep])
+    x = vec.fit_transform(uniq).tocsr()
+    rr, cc = _exact_pairs(x, similarity, chunk) if n <= exact_limit else _candidate_pairs(x, similarity, chunk)
     from scipy.sparse import coo_matrix
-    rr, cc = np.concatenate(rows), np.concatenate(cols)
     graph = coo_matrix((np.ones(len(rr)), (rr, cc)), shape=(n, n))
     _, labels = connected_components(graph, directed=False)
     return labels[inverse]

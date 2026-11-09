@@ -34,7 +34,8 @@ from socassess.ingestion.loaders import LoadError
 from socassess.ingestion.pipeline import ingest_path
 from socassess.ingestion.validate import ValidationError
 
-UPLOAD_SUFFIXES = {".zip", ".csv", ".json", ".jsonl", ".sqlite", ".sqlite3", ".db", ".duckdb", ".parquet"}
+UPLOAD_SUFFIXES = {".zip", ".csv", ".json", ".jsonl", ".sqlite", ".sqlite3", ".db", ".duckdb", ".parquet",
+                   ".xlsx", ".xlsm"}
 
 
 class Settings:
@@ -117,8 +118,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     # ------------------------------------------------------------------ write
     @app.post("/api/ingest", dependencies=[Depends(writable)])
     def ingest(d: DB, files: Annotated[list[UploadFile], File(description="export files or a .zip")],
-               analyse: bool = True):
-        """Upload one export (a .zip, a database file, or several CSV/JSON table files)."""
+               analyse: bool = True,
+               entity_name: Annotated[str | None, Query(max_length=80, description=(
+                   "organisation name for data without an organisation column"))] = None):
+        """Upload data: a schema export (.zip, database file, table files) or any alert export (CSV/JSON),
+        which is mapped automatically; the assumptions come back in `warnings` ('auto-mapping: ...')."""
         limit = settings.max_upload_mb * 1024 * 1024
         tmp = Path(tempfile.mkdtemp(prefix="socassess_upload_"))
         try:
@@ -138,7 +142,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             target = tmp / names[0] if len(names) == 1 and names[0].lower().endswith(".zip") else tmp
             try:
                 with d.connection() as con:
-                    res = ingest_path(con, target, source="upload")
+                    res = ingest_path(con, target, source="upload", entity_name=entity_name or Path(names[0]).stem,
+                                      source_name=", ".join(names)[:200])
                     out = {"run_id": res.run_id, "input_sha256": res.input_sha256, "entity_ids": res.entity_ids,
                            "row_counts": res.row_counts, "warnings": res.warnings}
                     if analyse:
@@ -323,20 +328,36 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return {"run_id": rid, "entities": ents, "types": list(DEFAULT_PARAMS["risk_weights"]), "cells": cells}
 
     @app.get("/api/summary")
-    def summary(d: DB, run_id: RunQ = None):
+    def summary(d: DB, run_id: RunQ = None,
+                entity_id: Annotated[str | None, Query(description="comma-separated entity ids")] = None):
+        """Totals and part-to-whole breakdowns (for the pie charts), optionally for some entities only."""
         rid = run_or_404(d, run_id)
+        ids = [e for e in (entity_id or "").split(",") if e]
+        f = " AND entity_id IN (SELECT unnest($ids))" if ids else ""
+        p = {"rid": rid, "ids": ids} if ids else {"rid": rid}
+        cats = d.rows(f"SELECT category, count(*) AS n FROM alerts WHERE true {f} GROUP BY 1 ORDER BY 2 DESC",
+                      {"ids": ids} if ids else None)
+        top, rest = cats[:6], sum(c["n"] for c in cats[6:])
+        if rest:
+            top.append({"category": "other", "n": rest})
         return {"run": d.one("SELECT * EXCLUDE (params) FROM analysis_runs WHERE run_id = ?", [rid]),
-                "bands": d.rows("SELECT band, count(*) AS n FROM entity_scores WHERE run_id = ? GROUP BY 1", [rid]),
-                "by_type": d.rows("SELECT type, category, count(*) AS n, sum(points) AS points FROM findings "
-                                  "WHERE run_id = ? GROUP BY 1, 2 ORDER BY points DESC", [rid]),
-                "by_severity": d.rows("SELECT severity, count(*) AS n FROM findings WHERE run_id = ? GROUP BY 1",
-                                      [rid]),
-                "totals": d.one("""SELECT (SELECT count(*) FROM entities) AS entities,
-                                          (SELECT count(*) FROM alerts) AS alerts,
-                                          (SELECT count(*) FROM cases) AS cases,
-                                          (SELECT count(*) FROM findings WHERE run_id = $1) AS findings,
-                                          (SELECT count(*) FROM review_queue WHERE run_id = $1) AS review_items""",
-                                [rid])}
+                "entity_ids": ids,
+                "bands": d.rows(f"SELECT band, count(*) AS n FROM entity_scores WHERE run_id = $rid {f} GROUP BY 1", p),
+                "by_type": d.rows(f"SELECT type, category, count(*) AS n, sum(points) AS points FROM findings "
+                                  f"WHERE run_id = $rid {f} GROUP BY 1, 2 ORDER BY points DESC", p),
+                "by_severity": d.rows(f"SELECT severity, count(*) AS n FROM findings WHERE run_id = $rid {f} "
+                                      "GROUP BY 1", p),
+                "by_category": d.rows(f"SELECT category, count(*) AS n, sum(points) AS points FROM findings "
+                                      f"WHERE run_id = $rid {f} GROUP BY 1", p),
+                "alert_severity": d.rows(f"SELECT severity, count(*) AS n FROM alerts WHERE true {f} GROUP BY 1",
+                                         {"ids": ids} if ids else None),
+                "alert_category": top,
+                "totals": d.one(f"""SELECT (SELECT count(*) FROM entities WHERE true {f}) AS entities,
+                                          (SELECT count(*) FROM alerts WHERE true {f}) AS alerts,
+                                          (SELECT count(*) FROM cases WHERE true {f}) AS cases,
+                                          (SELECT count(*) FROM findings WHERE run_id = $rid {f}) AS findings,
+                                   (SELECT count(*) FROM review_queue WHERE run_id = $rid {f}) AS review_items""",
+                                p)}
 
     # ------------------------------------------------------------------ clusters / trends / queue
     @app.get("/api/clusters")

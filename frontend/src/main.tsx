@@ -9,6 +9,7 @@ import FindingDetail from "./pages/FindingDetail";
 import Findings from "./pages/Findings";
 import Overview from "./pages/Overview";
 import Reports from "./pages/Reports";
+import Results from "./pages/Results";
 import ReviewQueue from "./pages/ReviewQueue";
 import Trends from "./pages/Trends";
 import Upload from "./pages/Upload";
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
       { path: "trends", element: <Trends /> },
       { path: "review", element: <ReviewQueue /> },
       { path: "upload", element: <Upload /> },
+      { path: "results", element: <Results /> },
       { path: "reports", element: <Reports /> },
       { path: "*", element: <NotFound /> },
     ],

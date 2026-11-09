@@ -3,6 +3,14 @@
 What a CSE must submit, and what each detector needs. The exact schema (columns, types, aliases and
 validation rules) is in `data_schema.md`.
 
+## Any alert export works
+The *Analyze data* page (and `POST /api/ingest`) accepts a plain alert export from any SIEM/EDR/IDS
+(CSV, Excel, JSON, Parquet), uploaded or pasted. Columns are recognised by common names (Timestamp, Priority/Level,
+AlertTitle/Signature, Host/DeviceId, OrgId/Tenant, Category/Tactic/Group), severity is normalised from text or numeric
+scales, MITRE tactic names are translated to the common category vocabulary, and the organisation is created if needed.
+Every assumption is reported back. Only a time column is strictly required. An organisation with no same-source peers is
+compared with the reference population. The richer the export, the more checks apply (table below).
+
 ## Minimum submission
 | Table | Required | Purpose |
 |---|---|---|

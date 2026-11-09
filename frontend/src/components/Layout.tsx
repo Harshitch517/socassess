@@ -3,12 +3,13 @@ import { NavLink, Outlet } from "react-router-dom";
 import { api, type Health } from "../api";
 
 const NAV = [
+  { to: "/upload", label: "Analyze data" },
+  { to: "/results", label: "Results" },
   { to: "/", label: "Overview", end: true },
   { to: "/review", label: "Review queue" },
   { to: "/findings", label: "Findings" },
   { to: "/clusters", label: "Alert clusters" },
   { to: "/trends", label: "Trends" },
-  { to: "/upload", label: "Data upload" },
   { to: "/reports", label: "Reports & audit" },
 ];
 

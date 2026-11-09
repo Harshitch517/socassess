@@ -165,3 +165,28 @@ def test_serves_built_frontend(db_path, tmp_path):
         assert c.get("/assets/app.js").text == "console.log(1)"
         assert "nope" not in c.get("/../secret.txt").text  # no escape from the dist folder
         assert c.get("/api/health").json()["status"] == "ok"  # API still wins
+
+
+def test_summary_pie_data_and_filter(api):
+    s = api.get("/api/summary").json()
+    assert {"by_severity", "by_category", "alert_severity", "alert_category", "bands"} <= s.keys()
+    assert sum(x["n"] for x in s["alert_severity"]) == s["totals"]["alerts"]
+    one = api.get("/api/summary", params={"entity_id": "E6"}).json()
+    assert one["totals"]["entities"] == 1 and one["entity_ids"] == ["E6"]
+    assert [x["severity"] for x in one["by_severity"]] and all(b["n"] == 1 for b in one["bands"])
+    assert len(one["alert_category"]) <= 7
+
+
+def test_upload_any_alert_csv(tmp_path):
+    csv = ("Timestamp,Severity,Alert Title,Host\n"
+           "2026-06-01 10:00,Informational,Port scan,web01\n"
+           "2026-06-01 11:00,High,Malware,pc22\n")
+    with client(tmp_path / "generic.duckdb") as c:
+        r = c.post("/api/ingest", params={"entity_name": "My SOC"},
+                   files=[("files", ("my_alerts.csv", csv, "text/csv"))])
+        assert r.status_code == 200, r.text
+        body = r.json()
+        assert body["entity_ids"] == ["MY-SOC"] and body["analysis_run_id"]
+        assert any(w.startswith("auto-mapping:") for w in body["warnings"])
+        s = c.get("/api/summary", params={"entity_id": "MY-SOC"}).json()
+        assert s["totals"]["alerts"] == 2

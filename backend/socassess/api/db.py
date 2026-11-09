@@ -32,19 +32,19 @@ class Database:
         with self.lock:
             yield self._con
 
-    def df(self, sql: str, params: list | None = None) -> pd.DataFrame:
+    def df(self, sql: str, params: list | dict | None = None) -> pd.DataFrame:
         with self.lock:
             return self._con.execute(sql, params or []).df()
 
-    def rows(self, sql: str, params: list | None = None) -> list[dict]:
+    def rows(self, sql: str, params: list | dict | None = None) -> list[dict]:
         df = self.df(sql, params)
         return to_records(df)
 
-    def one(self, sql: str, params: list | None = None) -> dict | None:
+    def one(self, sql: str, params: list | dict | None = None) -> dict | None:
         r = self.rows(sql, params)
         return r[0] if r else None
 
-    def scalar(self, sql: str, params: list | None = None):
+    def scalar(self, sql: str, params: list | dict | None = None):
         with self.lock:
             row = self._con.execute(sql, params or []).fetchone()
         return row[0] if row else None

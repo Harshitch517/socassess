@@ -42,7 +42,7 @@ def entity_metrics(d: Data) -> pd.DataFrame:
         days = max(1, (al.ts.max() - al.ts.min()).days + 1) if len(al) else np.nan
         m["alerts_per_asset_day"] = len(al) / max(1, len(assets)) / days if len(al) else np.nan
         m["high_crit_share"] = al.severity.isin(["high", "critical"]).mean() if len(al) else np.nan
-        peers_src = [e for e in ent.index if ent.at[e, "source"] == ent.at[eid, "source"] and e in all_cats]
+        peers_src = [e for e in ent.index if ent.at[e, "peer_group"] == ent.at[eid, "peer_group"] and e in all_cats]
         peer_cats = set().union(*(all_cats[e] for e in peers_src)) if peers_src else set()
         m["category_coverage"] = len(all_cats.get(eid, set())) / len(peer_cats) if peer_cats else np.nan
         if len(cs):
@@ -83,8 +83,8 @@ def benchmark(d: Data, metrics: pd.DataFrame) -> pd.DataFrame:
     ent = d.entities.set_index("entity_id")
     out = []
     for eid in metrics.index:
-        src, size = ent.at[eid, "source"], ent.at[eid, "size"]
-        same_src = [e for e in metrics.index if ent.at[e, "source"] == src]
+        src, size = ent.at[eid, "peer_group"], ent.at[eid, "size"]
+        same_src = [e for e in metrics.index if ent.at[e, "peer_group"] == src]
         size_peers = [e for e in same_src if ent.at[e, "size"] == size and e != eid]
         for m, (desc, direction) in METRICS.items():
             v = metrics.at[eid, m]
@@ -113,8 +113,11 @@ def anomalies(d: Data, metrics: pd.DataFrame, bench: pd.DataFrame, p: dict) -> t
     ent = d.entities.set_index("entity_id")
     scores = pd.Series(np.nan, index=metrics.index, name="anomaly_score")
     findings = []
-    for _src, ids in metrics.groupby(ent.source.reindex(metrics.index)).groups.items():
-        x = metrics.loc[ids].dropna(axis=1, how="any")
+    for _src, ids in metrics.groupby(ent.peer_group.reindex(metrics.index)).groups.items():
+        # Use the metrics most entities have, and fit only on entities that have all of them, so one
+        # partial upload (e.g. alerts without cases) cannot strip metrics from everyone else's model.
+        sub = metrics.loc[ids]
+        x = sub.loc[:, sub.notna().mean() >= 0.5].dropna(axis=0, how="any")
         if len(x) < cfg["min_entities"] or x.shape[1] < 2:
             continue
         xs = RobustScaler().fit_transform(x)

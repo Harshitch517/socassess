@@ -17,8 +17,17 @@
 - Conversion streams each file through DuckDB with a 4 GB memory limit and takes about 5 s.
 
 ## Microsoft GUIDE
-- Needs a Kaggle API token at `%USERPROFILE%\.kaggle\kaggle.json` (never stored in the repo).
-- Download: `python scripts/download_data.py guide`. **Pending: waiting for the user's token.**
+- Download (Kaggle token required; pass it as the `KAGGLE_API_TOKEN` environment variable or put
+  `kaggle.json` in `%USERPROFILE%\.kaggle\`; never in the repo): `python scripts/download_data.py guide`.
+  Downloaded 2026-11-09: `GUIDE_Train.csv`, 2,425,409,087 bytes (size matches Kaggle's listing).
+- Convert: `python scripts/convert_guide.py` → `data/processed/guide/`
+  - `guide_train.parquet`: 9,516,837 rows = 1,265,644 alerts from 5,769 organisations (318 MB)
+  - `sample_alerts.parquet`: working sample of 99,996 alerts from the 12 organisations with the most alerts
+    (one row per AlertId; seeded per-org sample), 15 MITRE categories, 2023-12-29 → 2024-06-17
+- Ingested by `scripts/ingest.py` **through the same automatic mapping a user's own export goes through**
+  (OrgId → organisation, AlertTitle → rule, Category → category with MITRE names translated, DeviceId → asset).
+  GUIDE has no severity, case timing or asset inventory, so it supports alert-level checks only
+  (category coverage, volume, pattern clustering).
 
 ## Synthetic CSEs
 `python scripts/generate_synthetic.py --seed 7` writes `data/raw/synthetic/CSEnn/` and

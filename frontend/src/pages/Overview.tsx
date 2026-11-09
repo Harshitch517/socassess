@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { api } from "../api";
 import { HBars, Heatmap, RiskBars } from "../components/charts";
+import SummaryPies from "../components/SummaryPies";
 import { Async, Button, Card, CATEGORY_LABEL, fmtDate, fmtInt, PageHeader, SeverityBadge, StatTile, typeLabel, useAsync } from "../components/ui";
 
 export default function Overview() {
@@ -31,6 +32,7 @@ export default function Overview() {
           );
         }}
       </Async>
+      <Async state={sum}>{(s) => <div className="mb-5"><SummaryPies s={s} /></div>}</Async>
       <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]">
         <Card title="Risk ranking" subtitle="Score = sum of finding points (capped at 100). Hover a bar for its breakdown.">
           <Async state={ents}>{(d) => <RiskBars entities={d.entities} />}</Async>

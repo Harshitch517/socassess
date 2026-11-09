@@ -18,7 +18,7 @@ DEFAULT_PARAMS: dict = {
                    "min_scale": 0.02},
     "sla_breach": {"min_rate": 0.15, "min_scale": 0.03},
     "silent_assets": {"zero_day_share": 0.5, "low_fraction": 0.01, "recent_days": 30},
-    "missing_categories": {"peer_presence": 0.75, "min_alerts_present": 3,
+    "missing_categories": {"peer_presence": 0.75, "min_alerts_present": 3, "min_shared_vocabulary": 0.5,
                            "high_impact": ["lateral_movement", "privilege_escalation",
                                            "data_exfiltration", "ics_anomaly", "malware"],
                            "sector_family": {"power": "ics", "transport": "ics", "water": "ics"}},

@@ -54,3 +54,12 @@
 - Docs: architecture, functional design, data requirements, infrastructure, model details, deployment (+ earlier methodology, schema, API, validation). README rewritten.
 - Public demo prepared: `deploy/huggingface/README.md` (Space card), `scripts/prepare_hf_space.py` (tested), `frontend/vercel.json`. **Pending:** the user's Hugging Face and Vercel (and GitHub) accounts.
 - Note: the Stage 7 files were first committed together with Stage 6 (0ed58d1); this commit completes them.
+
+## Post-Stage 7: input → results flow, GUIDE data (2026-11-09)
+- **Analyze data** page: upload a file (CSV, Excel, JSON, Parquet, SQLite, zip) or paste rows, with an optional organisation name; shows "How your data was read", then pie charts. A CSV template is downloadable.
+- **Results** page (all data or the uploaded organisations): tiles, 5 donut charts (concerns by severity, concern areas, entity risk levels, alert severity mix, alert categories), security warnings with rationale, risk ranking. The Overview also shows the pies.
+- **Automatic mapping** of any alert export (`backend/socassess/ingestion/adapt.py`); single uploads are compared with the reference population; two false-warning paths closed (category vocabulary, partial metrics).
+- **GUIDE** downloaded with the user's Kaggle token and converted (`scripts/convert_guide.py`): 9.5M rows → 100k-alert sample from 12 orgs, ingested via auto-mapping. Store now has 28 organisations and 498k alerts.
+- Full analysis is 15 s (was 141 s) with identical results. Synthetic findings are unchanged (19 + 2 real GUIDE findings).
+- Verified end to end on a store copy: a 2,000-row Wazuh-style CSV with no organisation column was uploaded, mapped, analysed and charted in 14.5 s.
+- Tests: 82 passed.

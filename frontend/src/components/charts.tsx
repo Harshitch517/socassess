@@ -329,3 +329,82 @@ export function Sparkline({ data, xKey, yKey, label }: { data: Record<string, un
     </ResponsiveContainer>
   );
 }
+
+// ---------------------------------------------------------------- donut (part-to-whole, <= 7 slices)
+export interface Slice {
+  key: string;
+  label: string;
+  value: number;
+  color: string;
+  hint?: string;
+}
+
+export function Donut({ slices, total, centerLabel, empty = "Nothing to show" }: {
+  slices: Slice[];
+  total?: number;
+  centerLabel: string;
+  empty?: string;
+}) {
+  const tip = useTip();
+  const data = slices.filter((s) => s.value > 0);
+  const sum = data.reduce((a, s) => a + s.value, 0);
+  const size = 168;
+  const r = 70;
+  const w = 20; // ring thickness: a thin mark, the hole carries the total
+  const cx = size / 2;
+  const C = 2 * Math.PI * r;
+  const gap = data.length > 1 ? 2 : 0; // 2px surface gap between slices
+  let acc = 0;
+  const pct = (v: number) => (sum ? `${Math.round((v / sum) * 100)}%` : "0%");
+  const fmt = (v: number) => v.toLocaleString("en-US");
+  return (
+    <div className="flex flex-wrap items-center gap-5">
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img"
+        aria-label={`${centerLabel}: ${data.map((s) => `${s.label} ${fmt(s.value)}`).join(", ") || "none"}`}>
+        <circle cx={cx} cy={cx} r={r} fill="none" stroke="var(--grid)" strokeWidth={w} />
+        {data.map((s) => {
+          const len = (s.value / sum) * C;
+          const dash = Math.max(0, len - gap);
+          const el = (
+            <circle key={s.key} cx={cx} cy={cx} r={r} fill="none" stroke={s.color} strokeWidth={w}
+              strokeDasharray={`${dash} ${C - dash}`} strokeDashoffset={-acc}
+              transform={`rotate(-90 ${cx} ${cx})`} tabIndex={0} className="cursor-default outline-none"
+              onMouseEnter={(e) => tip.show(e as never, <span><b>{s.label}</b>: {fmt(s.value)} ({pct(s.value)}){s.hint ? <><br />{s.hint}</> : null}</span>)}
+              onFocus={(e) => tip.show(e as never, <span><b>{s.label}</b>: {fmt(s.value)} ({pct(s.value)})</span>)}
+              onMouseLeave={tip.hide} onBlur={tip.hide} />
+          );
+          acc += len;
+          return el;
+        })}
+        <text x={cx} y={cx - 2} textAnchor="middle" className="fill-[var(--ink)]" fontSize="26" fontWeight="600">
+          {fmt(total ?? sum)}
+        </text>
+        <text x={cx} y={cx + 18} textAnchor="middle" className="fill-[var(--ink-2)]" fontSize="11">{centerLabel}</text>
+      </svg>
+      {data.length === 0 ? (
+        <p className="text-sm text-muted">{empty}</p>
+      ) : (
+        <ul className="min-w-[10rem] flex-1 space-y-1.5 text-sm">
+          {data.map((s) => (
+            <li key={s.key} className="flex items-center gap-2">
+              <span className="h-2.5 w-2.5 shrink-0 rounded-sm" style={{ background: s.color }} aria-hidden />
+              <span className="min-w-0 flex-1 truncate text-ink-2" title={s.hint ?? s.label}>{s.label}</span>
+              <span className="tnum text-ink">{fmt(s.value)}</span>
+              <span className="tnum w-10 text-right text-muted">{pct(s.value)}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      {tip.node}
+    </div>
+  );
+}
+
+export const SEVERITY_SLICES = [
+  { key: "critical", label: "Critical", color: "var(--st-critical)" },
+  { key: "high", label: "High", color: "var(--st-serious)" },
+  { key: "medium", label: "Medium", color: "var(--st-warning)" },
+  { key: "low", label: "Low", color: "var(--muted)" },
+];
+export const CATEGORY_COLORS = ["var(--series-1)", "var(--series-2)", "var(--series-3)", "var(--series-4)",
+  "var(--series-5)", "var(--series-6)"];

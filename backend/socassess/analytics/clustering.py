@@ -28,15 +28,23 @@ def pattern_table(d: Data) -> pd.DataFrame:
     a["day"] = a.ts.dt.floor("D")
     a["hour"] = a.ts.dt.hour
     a["sev"] = a.severity.map(SEV_RANK)
-    span = a.groupby("entity_id").day.agg(lambda s: max(1, (s.max() - s.min()).days + 1))
-    n_assets = d.assets.groupby("entity_id").size()
-    daily = a.groupby(["entity_id", "rule_name", "day"]).size()
-    burst = daily.groupby(level=[0, 1]).agg(lambda s: s.max() / s.mean())
-    g = a.groupby(["entity_id", "rule_name"]).agg(
-        category=("category", lambda s: s.mode().iat[0]), alerts=("alert_id", "size"),
-        assets=("asset_id", "nunique"), active_days=("day", "nunique"),
-        after_hours_share=("hour", lambda h: float(((h < 7) | (h >= 20)).mean())),
-        severity_mean=("sev", "mean"), first_seen=("ts", "min"), last_seen=("ts", "max"))
+    a["after_hours"] = ((a.hour < 7) | (a.hour >= 20)).astype(float)
+    # all aggregations are built-in (vectorised): no per-group Python lambdas
+    dspan = a.groupby("entity_id").day.agg(["min", "max"])
+    span = ((dspan["max"] - dspan["min"]).dt.days + 1).clip(lower=1)
+    # share-of-assets denominator: the inventory, or the assets seen in alerts when there is none
+    n_assets = d.assets.groupby("entity_id").size().reindex(span.index)
+    n_assets = n_assets.fillna(a.groupby("entity_id").asset_id.nunique()).clip(lower=1)
+    key = ["entity_id", "rule_name"]
+    daily = a.groupby(key + ["day"]).size()
+    burst = daily.groupby(level=[0, 1]).max() / daily.groupby(level=[0, 1]).mean()
+    cat = (a.groupby(key + ["category"]).size().reset_index(name="n")
+           .sort_values("n", ascending=False).drop_duplicates(key).set_index(key).category)
+    g = a.groupby(key).agg(
+        alerts=("alert_id", "size"), assets=("asset_id", "nunique"), active_days=("day", "nunique"),
+        after_hours_share=("after_hours", "mean"), severity_mean=("sev", "mean"),
+        first_seen=("ts", "min"), last_seen=("ts", "max"))
+    g["category"] = cat
     g["burstiness"] = burst
     g = g.reset_index()
     g["log_alerts"] = np.log10(g.alerts)

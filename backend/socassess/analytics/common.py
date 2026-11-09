@@ -47,7 +47,8 @@ class Data:
     telemetry: pd.DataFrame
 
     def source_of(self) -> dict[str, str]:
-        return dict(zip(self.entities.entity_id, self.entities.source, strict=True))
+        """Peer group per entity (see assign_peer_groups); named for its original meaning."""
+        return dict(zip(self.entities.entity_id, self.entities.peer_group, strict=True))
 
     def with_cases(self) -> set[str]:
         return set(self.cases.entity_id.unique())
@@ -83,7 +84,21 @@ def load_data(con: duckdb.DuckDBPyConnection, entity_ids: list[str] | None = Non
     cases["asset_criticality"] = cases.asset_id.map(crit)
     esc = q(f"SELECT * FROM escalations {where}")
     tel = q(f"SELECT * FROM telemetry {where}")
+    ent["peer_group"] = assign_peer_groups(ent, set(cases.entity_id))
     return Data(ent, assets, alerts, cases, esc, tel)
+
+
+MIN_PEERS = 3
+
+
+def assign_peer_groups(ent: pd.DataFrame, with_cases: set[str]) -> pd.Series:
+    """Entities are compared with peers from the same data source. A source with fewer than
+    MIN_PEERS entities (e.g. one organisation's own upload) has no meaningful peers, so it joins the
+    reference population: the largest source that has case-management data."""
+    counts = ent.source.value_counts()
+    ref_pool = ent[ent.entity_id.isin(with_cases)].source.value_counts()
+    reference = (ref_pool.index[0] if len(ref_pool) else counts.index[0]) if len(counts) else None
+    return ent.source.map(lambda s: s if counts.get(s, 0) >= MIN_PEERS or reference is None else reference)
 
 
 def peer_z(values: pd.Series, groups: pd.Series, min_scale: float) -> pd.Series:

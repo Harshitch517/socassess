@@ -24,6 +24,7 @@ import pandas as pd
 from socassess.schema import TABLE_ALIASES
 
 DB_SUFFIXES = {".sqlite", ".sqlite3", ".db", ".duckdb"}
+EXTRA = "__extra__"
 
 
 class LoadError(ValueError):
@@ -38,6 +39,7 @@ def _add(out: dict, unknown: list, name: str, df: pd.DataFrame, origin: str) -> 
     table = _canonical(name)
     if table is None:
         unknown.append(origin)
+        out.setdefault(EXTRA, {})[origin] = df  # kept for automatic mapping (adapt.py)
         return
     if table in out:
         out[table] = pd.concat([out[table], df], ignore_index=True)
@@ -98,6 +100,14 @@ def _read_file(path: Path, out: dict, unknown: list) -> None:
         _read_json(path, out, unknown)
     elif suf in DB_SUFFIXES:
         _read_db(path, out, unknown)
+    elif suf in (".xlsx", ".xlsm"):
+        try:
+            sheets = pd.read_excel(path, sheet_name=None, dtype=str)
+        except Exception as e:  # corrupt or password-protected workbook
+            raise LoadError(f"{path.name}: could not read Excel workbook ({e})") from e
+        for sheet, df in sheets.items():
+            name = path.stem if len(sheets) == 1 else sheet
+            _add(out, unknown, name, df, f"{path.name}:{sheet}")
     elif suf == ".parquet":
         _add(out, unknown, path.stem, pd.read_parquet(path), path.name)
     elif not path.name.startswith("."):
@@ -106,6 +116,15 @@ def _read_file(path: Path, out: dict, unknown: list) -> None:
 
 def load_export(path: str | Path) -> tuple[dict[str, pd.DataFrame], list[str]]:
     """Return ({canonical_table: DataFrame}, [ignored file/table names])."""
+    tables, unknown, _ = load_any(path)
+    if not tables:
+        raise LoadError(f"{Path(path).name}: no recognisable tables found "
+                        f"(expected files such as entities.csv, alerts.csv; saw {unknown or 'nothing'})")
+    return tables, unknown
+
+
+def load_any(path: str | Path) -> tuple[dict[str, pd.DataFrame], list[str], dict[str, pd.DataFrame]]:
+    """Like load_export, but also returns unrecognised tables ({origin: DataFrame}) instead of failing."""
     path = Path(path)
     if not path.exists():
         raise LoadError(f"{path}: no such file or folder")
@@ -125,7 +144,8 @@ def load_export(path: str | Path) -> tuple[dict[str, pd.DataFrame], list[str]]:
             _read_file(f, out, unknown)
     else:
         _read_file(path, out, unknown)
-    if not out:
+    extra = out.pop(EXTRA, {})
+    if not out and not extra:
         raise LoadError(f"{path.name}: no recognisable tables found "
-                        f"(expected files such as entities.csv, alerts.csv; saw {unknown or 'nothing'})")
-    return out, unknown
+                        f"(expected data files such as alerts.csv or entities.csv; saw {unknown or 'nothing'})")
+    return out, unknown, extra
