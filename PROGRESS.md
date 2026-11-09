@@ -45,5 +45,12 @@
 - `backend/socassess/validation.py` (scoring vs ground truth, review-effort curves) + `scripts/validate.py` (generate → ingest → analyse → evaluate, per seed; charts; report).
 - Results (`docs/validation_report.md`), 5 seeds of which 4 held out: **70/70 planted weaknesses detected, 0 wrong findings, 0/20 healthy entities flagged, AUC 1.00, evidence precision 99.0–99.4% and recall 99.8–100%.**
 - Tool vs manual sampling: the review queue confirms every weakness after about 54 records (≈4.5 h); random review of the same 54 records confirms 22–33%, and even 3,840 records (≈320 h) plateaus at 64%, because negative-space weaknesses leave no case to sample.
-- Tests: 73 passed (3 validation-maths tests).
+- Tests: 72 passed (3 validation-maths tests).
 - Run: `python scripts/validate.py` (about 8 min for 5 seeds; `--seeds 7 --runs 20` for a quick check).
+
+## Stage 7 — Packaging, docs, deployment (2026-11-09) ✅ except the public deploy (waiting for accounts)
+- `Dockerfile` (multi-stage, non-root, healthcheck, seeded demo), `docker-compose.yml` (named volume, 4 GB limit), `.dockerignore`, `requirements-runtime.txt`. Image size 1.12 GB.
+- **Offline verified:** `docker run --network none`: healthy; UI, API, entity list and PDF served; full analysis re-run inside the container (19 findings, 24 s); outbound internet confirmed unreachable; about 0.4 GB RAM. Compose: results persist across `docker compose restart`.
+- Docs: architecture, functional design, data requirements, infrastructure, model details, deployment (+ earlier methodology, schema, API, validation). README rewritten.
+- Public demo prepared: `deploy/huggingface/README.md` (Space card), `scripts/prepare_hf_space.py` (tested), `frontend/vercel.json`. **Pending:** the user's Hugging Face and Vercel (and GitHub) accounts.
+- Note: the Stage 7 files were first committed together with Stage 6 (0ed58d1); this commit completes them.

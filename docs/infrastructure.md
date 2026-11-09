@@ -14,8 +14,8 @@ Measured on the development laptop (i7-12th gen, 16 GB RAM, Windows 11), demo sc
 | Resource | Minimum | Recommended | Measured |
 |---|---|---|---|
 | CPU | 2 cores x86-64 | 4+ cores | Analysis 17–50 s single process |
-| RAM | 2 GB | 4 GB (compose `mem_limit: 4g`) | Peak 0.9 GB during a full analysis |
-| Disk | 2 GB | 10 GB + data | Image IMAGE_SIZE; DuckDB store 60 MB for the demo; raw AIT 3 GB (dev only) |
+| RAM | 2 GB | 4 GB (compose `mem_limit: 4g`) | Peak 0.9 GB during a full analysis; container idle about 0.4 GB |
+| Disk | 2 GB | 10 GB + data | Image 1.12 GB; DuckDB store 53 MB for the full demo (16 entities incl. AIT, several runs); raw AIT 3 GB (dev only) |
 | GPU | none | none | not used |
 
 Scaling guide: analysis cost is roughly linear in cases and alerts, except copy-paste-note detection, which
